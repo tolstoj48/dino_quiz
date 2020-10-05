@@ -1,0 +1,25 @@
+const dinosArray = {
+  Stegosaurus:{
+    name: "Stegosaurus",
+    food: "býložravec",
+    foodCls: "my-green",
+    height: "až 4 metry",
+    length: "až 9 metrů",
+    weigth: " až 4000 kg",
+    interestingPoint: "„Objevil se také ve slavném románu britského spisovatele A. C. Doyla Ztracený svět z roku 1912. V roce 1982 byl Stegosaurus zvolen státním dinosaurem Colorada.[11] Stegosaurus se objevil i v mnoha filmech s tematikou pravěku, včetně filmů Cesta do pravěku, Ztracený svět: Jurský park a Jurský park 3 nebo v seriálech Putování s dinosaury a Planeta dinosaurů.“",
+    imgSrc: "./images/stegosaurus.png",
+    cardCls: "stego",
+    source: "https://cs.wikipedia.org/w/index.php?title=Stegosaurus&oldid=19000767",
+  },
+  Ankylosaurus:{
+    name: "Ankylosaurus",
+    food: "býložravec",
+    foodCls: "my-green",
+    height: "až 2 metry",
+    length: "až 9 metrů",
+    weigth: "až 8000 kg",
+    interestingPoint: "„Ankylosaurus se často objevuje ve filmech i dokumentech. Nechybí například ve filmu Jurský park 3, v dokumentech jako je Putování s dinosaury nebo v knižních příbězích, například v knize Poslední dny dinosaurů.“",  imgSrc: "./images/ankylosaurus.png",
+    cardCls: "ankylo",
+    source: "https://cs.wikipedia.org/w/index.php?title=Ankylosaurus&oldid=18900792",
+  },
+}

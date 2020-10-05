@@ -1,0 +1,190 @@
+/* || General styles */
+
+html {
+  font-size: 105%;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: url("../fonts/segoe.ttf"),
+}
+
+body {
+  font-family: "Segoe UI";
+}
+
+main {
+  min-height: calc(100vh - 200px);
+  }
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* generaů moved padding to right */
+.moved-to-right {
+  font-size: 14px;
+  padding-left: 1.5rem;
+}
+
+/* general top margin class 2rem */
+.margin-top-2rem {
+  margin-top: 2rem;
+}
+
+/* || Main navbar styles */
+
+a.brand-logo {
+  margin-left: 1rem;
+  font-weight: 780;
+  font-size: 2rem;
+}
+
+/* hamburger icon color */
+i.fa-bars{
+  color: #000;
+}
+
+/* hamburger icon margin*/
+.fas{
+  margin-right:2rem;
+}
+
+/* icon in the navbar*/
+#ikona {
+  max-width: 35px;    
+  }
+
+/* search input*/
+input#search{
+  color: #212121;
+  border-radius: 5px;
+}
+
+/* search input*/
+input[type="search"] {
+  height: 60px !important;
+}
+
+/* search div background color - materialize changed*/
+input[type=search]:not(.browser-default){
+  background-color: rgba(255,255,255, 0.6);
+}
+
+/* main navbar */
+#nav-mobile {
+  width: 80%;
+}
+
+nav div #nav-mobile>li:first-child {
+  padding-right: 10%;
+  padding-left: 5%;
+}
+
+nav div #nav-mobile>li>a {
+  padding-right: 1rem;
+}
+
+nav ul {
+  padding-top: 2px;
+}
+
+nav ul a {
+  color: #000;
+  font-weight: 900;
+}
+
+/* search field label color*/
+nav .input-field label {
+  color: rgba(0,0,0,0.45); 
+}
+
+/* search filed label icon */
+nav .input-field label i {
+  color: rgba(0,0,0,0.45);
+}
+
+/* search filed label icon active*/
+nav .input-field label.active i {
+  color: rgba(0,0,0,0.45);
+}
+
+/* main navbar ul width */
+#quiz, #recognize{
+  width: 10rem;
+}
+
+#quiz>li>a, #recognize>li>a{
+  color: rgba(0,0,0,1);
+}
+
+#quiz>li>a:hover, #recognize>li>a:hover{
+  background-color: #f4ff81;
+}
+
+#mobile li {
+  font-weight: 900;
+}
+
+li.last-lis a {
+  font-weight: 900;
+}
+
+li.first-li a {
+  font-weight: 900;
+  padding-left: 24px;
+}
+
+
+/* Search input font color */
+::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0,0,0,0.45);;
+  opacity: 1; /* Firefox */
+}
+
+::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0,0,0,0.45);;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0,0,0,0.45);;
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0,0,0,0.45);;
+  opacity: 1; /* Firefox */
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(0,0,0,0.45);;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(0,0,0,0.45);;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgba(0,0,0,0.45);;
+}
+
+
+/* || Footer styles section */
+
+.page-footer a {
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.page-footer a:hover {
+  -webkit-text-decoration: underline;
+          text-decoration: underline;
+}
+.page-footer {
+  border-top: 1px solid rgba(62, 62, 62, 0.2);
+}

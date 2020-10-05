@@ -1,0 +1,115 @@
+
+/* || Dino list section*/
+
+#nav-dinos {
+  width: 80%;
+  margin:auto;
+}
+
+/* dino list li*/
+#nav-dinos li {
+  float: left;
+  padding-right: 2rem;
+}
+
+/* dino list a*/
+#nav-dinos li a {
+  color: black;
+}
+
+/* dino list a hovered*/
+#nav-dinos li a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+/* carousel images */
+.carousel img {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(255,255,255, 1);background-color
+}
+
+.carousel img:hover {
+  cursor: default;
+}
+.carousel {
+  height: 230px;
+}
+
+/* carousel headline*/
+.carousel a {
+  color: black;
+  font-weight: 700;
+  background-color: rgba(255,255,255, 0.8);
+  text-align: center;
+  padding-top: 3rem;
+}
+.carousel a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+blockquote {
+  border-left: 4px solid;
+  font-style: italic;
+}
+
+/* stegos card*/
+.stego {
+  border: 2px solid #0A924C ;
+  border-radius: 5px;
+}
+
+/* stegos card quote border color*/
+.stego blockquote {
+  border-color:  #EC008C;
+}
+
+/* ankylos card*/
+.ankylo {
+  border: 2px solid #DEB879 ;
+  border-radius: 5px;
+}
+
+/* ankylos card quote border color*/
+.ankylo blockquote {
+  border-color:  #EFE301;
+}
+
+/* link in the dino detail on the card*/
+div.card-content p a:hover {
+  -webkit-text-decoration: underline;
+          -webkit-text-decoration: underline;
+                  text-decoration: underline;
+}
+
+.badge {
+  border-radius: 5px;
+  font-size: 0.8rem;
+  
+}
+
+.badge.my-green {
+  background-color: rgba(92, 255, 124, 0.6);
+  color: black
+}
+
+.badge.my-red {
+  color: black;
+  background-color: rgba(236, 81, 81, 0.6)
+}
+
+#nav-dinos li a span.badge:hover {
+  -webkit-text-decoration: underline;
+          text-decoration: underline;
+}
+
+/* centered dino card*/
+#centered {
+  margin:auto;
+  float: none;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}}
