@@ -5,6 +5,20 @@ const ItemCtrl = (function () {
     localStorage.setItem("gameId", e.target.text);
     localStorage.setItem("gameTypeId", e.target.className);
   }
+  // Set questions
+  const getQuestions = function () {
+    const gameId = localStorage.getItem("gameId");
+    const gameType = localStorage.getItem("gameTypeId");
+    let questionSet;
+    if (gameId === "Všichni dinosauři") {
+      questionSet = quizArray.all;
+    } else if (gameId === "Býložravci") {
+      questionSet = quizArray.herbivores;
+    } else {
+      questionSet = quizArray.carnivores;
+    }
+    return questionSet;
+  }
 
   return {
     // To set current game type and id based on the last link click
@@ -17,6 +31,10 @@ const ItemCtrl = (function () {
         id: localStorage.getItem("gameId"),
         type: localStorage.getItem("gameTypeId"),
       }
+    },
+    // Set questions
+    getQuestions: function () {
+      return getQuestions();
     }
   }
 })();
@@ -75,8 +93,11 @@ const UICtrl = (function () {
 
   }
 
-  const initializeGame = function initializeGame() {
-    console.log(document.querySelector(UISelectors.petr));
+  const initializeGame = function initializeGame(questions) {
+    const mainDiv = document.querySelector(UISelectors.petr);
+    // Iterate questions and generate quiz - musím dodělat
+    console.log(questions);
+
   }
 
   return {
@@ -85,8 +106,8 @@ const UICtrl = (function () {
       eventListenersInit();
   },
     // Initialization of game
-    initializeGame: function () {
-      initializeGame();
+    initializeGame: function (questions) {
+      initializeGame(questions);
     }
 }
 })();
@@ -100,8 +121,10 @@ const App = (function(UICtrl) {
     init: function () {
       // Loading event listeners
       UICtrl.eventListenersInit();
+      // Get questions
+      const questions = ItemCtrl.getQuestions();
       // Inititalization of a game
-      UICtrl.initializeGame();
+      UICtrl.initializeGame(questions);
     },
   }
 
