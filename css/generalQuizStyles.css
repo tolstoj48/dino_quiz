@@ -1,0 +1,6 @@
+/* || General quiz styles */
+.indicator {
+  background-color:rgba(223, 219, 219, 0.4);
+  text-align: center;
+  border: 1px solid black;
+}

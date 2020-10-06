@@ -9,6 +9,7 @@
   <title>Kvíz s dinosaury</title>
   <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
   <link type="text/css" rel="stylesheet" href="./css/styles.css">
+  <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
 </head>
 
 <body>
@@ -82,30 +83,34 @@
     <section>
       <div class="row">
         <article>
-          <div class="col s12">
+          <div class="col s12 margin-top-2rem">
             <div class="card white darken-1">
               <div class="card-content">
-                <span class="card-title"><h5 id="game-type">Typ hry</h5></span>
-                <table id="result-table" class="responsive-table">
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>2.</td>
-                      <td>3.</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <span id="time"><h5>Čas</h5></span>
+                <div class="col s8 blue">
+                  <span class="card-title"><h5 id="game-type"></h5></span>
+                </div>
+                <div class="col s4 green">
+                  <span><h5 id="time" class="right"></h5></span>
+                </div>
+                <div class="col s12 margin-top-2rem">
+                  <div id="first-question" class="indicator col s1">1</div>
+                  <div id="second-question" class="indicator col s1">2</div>
+                  <div id="third-question" class="indicator col s1">3</div>
+                  <div id="fourth-question" class="indicator col s1">4</div>
+                  <div id="fifth-question" class="indicator col s1">5</div>
+                  <div id="sixth-question" class="indicator col s1">6</div>
+                  <div id="seventh-question" class="indicator col s1">7</div>
+                  <div id="eight-question" class="indicator col s1">8</div>
+                  <div id="ninth-question" class="indicator col s1">9</div>
+                  <div id="tenth-question" class="indicator col s1">10</div>
+                  <div id="eleventh-question" class="indicator col s1">11</div>
+                  <div id="twelfth-question" class="indicator col s1">12</div>
+                </div>
                 <div class="row">
-                  <div id="question-img" class="col s3 blue">
+                  <div id="question-img" class="col s3 blue margin-top-2rem">
                     Tohle
                   </div>
-                  <div id="question" class="col s9 pink">
+                  <div id="question" class="col s9 pink margin-top-2rem">
                     Tamto
                   </div>
                 <div class="row">
@@ -142,6 +147,7 @@
 </footer>
 
   <script src="./js/materialize.min.js"></script>
+  <script src="./js/helperFunctions.js"></script>
   <script src="./js/quizData.js"></script>
   <script src="./js/appQuiz.js"></script>
   <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>

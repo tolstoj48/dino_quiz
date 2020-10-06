@@ -20,6 +20,23 @@ const ItemCtrl = (function () {
     return questionSet;
   }
 
+    // Setting game timer
+    const setTime = function setTime() {
+      var today = new Date();
+      today.setTime(0);
+      let s = today.getMinutes();
+      let m = today.getSeconds();
+      // Set game timer
+      window.setInterval(function () {
+        let gameTime = document.querySelector(UISelectors.time);
+        m = checkTime(m);
+        s = checkTime(today.getSeconds() + 1);
+        gameTime.innerHTML = m + ":" + s;
+        localStorage.setItem("timePassed", m + ":" + s);
+        today.setSeconds(today.getSeconds() + 1);
+      }, 1000);
+    }
+
   return {
     // To set current game type and id based on the last link click
     setCurrentGameId: function(e){
@@ -35,7 +52,15 @@ const ItemCtrl = (function () {
     // Set questions
     getQuestions: function () {
       return getQuestions();
-    }
+    },
+    // Returns the final time of a game from localStorage
+    getFinalTime: function () {
+      return localStorage.getItem("timePassed");
+    },
+    // Starts time counter of quiz/recognition game
+    startGameTime: function() {
+      setTime();
+    },
   }
 })();
 
@@ -50,6 +75,7 @@ const UICtrl = (function () {
     question: "#question",
     correctAnswers: "#correct-answers",
     incorrectAnswers: "#incorrect-answers",
+    time: "#time",
   }
   
   const eventListenersInit = function eventListenersInit() {
@@ -93,10 +119,17 @@ const UICtrl = (function () {
 
   }
 
-  const initializeGame = function initializeGame(questions) {
-    const mainDiv = document.querySelector(UISelectors.petr);
-    // Iterate questions and generate quiz - musím dodělat
-    console.log(questions);
+  // Init of the game UI
+  const initilizeGameUIContent = function initilizeGameUI(questions) {
+    let title; 
+
+    // Set name of the game type
+    let gameTypeName = document.querySelector(UISelectors.gameType);
+    // Set title text of the game type
+    if (localStorage.getItem("gameTypeId") === "quiz") {
+      title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
+    }
+    gameTypeName.innerHTML = title;
 
   }
 
@@ -106,9 +139,13 @@ const UICtrl = (function () {
       eventListenersInit();
   },
     // Initialization of game
-    initializeGame: function (questions) {
-      initializeGame(questions);
-    }
+    initilizeGameUI: function (questions) {
+      // Starts content in the UI
+      initilizeGameUIContent(questions);
+      // Starts time in UI and ItemCtrl
+      ItemCtrl.startGameTime();
+    },
+
 }
 })();
 
@@ -124,11 +161,11 @@ const App = (function(UICtrl) {
       // Get questions
       const questions = ItemCtrl.getQuestions();
       // Inititalization of a game
-      UICtrl.initializeGame(questions);
+      UICtrl.initilizeGameUI(questions);
     },
   }
 
-})(UICtrl);
+})(UICtrl, ItemCtrl);
 
 App.init();
 
