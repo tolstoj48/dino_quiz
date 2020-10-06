@@ -6,10 +6,10 @@ const ItemCtrl = (function () {
     localStorage.setItem("gameTypeId", e.target.className);
   }
   // Set questions
-  const getQuestions = function () {
+  const getQuestions = function getQuestions() {
+    let questionSet;
     const gameId = localStorage.getItem("gameId");
     const gameType = localStorage.getItem("gameTypeId");
-    let questionSet;
     if (gameId === "Všichni dinosauři") {
       questionSet = quizArray.all;
     } else if (gameId === "Býložravci") {
@@ -37,6 +37,14 @@ const ItemCtrl = (function () {
       }, 1000);
     }
 
+    // Generator fetching next question
+    const getNextQuestion = function* gen(questionsObj) {
+      for (const property in questionsObj) {
+        yield questionsObj[property];
+      }
+    }
+    
+
   return {
     // To set current game type and id based on the last link click
     setCurrentGameId: function(e){
@@ -53,14 +61,19 @@ const ItemCtrl = (function () {
     getQuestions: function () {
       return getQuestions();
     },
-    // Returns the final time of a game from localStorage
-    getFinalTime: function () {
-      return localStorage.getItem("timePassed");
-    },
     // Starts time counter of quiz/recognition game
     startGameTime: function() {
       setTime();
     },
+    // Returns the final time of a game from localStorage
+    getFinalTime: function () {
+      return localStorage.getItem("timePassed");
+    },
+    getNextQuestion: function () {
+      let questions = this.getQuestions();
+      console.log(questions);
+      return getNextQuestion(questions);
+    }
   }
 })();
 
@@ -76,6 +89,7 @@ const UICtrl = (function () {
     correctAnswers: "#correct-answers",
     incorrectAnswers: "#incorrect-answers",
     time: "#time",
+    press: "#press",
   }
   
   const eventListenersInit = function eventListenersInit() {
@@ -117,6 +131,12 @@ const UICtrl = (function () {
       element.addEventListener("click", ItemCtrl.setCurrentGameId)
     })
 
+
+    const clicker = ItemCtrl.getNextQuestion();
+    const buttonPress = document.querySelector(UISelectors.press);
+    buttonPress.addEventListener("click", function() {
+      console.log(clicker.next());    
+    })
   }
 
   // Init of the game UI

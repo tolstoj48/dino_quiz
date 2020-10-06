@@ -2,27 +2,32 @@ const quizArray = {
   all:{
     1: {
       question: "Co máš k žrádlu?",
-      answer: "Hovno"
+      answers: ["Hovno", "skovno", "provno", "divno", "Hovno", "skovno", "provno", "divn"],
+      correctAnswer: 3,
     },
     2: {
       question: "Co máš k spánku?",
-      answer: "Spánek"
+      answers: ["Hovno", "skovno", "provno", "divno", "Hovno", "skovno", "provno", "divn"],
+      correctAnswer: 3,
     },
     3: {
       question: "Co máš ke kuku?",
-      answer: "Kuku"
+      answers: ["Hovno", "skovno", "provno", "divno", "Hovno", "skovno", "provno", "divn"],
+      correctAnswer: 3,
     },
   },
   herbivores:{
     1: {
       question: "Dáš si trávu?",
-      answer: "Yes"
+      answers: ["Hovno", "skovno", "provno", "divno", "Hovno", "skovno", "provno", "divn"],
+      correctAnswer: 3,
     },
   },
   carnivores: {
     1: {
       question: "Dáš si mašíšššššškoooo?",
-      answer: "Ňami ňami"
+      answers: ["Hovno", "skovno", "provno", "divno", "Hovno", "skovno", "provno", "divn"],
+      correctAnswer: 3,
     },
   }
   }
