@@ -44,7 +44,7 @@ const ItemCtrl = (function () {
       }
     }
 
-  // Save answers to localStorage
+  // Saves answers to localStorage
   const answers = {};
   const saveAnswer = function saveAnswer(answer) {
     if (localStorage.getItem("answers") === null || !localStorage.getItem("answers")) {
@@ -56,7 +56,27 @@ const ItemCtrl = (function () {
       localStorage.setItem("answers", JSON.stringify(localStorageAnswers));
     }
     }
+
+  // Gets answers from localStorage
+  const getAnswersFromLocalStorage = function getAnswersFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("answers"));
+  }
     
+  // Deletes answers item in localStorage
+  const resetAnswersItem = function resetAnswersItem() {
+    localStorage.removeItem("answers");
+  }
+
+  const getCorrectAnswers = function getCorrectAnswers() {
+    let counter = 0;
+    let correctAnswers = {}
+    let questionsObj = getQuestions();
+    for (const property in questionsObj) {
+      correctAnswers[counter] = questionsObj[property].correctAnswer;
+      counter += 1;
+    }
+    return correctAnswers;
+  }
 
   return {
     // To set current game type and id based on the last link click
@@ -84,11 +104,19 @@ const ItemCtrl = (function () {
     },
     getNextQuestion: function () {
       let questions = this.getQuestions();
-      console.log(questions);
       return getNextQuestion(questions);
     },
     saveAnswer: function (answer) {
       saveAnswer(answer);
+    },
+    getAnswersFromLocalStorage: function () {
+      return getAnswersFromLocalStorage();
+    },
+    resetAnswersItem: function () {
+      return resetAnswersItem();
+    }, 
+    getCorrectAnswers: function() {
+      return getCorrectAnswers();
     }
   }
 })();
@@ -106,6 +134,7 @@ const UICtrl = (function () {
     correctAnswers: "#correct-answers",
     incorrectAnswers: "#incorrect-answers",
     time: "#time",
+    questionsAnswersContainer: "#question-answers-container",
   }
   
   const eventListenersInit = function eventListenersInit() {
@@ -147,26 +176,10 @@ const UICtrl = (function () {
       element.addEventListener("click", ItemCtrl.setCurrentGameId)
     })
 
-
-    // Click event on questions
-    const clicker = ItemCtrl.getNextQuestion();
-    // Skip first question - init is solved in initializeGameUIContent()
-    let endOfAnswerSet = clicker.next();
-    // Event listeners to answer list items    
-    const answerPress = document.querySelector(UISelectors.answersList);
-    answerPress.addEventListener("click", function() {
-      if (!endOfAnswerSet.done) {
-        nextQuestionUI(clicker);
-      } else {
-        console.log("This is the end!!!");
-      }
-    });
-
-    return clicker;
   }
 
   // Init of the game UI
-  const initilizeGameUIContent = function initilizeGameUI(clicker) {
+  const initilizeGameUIContent = function initilizeGameUI() {
     let title; 
     // Set name of the game type
     let gameTypeName = document.querySelector(UISelectors.gameType);
@@ -186,14 +199,21 @@ const UICtrl = (function () {
       html += `<li id=${index} class="answer-item collection-item col s6">${answer}</li>`
     })
     answersList.innerHTML = html;
+    
+    // Click event on questions
+    const clicker = ItemCtrl.getNextQuestion();
+    // Skip first question - given already set first question
+    clicker.next();
 
     // Click event on answers
     answersList.addEventListener("click", function (e) {
       if (e.target.classList.contains("answer-item")) {
         // Save answer to ItemCtrl
         ItemCtrl.saveAnswer(e.target.innerHTML);
+        // Get another question from generator function
         clicker.next();
-        // Change UI content based on clicker, ale s podmínkou, že pokud je true na generátoru - následně, pokud true, tak vyjodnocení
+        // Call next question UI
+        nextQuestionUI(clicker);
       }
     })
   }
@@ -213,7 +233,6 @@ const UICtrl = (function () {
     // Last answer or not
     if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
       let questionContainer = document.querySelector(UISelectors.questionContainer);
-      console.log(UIAnswersCounter);
       questionContainer.innerHTML = questionSet[UIAnswersCounter].question; // 
       // Answers content after fetching next question
       let html = ``;
@@ -222,25 +241,32 @@ const UICtrl = (function () {
         html += `<li id=${index} class="answer-item collection-item col s6">${answer}</li>`
       })
       answersList.innerHTML = html;
-
-      // Click event on answers
-      answersList.addEventListener("click", function (e) {
-        if (e.target.classList.contains("answer-item")) {
-          // Save answer to ItemCtrl
-          ItemCtrl.saveAnswer(e.target.innerHTML);
-          clicker.next();
-        }
-      })
       // Counter of number of answered questions
       UIAnswersCounter += 1;
-      
+    // The end of a game
     } else {
-      console.log("The end");
       UIAnswersCounter = 1;
-      endOfGameStateUI(); /* dodělat totok - reset UIAnswersCOunter, smazat 
-      localStorage odpovědí, porovnat výstup z localsorage s objektem výsledků, 
-      zobrazit výslednou stránku a odkaz na výsledky předchozí, zobrazit čas*/
+      endOfGameStateUI();
   }
+  }
+
+  const endOfGameStateUI = function endOfGameStateUI() {
+    // Reset UIAnswersCounter
+    // porovnat odpovědi s localSt odpovědí korektní z celku, čas
+    // Odkaz na výsledky, odkaz na opakovat shodný test
+    // Container of the questions and answers
+    let container = document.querySelector(UISelectors.questionsAnswersContainer);
+    // User answers from localStorage
+    let userAnswers = ItemCtrl.getAnswersFromLocalStorage();
+    // Get correct answers from array of questions
+    let correctAnswers = ItemCtrl.getCorrectAnswers();
+    console.log(correctAnswers);
+    // Reset localStorage item answers
+    ItemCtrl.resetAnswersItem();
+    console.log(userAnswers);
+
+    // reset localStorage answers
+    container.innerHTML="";
   }
 
   return {
