@@ -27,7 +27,7 @@ const ItemCtrl = (function () {
       let s = today.getMinutes();
       let m = today.getSeconds();
       // Set game timer
-      window.setInterval(function () {
+      var interval = window.setInterval(function () {
         let gameTime = document.querySelector(UISelectors.time);
         m = checkTime(m);
         s = checkTime(today.getSeconds() + 1);
@@ -35,6 +35,7 @@ const ItemCtrl = (function () {
         localStorage.setItem("timePassed", m + ":" + s);
         today.setSeconds(today.getSeconds() + 1);
       }, 1000);
+      return interval;
     }
 
     // Generator fetching next question
@@ -63,10 +64,11 @@ const ItemCtrl = (function () {
   }
     
   // Deletes answers item in localStorage
-  const resetAnswersItem = function resetAnswersItem() {
+  const deleteAnswersItem = function deleteAnswersItem() {
     localStorage.removeItem("answers");
   }
 
+  // Get correct answers from JS array file based on choosen type game saved in localStorage
   const getCorrectAnswers = function getCorrectAnswers() {
     let counter = 0;
     let correctAnswers = {}
@@ -96,14 +98,16 @@ const ItemCtrl = (function () {
     },
     // Starts time counter of quiz/recognition game
     startGameTime: function() {
-      setTime();
+      return setTime();
     },
     // Returns the final time of a game from localStorage
     getFinalTime: function () {
-      return localStorage.getItem("timePassed");
+      const finalTime = localStorage.getItem("timePassed");
+      localStorage.removeItem("timePassed");
+      return finalTime;
     },
     getNextQuestion: function () {
-      let questions = this.getQuestions();
+      let questions = getQuestions();
       return getNextQuestion(questions);
     },
     saveAnswer: function (answer) {
@@ -112,12 +116,12 @@ const ItemCtrl = (function () {
     getAnswersFromLocalStorage: function () {
       return getAnswersFromLocalStorage();
     },
-    resetAnswersItem: function () {
-      return resetAnswersItem();
+    deleteAnswersItem: function () {
+      return deleteAnswersItem();
     }, 
     getCorrectAnswers: function() {
       return getCorrectAnswers();
-    }
+    },
   }
 })();
 
@@ -135,6 +139,7 @@ const UICtrl = (function () {
     incorrectAnswers: "#incorrect-answers",
     time: "#time",
     questionsAnswersContainer: "#question-answers-container",
+    indicator: ".indicator",
   }
   
   const eventListenersInit = function eventListenersInit() {
@@ -179,7 +184,7 @@ const UICtrl = (function () {
   }
 
   // Init of the game UI
-  const initilizeGameUIContent = function initilizeGameUI() {
+  const initilizeGameUIContent = function initilizeGameUI(interval) {
     let title; 
     // Set name of the game type
     let gameTypeName = document.querySelector(UISelectors.gameType);
@@ -208,18 +213,35 @@ const UICtrl = (function () {
     // Click event on answers
     answersList.addEventListener("click", function (e) {
       if (e.target.classList.contains("answer-item")) {
+        // Answer variable
+        let userAnswer = e.target.innerHTML;
+        // List items variable
+        let correctnessIndicatorList = document.querySelectorAll(UISelectors.indicator);
         // Save answer to ItemCtrl
-        ItemCtrl.saveAnswer(e.target.innerHTML);
+        ItemCtrl.saveAnswer(userAnswer);
+        // Get answers saved in localStorage
+        let answersFromLS = ItemCtrl.getAnswersFromLocalStorage();
+        let lastCorrectnessIndicator = Array.from(correctnessIndicatorList)[Object.keys(answersFromLS)[Object.keys(answersFromLS).length-1]];
+        // Is userAnswer equal to correct question from questions set
+        if (userAnswer === ItemCtrl.getQuestions()[Object.keys(answersFromLS).length-1].correctAnswer) {
+          // Set correct mark in correctnes indicator list
+          lastCorrectnessIndicator.innerHTML="+";
+          lastCorrectnessIndicator.classList.add("green");
+        } else {
+          // Set incorrect mark in correctnes indicator list
+          lastCorrectnessIndicator.innerHTML="x";
+          lastCorrectnessIndicator.classList.add("red");
+        }       
         // Get another question from generator function
         clicker.next();
         // Call next question UI
-        nextQuestionUI(clicker);
+        nextQuestionUI(clicker, interval);
       }
     })
   }
 
   // Next question UI
-  const nextQuestionUI = function nextQuestionUI(clicker) {
+  const nextQuestionUI = function nextQuestionUI(clicker, interval) {
     let title; 
     // Set name of the game type
     let gameTypeName = document.querySelector(UISelectors.gameType);
@@ -246,27 +268,44 @@ const UICtrl = (function () {
     // The end of a game
     } else {
       UIAnswersCounter = 1;
-      endOfGameStateUI();
+      endOfGameStateUI(interval);
   }
   }
 
-  const endOfGameStateUI = function endOfGameStateUI() {
-    // Reset UIAnswersCounter
-    // porovnat odpovědi s localSt odpovědí korektní z celku, čas
-    // Odkaz na výsledky, odkaz na opakovat shodný test
+  const endOfGameStateUI = function endOfGameStateUI(interval) {
     // Container of the questions and answers
     let container = document.querySelector(UISelectors.questionsAnswersContainer);
     // User answers from localStorage
     let userAnswers = ItemCtrl.getAnswersFromLocalStorage();
-    // Get correct answers from array of questions
+    // Gets correct answers from array of questions
     let correctAnswers = ItemCtrl.getCorrectAnswers();
-    console.log(correctAnswers);
-    // Reset localStorage item answers
-    ItemCtrl.resetAnswersItem();
-    console.log(userAnswers);
+    
+    // Counts number of correct answers
+    let index = 0;
+    let correctAnswersCounter = 0;
+    correctAnswers = Object.values(correctAnswers)
+    for (const element of Object.values(userAnswers)) {
+      if (element === correctAnswers[index]) {
+        correctAnswersCounter +=1;
+      }
+      index += 1;
+    }
+    
+    // End html text
+    container.innerHTML=`
+    <div class="col s12 margin-top-2rem">
+      Správně jsi zodpověděl/a celkem
+      ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${ItemCtrl.getFinalTime()}
+      <div class="col s12 margin-top-2rem">
+        Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
+      </div>
+    </div>
+    `;
 
-    // reset localStorage answers
-    container.innerHTML="";
+    // Clears the setInterval from ItemCtrl
+    clearInterval(interval);
+    // Deletes users answers (item "answers") from localStorage
+    ItemCtrl.deleteAnswersItem();
   }
 
   return {
@@ -277,10 +316,10 @@ const UICtrl = (function () {
   },
     // Initialization of game
     initilizeGameUI: function (questions) {
-      // Starts content in the UI
-      initilizeGameUIContent(questions);
       // Starts time in UI and ItemCtrl
-      ItemCtrl.startGameTime();
+      const interval = ItemCtrl.startGameTime();
+      // Starts content in the UI
+      initilizeGameUIContent(interval);
     },
     // Get answersCounter
     getUIAnswersCounter: function() {
@@ -292,11 +331,13 @@ const UICtrl = (function () {
 
 
 // Application controler
-const App = (function(UICtrl) {
+const App = (function(UICtrl, ItemCtrl) {
   
   // Public available methods
   return {
     init: function () {
+      // Clear items from localStorage - assures the state of app
+      ItemCtrl.deleteAnswersItem();
       // Loading event listeners
       const clicker = UICtrl.eventListenersInit();
       // Inititalization of a game

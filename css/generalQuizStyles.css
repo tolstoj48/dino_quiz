@@ -9,3 +9,8 @@
 #answers-list li {
   cursor: pointer;
 }
+
+#main-card-quiz{
+  border: 2px solid black;
+  border-radius: 5px;border-radius
+}

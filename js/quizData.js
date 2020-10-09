@@ -8,7 +8,7 @@ const quizArray = {
     1: {
       question: "Co máš k spánku?",
       answers: ["áčko", "béčk", "céčko", "déčko"],
-      correctAnswer: "provno",
+      correctAnswer: "céčko",
     },
     2: {
       question: "Co máš ke kuku?",
