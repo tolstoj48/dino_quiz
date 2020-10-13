@@ -1,5 +1,5 @@
 //ItemCtrl
-const ItemCtrl = (function () {
+const dataCtrl = (function () {
   // Setter of the gameId and gameTypeId variables
   const setCurrentGameId = function (e) {
     localStorage.setItem("gameId", e.target.text);
@@ -80,6 +80,53 @@ const ItemCtrl = (function () {
     return correctAnswers;
   }
 
+  // Saves correct answers number and the user´s end time to localStorage
+  const saveResultsToLocalStorage = function (numberOfCorrectAnswers, finalTime) {
+    let gameTypeId = localStorage.getItem("gameTypeId");
+    let gameId = localStorage.getItem("gameId");
+    let resultsTable = {};
+    // If localStorage doesnt contain results, set up the table
+    if (localStorage.getItem("resultsArray") === null) {
+      resultsTable = {
+        quiz: {
+          all: {
+          },
+          herbivores: {
+          },
+          carnivores: {
+          },
+        recognition: {
+          all: {
+          },
+          herbivores: {
+          },
+          carnivores: {
+          },
+          }
+          }
+          }
+    } else {
+      // If there are results then get the table from LS
+      resultsTable = JSON.parse(localStorage.getItem("resultsArray"));
+    }
+
+    if (gameId === "Všichni dinosauři") {
+      gameId = "all";
+    } else if (gameId === "Býložravci") {
+      gameId = "herbivores";
+    } else {
+      gameId = "carnivores";
+    }
+    // Set the values
+    resultsTable[gameTypeId][gameId][Object.keys(resultsTable[gameTypeId][gameId]).length] = {
+      result: numberOfCorrectAnswers,
+      time: finalTime
+    }
+    // Save new results to the localStorage variable
+    localStorage.setItem("resultsArray", JSON.stringify(resultsTable));
+    
+  }
+
   return {
     // To set current game type and id based on the last link click
     setCurrentGameId: function(e){
@@ -122,7 +169,12 @@ const ItemCtrl = (function () {
     getCorrectAnswers: function() {
       return getCorrectAnswers();
     },
-  }
+    // Saves restult to the localStorage
+    saveResultsToLocalStorage: function (numberOfCorrectAnswers, finalTime) {
+      saveResultsToLocalStorage(numberOfCorrectAnswers, finalTime);
+      return true;
+    }
+}
 })();
 
 // UI controler
@@ -175,10 +227,10 @@ const UICtrl = (function () {
     const arrAllQuizLinks = document.querySelectorAll(UISelectors.quiz);
     const arrAllRecognLinks = document.querySelectorAll(UISelectors.recogn);
     Array.from(arrAllQuizLinks).forEach(element => {
-      element.addEventListener("click", ItemCtrl.setCurrentGameId)
+      element.addEventListener("click", dataCtrl.setCurrentGameId)
     })
     Array.from(arrAllRecognLinks).forEach(element => {
-      element.addEventListener("click", ItemCtrl.setCurrentGameId)
+      element.addEventListener("click", dataCtrl.setCurrentGameId)
     })
 
   }
@@ -195,7 +247,7 @@ const UICtrl = (function () {
     gameTypeName.innerHTML = title;
     // Question content after initialization
     let questionContainer = document.querySelector(UISelectors.questionContainer);
-    let questionSet = ItemCtrl.getQuestions();
+    let questionSet = dataCtrl.getQuestions();
     questionContainer.innerHTML = questionSet[0].question;
     // Answers content after initialization
     let html = ``;
@@ -206,7 +258,7 @@ const UICtrl = (function () {
     answersList.innerHTML = html;
     
     // Click event on questions
-    const clicker = ItemCtrl.getNextQuestion();
+    const clicker = dataCtrl.getNextQuestion();
     // Skip first question - given already set first question
     clicker.next();
 
@@ -217,13 +269,13 @@ const UICtrl = (function () {
         let userAnswer = e.target.innerHTML;
         // List items variable
         let correctnessIndicatorList = document.querySelectorAll(UISelectors.indicator);
-        // Save answer to ItemCtrl
-        ItemCtrl.saveAnswer(userAnswer);
+        // Save answer to dataCtrl
+        dataCtrl.saveAnswer(userAnswer);
         // Get answers saved in localStorage
-        let answersFromLS = ItemCtrl.getAnswersFromLocalStorage();
+        let answersFromLS = dataCtrl.getAnswersFromLocalStorage();
         let lastCorrectnessIndicator = Array.from(correctnessIndicatorList)[Object.keys(answersFromLS)[Object.keys(answersFromLS).length-1]];
         // Is userAnswer equal to correct question from questions set
-        if (userAnswer === ItemCtrl.getQuestions()[Object.keys(answersFromLS).length-1].correctAnswer) {
+        if (userAnswer === dataCtrl.getQuestions()[Object.keys(answersFromLS).length-1].correctAnswer) {
           // Set correct mark in correctnes indicator list
           lastCorrectnessIndicator.innerHTML="+";
           lastCorrectnessIndicator.classList.add("green");
@@ -251,7 +303,7 @@ const UICtrl = (function () {
     }
     gameTypeName.innerHTML = title;
     // Question content - fetching next question
-    let questionSet = ItemCtrl.getQuestions();
+    let questionSet = dataCtrl.getQuestions();
     // Last answer or not
     if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
       let questionContainer = document.querySelector(UISelectors.questionContainer);
@@ -273,12 +325,14 @@ const UICtrl = (function () {
   }
 
   const endOfGameStateUI = function endOfGameStateUI(interval) {
+    // Final time for results table and UI
+    let finalTime= dataCtrl.getFinalTime();
     // Container of the questions and answers
     let container = document.querySelector(UISelectors.questionsAnswersContainer);
     // User answers from localStorage
-    let userAnswers = ItemCtrl.getAnswersFromLocalStorage();
+    let userAnswers = dataCtrl.getAnswersFromLocalStorage();
     // Gets correct answers from array of questions
-    let correctAnswers = ItemCtrl.getCorrectAnswers();
+    let correctAnswers = dataCtrl.getCorrectAnswers();
     
     // Counts number of correct answers
     let index = 0;
@@ -291,21 +345,25 @@ const UICtrl = (function () {
       index += 1;
     }
     
-    // End html text
+
+    // End state html markup
     container.innerHTML=`
     <div class="col s12 margin-top-2rem">
       Správně jsi zodpověděl/a celkem
-      ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${ItemCtrl.getFinalTime()}
-      <div class="col s12 margin-top-2rem">
-        Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
-      </div>
+      ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${finalTime}
+      <br><br>
+      Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
+      <br><br>
+      <a href="quiz.html"> <em>Zopakovat kvíz</em> <i class="fas fa-redo-alt"></i></a>
     </div>
     `;
 
-    // Clears the setInterval from ItemCtrl
+    // Send the number of correct answers and user´s final time to localStorage
+    dataCtrl.saveResultsToLocalStorage(correctAnswersCounter, finalTime);
+    // Clears the setInterval from dataCtrl
     clearInterval(interval);
     // Deletes users answers (item "answers") from localStorage
-    ItemCtrl.deleteAnswersItem();
+    dataCtrl.deleteAnswersItem();
   }
 
   return {
@@ -316,8 +374,8 @@ const UICtrl = (function () {
   },
     // Initialization of game
     initilizeGameUI: function (questions) {
-      // Starts time in UI and ItemCtrl
-      const interval = ItemCtrl.startGameTime();
+      // Starts time in UI and dataCtrl
+      const interval = dataCtrl.startGameTime();
       // Starts content in the UI
       initilizeGameUIContent(interval);
     },
@@ -331,13 +389,13 @@ const UICtrl = (function () {
 
 
 // Application controler
-const App = (function(UICtrl, ItemCtrl) {
+const App = (function(UICtrl, dataCtrl) {
   
   // Public available methods
   return {
     init: function () {
       // Clear items from localStorage - assures the state of app
-      ItemCtrl.deleteAnswersItem();
+      dataCtrl.deleteAnswersItem();
       // Loading event listeners
       const clicker = UICtrl.eventListenersInit();
       // Inititalization of a game
@@ -345,7 +403,7 @@ const App = (function(UICtrl, ItemCtrl) {
     },
   }
 
-})(UICtrl, ItemCtrl);
+})(UICtrl, dataCtrl);
 
 App.init();
 
