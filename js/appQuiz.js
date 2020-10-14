@@ -1,4 +1,4 @@
-//ItemCtrl
+//Data Controler
 const dataCtrl = (function () {
   // Setter of the gameId and gameTypeId variables
   const setCurrentGameId = function (e) {
@@ -24,16 +24,29 @@ const dataCtrl = (function () {
     const setTime = function setTime() {
       var today = new Date();
       today.setTime(0);
-      let s = today.getMinutes();
-      let m = today.getSeconds();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
       // Set game timer
       var interval = window.setInterval(function () {
         let gameTime = document.querySelector(UISelectors.time);
-        m = checkTime(m);
-        s = checkTime(today.getSeconds() + 1);
+        s = checkTime(today.getSeconds());
+        if (s === 60) {
+          s = checkTime(today.getSeconds() + 1);
+        } else if (s === 0) {
+          s = "00";
+        }
+        m = checkTime(today.getMinutes());
+        if (m === 0) {
+          m = "00";
+        }
         gameTime.innerHTML = m + ":" + s;
         localStorage.setItem("timePassed", m + ":" + s);
-        today.setSeconds(today.getSeconds() + 1);
+        if ((today.getSeconds() + 1) <= 59 ) {
+          today.setSeconds(today.getSeconds() + 1);
+        } else {
+          today.setSeconds(00);
+          today.setMinutes(today.getMinutes() + 1);
+        }
       }, 1000);
       return interval;
     }
@@ -95,6 +108,7 @@ const dataCtrl = (function () {
           },
           carnivores: {
           },
+        },
         recognition: {
           all: {
           },
@@ -102,9 +116,8 @@ const dataCtrl = (function () {
           },
           carnivores: {
           },
-          }
-          }
-          }
+        }
+      }
     } else {
       // If there are results then get the table from LS
       resultsTable = JSON.parse(localStorage.getItem("resultsArray"));
