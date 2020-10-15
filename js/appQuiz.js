@@ -1,5 +1,5 @@
 //Data Controler
-const dataCtrl = (function () {
+;const dataCtrl = (function () {
   // Setter of the gameId and gameTypeId variables
   const setCurrentGameId = function (e) {
     localStorage.setItem("gameId", e.target.text);
@@ -94,7 +94,7 @@ const dataCtrl = (function () {
   }
 
   // Saves correct answers number and the user´s end time to localStorage
-  const saveResultsToLocalStorage = function (numberOfCorrectAnswers, finalTime) {
+  const saveResultsToLocalStorage = function (date, numberOfCorrectAnswers, finalTime) {
     let gameTypeId = localStorage.getItem("gameTypeId");
     let gameId = localStorage.getItem("gameId");
     let resultsTable = {};
@@ -132,6 +132,7 @@ const dataCtrl = (function () {
     }
     // Set the values
     resultsTable[gameTypeId][gameId][Object.keys(resultsTable[gameTypeId][gameId]).length] = {
+      date: date.getUTCDate() + ". " + date.getUTCMonth() + ". " + date.getUTCFullYear() + " " + date.getUTCHours() + ":" + date.getUTCMinutes(),
       result: numberOfCorrectAnswers,
       time: finalTime
     }
@@ -183,8 +184,8 @@ const dataCtrl = (function () {
       return getCorrectAnswers();
     },
     // Saves restult to the localStorage
-    saveResultsToLocalStorage: function (numberOfCorrectAnswers, finalTime) {
-      saveResultsToLocalStorage(numberOfCorrectAnswers, finalTime);
+    saveResultsToLocalStorage: function (date, numberOfCorrectAnswers, finalTime) {
+      saveResultsToLocalStorage(date, numberOfCorrectAnswers, finalTime);
       return true;
     }
 }
@@ -372,7 +373,7 @@ const UICtrl = (function () {
     `;
 
     // Send the number of correct answers and user´s final time to localStorage
-    dataCtrl.saveResultsToLocalStorage(correctAnswersCounter, finalTime);
+    dataCtrl.saveResultsToLocalStorage(new Date(), correctAnswersCounter, finalTime);
     // Clears the setInterval from dataCtrl
     clearInterval(interval);
     // Deletes users answers (item "answers") from localStorage

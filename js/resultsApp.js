@@ -21,24 +21,35 @@
   // Get sorted data
   const getSortedData = function (accordingToKey, gameTypeId, gameId) {
     let sortedData;
+    let presortedDataObj;
+    let arrPresorted = [];
     let resultsFromLocalStorage = JSON.parse(localStorage.getItem("resultsArray"));
     if (gameTypeId === "Kvíz") {
       gameTypeId = "quiz";
     } else {
       gameTypeId = "recognition";
     }
-    if (gameId === "Všichni dinosauři ") {
+    if (gameId === "Všichni dinosauři") {
       gameId = "all";
     } else if (gameId === "Býložravci") {
       gameId = "herbivores";
     } else {
       gameId = "carnivores";
     }
-    sortedData = resultsFromLocalStorage[gameTypeId][gameId];
-    for (const property in sortedData) {
-      console.log(sortedData[property]);
+    presortedDataObj = resultsFromLocalStorage[gameTypeId][gameId];
+    for (const property in presortedDataObj) {
+      arrPresorted.push(presortedDataObj[property]);
     }
-    return sortedData
+
+    window.accordingToKey = accordingToKey;
+    sortedData = accordingToKey === "result" ? arrPresorted.sort(compare) : arrPresorted.sort(negativeCompare);
+    window.accordingToKey = undefined;
+
+    if (sortedData) {
+      return sortedData;
+    } else {
+      return false;
+    }
   }
 
   return {
@@ -67,8 +78,8 @@ const UICtrlResults = (function () {
     mainFrameResults: "#main-frame-results",
     quizFrame: "#quiz-frame",
     recognitionFrame: "#recognition-frame",
-    correctAnswersKey: ".correct-answers-key",
-    endTimeKey: ".end-time-key"
+    correctAnswersKey: ".result",
+    endTimeKey: ".time"
   }
   // Map for UI names of results tables
   UIMapNames = {
@@ -126,7 +137,7 @@ const UICtrlResults = (function () {
 
     const mainFrameResults = document.querySelector(UISelectors.mainFrameResults);
     mainFrameResults.addEventListener("click", function (e) {
-      if (e.target.className === "correct-answers-key" || e.target.className === "end-time-key") {
+      if (e.target.className === "result" || e.target.className === "time") {
         sortResults(e);
       }
     })
@@ -147,10 +158,9 @@ const UICtrlResults = (function () {
       for (const property in data) {
         let mainDivToAppend = document.createElement("div");
         mainDivToAppend.className = "col s12";
-        mainDivToAppend.innerHTML = `<h4>${UIMapNames[property]}`
+        mainDivToAppend.innerHTML = `<h4 id="${UIMapNames[property]}">${UIMapNames[property]}`
         for (const gameId in data[property]) {
           let classOfTitle = UIMapClasses[gameId];
-          let counter = 0;
           let divToAppend = document.createElement("div");
           divToAppend.className = "col s12";
           html += `
@@ -158,19 +168,18 @@ const UICtrlResults = (function () {
           <table class="striped centered">
             <thead>
               <tr>
-                <th>Pořadí</th>
-                <th class="correct-answers-key">Správných odpovědí <i class="fas fa-sort-amount-up"></i></th>
-                <th class="end-time-key">Výsledný čas <i class="fas fa-sort-amount-up"></i></th>
+                <th>Datum a čas testu</th>
+                <th class="result">Správných odpovědí <i class="fas fa-sort-numeric-down-alt fa-lg"></i></th>
+                <th class="time">Výsledný čas <i class="fas fa-sort-numeric-up fa-lg"></i></th>
               </tr>
             </thead>
             <tbody>
           `;
           for (const propertyResult in data[property][gameId]) {
             if (`${data[property][gameId][propertyResult]["result"]}` !== "undefined") {
-              counter += 1;
               html += `
               <tr>
-                <td>${counter}.</td>
+                <td>${data[property][gameId][propertyResult]["date"]}</td>
                 <td>${data[property][gameId][propertyResult]["result"]}</td>
                 <td>${data[property][gameId][propertyResult]["time"]}</td>
               </tr>`;
@@ -183,7 +192,6 @@ const UICtrlResults = (function () {
         divToAppend.innerHTML = html;
         mainDivToAppend.appendChild(divToAppend);
         html = "";
-        counter = 0;
       }
       let remark = document.createElement("div");
       remark.innerHTML = "<small>* Výsledky jsou ukládány a zobrazovány v/z localStorage resp. místního úložiště Vašeho prohlížeče. Smazaním paměti prohlížeče smažete také výsledky kvízů a poznávaček.</small>";
@@ -192,16 +200,39 @@ const UICtrlResults = (function () {
     }}
   }
   
+  const showSortedData = function (sortedData, e) {
+    let html = "";
+    console.log(e.target.parentElement.children[1]);
+    if (e.target.textContent.trim() === "Správných odpovědí") {
+      e.target.classList.add("active-sorter");
+      e.target.parentElement.children[2].classList.remove("active-sorter");
+    } else {
+      e.target.classList.add("active-sorter");
+      e.target.parentElement.children[1].classList.remove("active-sorter");
+    }
+    sortedData.forEach(element => {
+      if (sortedData !== "undefined") {
+        html += `
+        <tr>
+          <td>${element["date"]}</td>
+          <td>${element["result"]}</td>
+          <td>${element["time"]}</td>
+        </tr>`;
+      }
+    })
+    e.target.parentElement.parentElement.parentElement.childNodes[3].innerHTML = html;
+  }
+
   // Inititalize sorting UI
   const sortResults = function (e) {
     // Get the key according which is sorted
     let accordingToKey = e.target.className;
     // Get gameId by traversing from the clicked key
-    let gameId = e.target.parentElement.parentElement.parentElement.previousElementSibling.textContent;
-    let gameTypeId = e.target.parentElement.parentElement.parentElement.parentElement.previousElementSibling.textContent;
+    let gameId = e.target.parentElement.parentElement.parentElement.previousElementSibling.textContent.trim();
+    let gameTypeId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.textContent.trim();
     let sortedData = DataCtrl.getSortedData(accordingToKey, gameTypeId, gameId);
     // Send sorted data
-    showResults(sortedData);
+    showSortedData(sortedData, e);
   }
 
   return {

@@ -1,4 +1,4 @@
-const quizArray = {
+;const quizArray = {
   all:{
     0: {
       question: "Co máš k žrádlu?",

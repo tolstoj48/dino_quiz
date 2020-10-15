@@ -68,7 +68,7 @@ const UICtrlDinoList = (function () {
     } 
   }
 
-  // Move to position
+  // Move to position of the detail information
   const moveToDinoDetail = function () {
     let rect = document.querySelector(UISelectors.navDinos);
     rect.scrollIntoView();
@@ -85,6 +85,12 @@ const UICtrlDinoList = (function () {
       moveToDinoDetail();
       e.preventDefault();
       }
+    },
+    // Show dino detail after search bar visit
+    showDinoDetailFromSearchBar: function(dinoName) {
+      const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(dinoName);
+      showHTMLDinoDetail(dinoDetailData); 
+      moveToDinoDetail();
     },
 
     // Returns all selectors used
@@ -123,7 +129,6 @@ const AppDinoList = (function(UICtrlDinoList) {
     
   }
 
-
   // Lists all dinos from dinsoData object
   const listDinos = function () {
     let result=[];
@@ -133,11 +138,20 @@ const AppDinoList = (function(UICtrlDinoList) {
     return result;
   };
 
+  // Redirection through the search bar handling
+  const redirectedFromSearchBar = function () {
+    // Get clickedDino variable from localStorage set by searchBarAutocomplete.js and send to show detail
+    UICtrlDinoList.showDinoDetailFromSearchBar(localStorage.getItem("clickedDino"));
+    localStorage.removeItem("clickedDino");
+  }
+
   // Public methods
   return {
     init: function () {
       // Load event listeners
       loadEventListeners();
+      // If redirected through search bar
+      redirectedFromSearchBar();
 
     },
     listDinos: function(){

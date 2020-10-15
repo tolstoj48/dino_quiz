@@ -17,8 +17,14 @@
 }
 
 /* Sorting keys in the results tables */
-.correct-answers-key:hover,.end-time-key:hover {
+.result:hover,.time:hover {
   cursor: pointer;
   -webkit-text-decoration: underline;
           text-decoration: underline;
+}
+
+/* Active class for the sorter text*/
+.active-sorter {
+  border: 1px solid black;
+  background: rgba(239, 84, 159, 0.6)
 }

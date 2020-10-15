@@ -100,11 +100,14 @@ nav ul a {
 /* search field label color*/
 nav .input-field label {
   color: rgba(0,0,0,0.45); 
+  top: -10px; 
+  left: 10px;
 }
 
 /* search filed label icon */
 nav .input-field label i {
   color: rgba(0,0,0,0.45);
+
 }
 
 /* search filed label icon active*/
