@@ -2,7 +2,7 @@
   all:{
     0: {
       question: "Co máš k žrádlu?",
-      answers: ["Hovno", "skovno", "provno", "divno"],
+      answers: ["Hovno", "skovno", "provno", "divno","Hovno", "skovno", "provno", "divno"],
       correctAnswer: "skovno",
     },
     1: {

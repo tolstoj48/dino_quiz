@@ -1,8 +1,19 @@
 /* || General quiz styles */
 .indicator {
-  background-color:rgba(223, 219, 219, 0.4);
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid var(--my-grey-green);
+  padding: 2px;
+  width: 35px;
+  border-radius: 5px;
+  margin: 1%;
+
+}
+
+#indicator-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 #answers-list li {
@@ -10,6 +21,42 @@
 }
 
 #main-card-quiz{
-  border: 2px solid black;
-  border-radius: 5px;border-radius
+  border: 1px solid var(--my-dark-blue);
+  border-radius: 5px;
+  background: white;
+}
+
+#question-container {
+  border: 0px solid var(--my-grey-green);
+  border-radius: 5px;
+  padding: 20px;
+  background-color: var(--my-dark-blue);
+  font-weight: 600;
+  color: var(--my-yellow-white);
+}
+
+#answers-list li {
+  text-align: center;
+  border: 0px solid  var(--my-grey-green);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 2%;
+  max-width: 20%;
+  min-width: 100px;
+  background-color: var(--my-light-green);
+  font-weight: 500;
+}
+
+#answers-list li:hover {
+  background: var(--my-dark-blue);
+  color: var(--my-yellow-white);
+}
+
+#game-type, #time {
+  font-weight: 700;
+}
+
+#question-answers-container a {
+  color: var(--my-dark-blue);
+  font-weight: 600;
 }

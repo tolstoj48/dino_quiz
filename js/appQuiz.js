@@ -267,7 +267,7 @@ const UICtrl = (function () {
     let html = ``;
     let answersList = document.querySelector(UISelectors.answersList);
     questionSet[0].answers.forEach((answer, index) => {
-      html += `<li id=${index} class="answer-item collection-item col s6">${answer}</li>`
+      html += `<li id=${index} class="answer-item collection-item col s4">${answer}</li>`
     })
     answersList.innerHTML = html;
     
@@ -292,11 +292,11 @@ const UICtrl = (function () {
         if (userAnswer === dataCtrl.getQuestions()[Object.keys(answersFromLS).length-1].correctAnswer) {
           // Set correct mark in correctnes indicator list
           lastCorrectnessIndicator.innerHTML="+";
-          lastCorrectnessIndicator.classList.add("green");
+          lastCorrectnessIndicator.classList.add("my-grey-green");
         } else {
           // Set incorrect mark in correctnes indicator list
           lastCorrectnessIndicator.innerHTML="x";
-          lastCorrectnessIndicator.classList.add("red");
+          lastCorrectnessIndicator.classList.add("my-red");
         }       
         // Get another question from generator function
         clicker.next();
@@ -326,7 +326,7 @@ const UICtrl = (function () {
       let html = ``;
       let answersList = document.querySelector(UISelectors.answersList);
       questionSet[UIAnswersCounter].answers.forEach((answer, index) => {
-        html += `<li id=${index} class="answer-item collection-item col s6">${answer}</li>`
+        html += `<li id=${index} class="answer-item collection-item col s">${answer}</li>`
       })
       answersList.innerHTML = html;
       // Counter of number of answered questions
@@ -359,7 +359,6 @@ const UICtrl = (function () {
       index += 1;
     }
     
-
     // End state html markup
     container.innerHTML=`
     <div class="col s12 margin-top-2rem">

@@ -8,25 +8,25 @@
   <meta name="author" content="Petr Musil">
   <title>Kvíz s dinosaury</title>
   <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-  <link type="text/css" rel="stylesheet" href="./css/styles.css">
   <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
+  <link type="text/css" rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
   <header>
-    <nav class="#00e676 green accent-3">
+    <nav class="my-green">
       <div class="nav-wrapper">
         <div class="logo">
-          <a href="index.html" class="brand-logo black-text"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
+          <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
           <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
         </div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
           <!-- search component-->
           <li> 
             <form>
               <div class="input-field">
-                <input id="search" type="search" placeholder="hledej dina..." required>
-                <label class="label-icon right" for="search"><i class="fas fa-search"></i></label>
+                <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
+                <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
               </div>
             </form>
           </li>
@@ -50,9 +50,8 @@
       <li><a class="recogn" href="recognition.html">Býložravci</a></li>
       <li><a class="recogn" href="recognition.html">Masožravci</a></li>
     </ul>
-    <ul id="mobile" class="sidenav right #00e676 green accent-3">
+    <ul id="mobile" class="sidenav right my-green">
       <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
-      <li class="divider black"></li>
       <li class="moved-to-right">Kvíz
       <ul>
         <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
@@ -60,7 +59,6 @@
         <li><a class="quiz" href="quiz.html">Masožravci</a></li>
       </ul>
     </li>
-      <li class="divider black"></li>
       <li class="moved-to-right"> Poznávačka
         <ul>
           <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
@@ -68,13 +66,9 @@
           <li><a class="recogn" href="recognition.html">Masožravci</a></li>
         </ul>
       </li>
-      <li class="divider black"></li>
       <li class="last-lis"><a href="results.html">Výsledky</a></li>
-      <li class="divider black"></li>
-      <li class="last-lis"><a class="black-text" href="#!">O stránce</a></li>
-      <li class="divider black"></li>
-      <li class="last-lis"><a class="black-text" href="#!">Kontakt</a></li>
-      <li class="divider black"></li>
+      <li class="last-lis"><a href="#!">O stránce</a></li>
+      <li class="last-lis"><a href="#!">Kontakt</a></li>
     </ul>
   </header>
 
@@ -84,7 +78,7 @@
       <div class="row">
         <article>
           <div class="col s12 margin-top-2rem">
-            <div id="main-card-quiz" class="card white darken-1">
+            <div id="main-card-quiz" class="card">
               <div class="card-content">
                 <div class="col s8">
                   <span class="card-title"><h5 id="game-type"></h5></span>
@@ -92,50 +86,65 @@
                 <div class="col s4">
                   <span><h5 id="time" class="right"></h5></span>
                 </div>
-                <div class="col s12 margin-top-2rem">
-                  <div id="first-question" class="indicator col s1">1</div>
-                  <div id="second-question" class="indicator col s1">2</div>
-                  <div id="third-question" class="indicator col s1">3</div>
-                  <div id="fourth-question" class="indicator col s1">4</div>
-                  <div id="fifth-question" class="indicator col s1">5</div>
-                  <div id="sixth-question" class="indicator col s1">6</div>
-                  <div id="seventh-question" class="indicator col s1">7</div>
-                  <div id="eight-question" class="indicator col s1">8</div>
-                  <div id="ninth-question" class="indicator col s1">9</div>
-                  <div id="tenth-question" class="indicator col s1">10</div>
-                  <div id="eleventh-question" class="indicator col s1">11</div>
-                  <div id="twelfth-question" class="indicator col s1">12</div>
-                </div>
                 <div id="question-answers-container" class="row">
-                  <div id="question-container" class="col s3 margin-top-2rem">
+                  <div id="question-container" class="col s12 margin-top-2rem">
                   </div>
-                  <div class="col s9 margin-top-2rem">
-                    <ul id="answers-list" class="collection">
+                  <div>
+                    <ul id="answers-list" class="col s12 margin-top-2rem center-align">
                     </ul>
                   </div>
                 </div>
+                <div id="indicator-wrapper">
+                  <div id="first-question" class="indicator">1</div>
+                  <div id="second-question" class="indicator">2</div>
+                  <div id="third-question" class="indicator">3</div>
+                  <div id="fourth-question" class="indicator">4</div>
+                  <div id="fifth-question" class="indicator">5</div>
+                  <div id="sixth-question" class="indicator">6</div>
+                  <div id="seventh-question" class="indicator">7</div>
+                  <div id="eight-question" class="indicator">8</div>
+                  <div id="ninth-question" class="indicator">9</div>
+                  <div id="tenth-question" class="indicator">10</div>
+                  <div id="eleventh-question" class="indicator">11</div>
+                  <div id="twelfth-question" class="indicator">12</div>
+                </div>
+                </div>
               </div>
             </div>
+          </article>
           </div>
-        </article>
       </div>
     </section>
   </div>
 </main>
-
-<footer class="page-footer white">
+<footer class="page-footer footer-green">
   <div class="container ">
     <div class="row">
-      <div class="col l4 offset-l2 s12">
-        <ul>
-          <li><a class="black-text" href="#!">O stránce</a></li>
-          <li><a class="black-text" href="#!">Kontakt</a></li>
-        </ul>
+      <div class="col s12">
+        <div class="col s4">
+          <ul>
+            <li><a href="#!">O stránce</a></li>
+          </ul>
+        </div>
+        <div class="col s4">
+          <ul>
+            <li>
+              <a href="#"><i class="fas fa-blog fa-2x"></i></a>
+              <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col s4">
+          <ul>
+            <li><a href="email.html">Napište mi</a></li>
+          </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </footer>
-
+  <script src="./js/dinosData.js"></script>
+  <script src="./js/searchBarAutocomplete.js"></script>
   <script src="./js/materialize.min.js"></script>
   <script src="./js/helperFunctions.js"></script>
   <script src="./js/quizData.js"></script>
