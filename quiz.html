@@ -1,154 +1,156 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
-  <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
-  <meta name="author" content="Petr Musil">
-  <title>Kvíz s dinosaury</title>
-  <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-  <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
-  <link type="text/css" rel="stylesheet" href="./css/styles.css">
-</head>
-
-<body>
-  <header>
-    <nav class="my-green">
-      <div class="nav-wrapper">
-        <div class="logo">
-          <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
-          <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
+    <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
+    <meta name="author" content="Petr Musil">
+    <title>Kvíz s dinosaury</title>
+    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
+    <link type="text/css" rel="stylesheet" href="./css/styles.css">
+  </head>
+  <!-- Body -->
+  <body>
+    <header>
+      <nav class="my-green">
+        <div class="nav-wrapper">
+          <div class="logo">
+            <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
+            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+          </div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
+            <!-- Search component-->
+            <li> 
+              <form>
+                <div class="input-field">
+                  <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
+                  <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
+                </div>
+              </form>
+            </li>
+            <!-- Menu links -->
+            <li class="right"><a href="results.html">Výsledky</a></li>
+            <li class="right"><a href="dinos.html">Dinosauři</a></li>
+            <!-- Dropdown links -->
+            <li class="right"><a class="dropdown-trigger" href="#!" data-target="recognize">Poznávačka</a></li>
+            <li class="right"><a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a></li>
+          </ul>
         </div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
-          <!-- search component-->
-          <li> 
-            <form>
-              <div class="input-field">
-                <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
-                <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
-              </div>
-            </form>
-          </li>
-          <!-- menu links -->
-          <li class="right"><a href="results.html">Výsledky</a></li>
-          <li class="right"><a href="dinos.html">Dinosauři</a></li>
-          <!-- dropdown links -->
-          <li class="right"><a class="dropdown-trigger" href="#!" data-target="recognize">Poznávačka</a></li>
-          <li class="right"><a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- dropdown menu full  -->
-    <ul id="quiz" class="dropdown-content">
-      <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
-      <li><a class="quiz" href="quiz.html">Býložravci</a></li>
-      <li><a class="quiz" href="quiz.html">Masožravci</a></li>
-    </ul>
-    <ul id="recognize" class="dropdown-content">
-      <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
-      <li><a class="recogn" href="recognition.html">Býložravci</a></li>
-      <li><a class="recogn" href="recognition.html">Masožravci</a></li>
-    </ul>
-    <ul id="mobile" class="sidenav right my-green">
-      <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
-      <li class="moved-to-right">Kvíz
-      <ul>
+      </nav>
+      <!-- Dropdown menu full  -->
+      <ul id="quiz" class="dropdown-content">
         <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
         <li><a class="quiz" href="quiz.html">Býložravci</a></li>
         <li><a class="quiz" href="quiz.html">Masožravci</a></li>
       </ul>
-    </li>
-      <li class="moved-to-right"> Poznávačka
+      <ul id="recognize" class="dropdown-content">
+        <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
+        <li><a class="recogn" href="recognition.html">Býložravci</a></li>
+        <li><a class="recogn" href="recognition.html">Masožravci</a></li>
+      </ul>
+      <ul id="mobile" class="sidenav right my-green">
+        <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
+        <li class="moved-to-right">Kvíz
         <ul>
-          <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
-          <li><a class="recogn" href="recognition.html">Býložravci</a></li>
-          <li><a class="recogn" href="recognition.html">Masožravci</a></li>
+          <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
+          <li><a class="quiz" href="quiz.html">Býložravci</a></li>
+          <li><a class="quiz" href="quiz.html">Masožravci</a></li>
         </ul>
       </li>
-      <li class="last-lis"><a href="results.html">Výsledky</a></li>
-      <li class="last-lis"><a href="#!">O stránce</a></li>
-      <li class="last-lis"><a href="#!">Kontakt</a></li>
-    </ul>
-  </header>
-
-<main>
-  <div class="container">
-    <section>
-      <div class="row">
-        <article>
-          <div class="col s12 margin-top-2rem">
-            <div id="main-card-quiz" class="card">
-              <div class="card-content">
-                <div class="col s8">
-                  <span class="card-title"><h5 id="game-type"></h5></span>
-                </div>
-                <div class="col s4">
-                  <span><h5 id="time" class="right"></h5></span>
-                </div>
-                <div id="question-answers-container" class="row">
-                  <div id="question-container" class="col s12 margin-top-2rem">
+        <li class="moved-to-right"> Poznávačka
+          <ul>
+            <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
+            <li><a class="recogn" href="recognition.html">Býložravci</a></li>
+            <li><a class="recogn" href="recognition.html">Masožravci</a></li>
+          </ul>
+        </li>
+        <li class="last-lis"><a href="results.html">Výsledky</a></li>
+        <li class="last-lis"><a href="#!">O stránce</a></li>
+        <li class="last-lis"><a href="#!">Kontakt</a></li>
+      </ul>
+    </header>
+    <!-- Main content of the page -->
+    <main>
+      <div class="container">
+        <section>
+          <div class="row">
+            <article>
+              <div class="col s12 margin-top-2rem">
+                <div id="main-card-quiz" class="card">
+                  <div class="card-content">
+                    <div class="col s8">
+                      <span class="card-title"><h5 id="game-type"></h5></span>
+                    </div>
+                    <div class="col s4">
+                      <span><h5 id="time" class="right"></h5></span>
+                    </div>
+                    <div id="question-answers-container" class="row">
+                      <div id="question-container" class="col s12 margin-top-2rem">
+                      </div>
+                      <div>
+                        <ul id="answers-list" class="col s12 margin-top-2rem center-align">
+                        </ul>
+                      </div>
+                    </div>
+                    <div id="indicator-wrapper">
+                      <div id="first-question" class="indicator">1</div>
+                      <div id="second-question" class="indicator">2</div>
+                      <div id="third-question" class="indicator">3</div>
+                      <div id="fourth-question" class="indicator">4</div>
+                      <div id="fifth-question" class="indicator">5</div>
+                      <div id="sixth-question" class="indicator">6</div>
+                      <div id="seventh-question" class="indicator">7</div>
+                      <div id="eight-question" class="indicator">8</div>
+                      <div id="ninth-question" class="indicator">9</div>
+                      <div id="tenth-question" class="indicator">10</div>
+                      <div id="eleventh-question" class="indicator">11</div>
+                      <div id="twelfth-question" class="indicator">12</div>
+                    </div>
+                    </div>
                   </div>
-                  <div>
-                    <ul id="answers-list" class="col s12 margin-top-2rem center-align">
-                    </ul>
-                  </div>
                 </div>
-                <div id="indicator-wrapper">
-                  <div id="first-question" class="indicator">1</div>
-                  <div id="second-question" class="indicator">2</div>
-                  <div id="third-question" class="indicator">3</div>
-                  <div id="fourth-question" class="indicator">4</div>
-                  <div id="fifth-question" class="indicator">5</div>
-                  <div id="sixth-question" class="indicator">6</div>
-                  <div id="seventh-question" class="indicator">7</div>
-                  <div id="eight-question" class="indicator">8</div>
-                  <div id="ninth-question" class="indicator">9</div>
-                  <div id="tenth-question" class="indicator">10</div>
-                  <div id="eleventh-question" class="indicator">11</div>
-                  <div id="twelfth-question" class="indicator">12</div>
-                </div>
-                </div>
+              </article>
+              </div>
+        </section>
+      </div>
+    </main>
+    <!-- Footer content of the page -->
+    <footer class="page-footer footer-green">
+      <div class="container ">
+        <div class="row">
+          <div class="col s12">
+            <div class="col s4">
+              <ul>
+                <li><a href="#!">O stránce</a></li>
+              </ul>
+            </div>
+            <div class="col s4">
+              <ul>
+                <li>
+                  <a href="#"><i class="fas fa-blog fa-2x"></i></a>
+                  <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col s4">
+              <ul>
+                <li id="my-contact"><a href="email.html">Napište mi</a></li>
+              </ul>
               </div>
             </div>
-          </article>
-          </div>
-      </div>
-    </section>
-  </div>
-</main>
-<footer class="page-footer footer-green">
-  <div class="container ">
-    <div class="row">
-      <div class="col s12">
-        <div class="col s4">
-          <ul>
-            <li><a href="#!">O stránce</a></li>
-          </ul>
-        </div>
-        <div class="col s4">
-          <ul>
-            <li>
-              <a href="#"><i class="fas fa-blog fa-2x"></i></a>
-              <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div class="col s4">
-          <ul>
-            <li><a href="email.html">Napište mi</a></li>
-          </ul>
           </div>
         </div>
-      </div>
-    </div>
-</footer>
-  <script src="./js/dinosData.js"></script>
-  <script src="./js/searchBarAutocomplete.js"></script>
-  <script src="./js/materialize.min.js"></script>
-  <script src="./js/helperFunctions.js"></script>
-  <script src="./js/quizData.js"></script>
-  <script src="./js/appQuiz.js"></script>
-  <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
-</body>
+    </footer>
+    <!-- Scripts links -->
+    <script src="./js/dinosData.js"></script>
+    <script src="./js/searchBarAutocomplete.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script src="./js/helperFunctions.js"></script>
+    <script src="./js/quizData.js"></script>
+    <script src="./js/appQuiz.js"></script>
+    <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
+  </body>
 </html>

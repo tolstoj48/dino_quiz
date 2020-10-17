@@ -91,7 +91,7 @@ const UICtrlResults = (function () {
   }
   // Map for UI classes
   UIMapClasses = {
-    all: "my-blue",
+    all: "my-blue-results",
     herbivores: "my-green",
     carnivores: "my-red",    
   }
@@ -157,20 +157,20 @@ const UICtrlResults = (function () {
       let html = "";
       for (const property in data) {
         let mainDivToAppend = document.createElement("div");
-        mainDivToAppend.className = "col s12";
-        mainDivToAppend.innerHTML = `<h4 id="${UIMapNames[property]}">${UIMapNames[property]}`
+        mainDivToAppend.className = "col s12 card";
+        mainDivToAppend.innerHTML = `<h4 id="${UIMapNames[property]}" class="bold">${UIMapNames[property]}`
         for (const gameId in data[property]) {
           let classOfTitle = UIMapClasses[gameId];
           let divToAppend = document.createElement("div");
-          divToAppend.className = "col s12";
+          divToAppend.className = "col s12 card-content";
           html += `
-          <h5 class=${classOfTitle}>${UIMapNames[gameId]}</h5>
+          <h5 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h5>
           <table class="striped centered">
             <thead>
               <tr>
-                <th>Datum a čas testu</th>
+                <th>Datum kvízu</th>
                 <th class="result">Správných odpovědí <i class="fas fa-sort-numeric-down-alt fa-lg"></i></th>
-                <th class="time">Výsledný čas <i class="fas fa-sort-numeric-up fa-lg"></i></th>
+                <th class="time">Celkový čas kvízu <i class="fas fa-sort-numeric-up fa-lg"></i></th>
               </tr>
             </thead>
             <tbody>

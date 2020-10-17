@@ -59,13 +59,13 @@ const TypeWriterEffect = (function(){
 
   		// Start to display the next sentence after some time
   		setTimeout(function() {
-  			intervalVal = setInterval(Type, 250);
+  			intervalVal = setInterval(Type, 150);
   		}, 200);
   	}
   }
 
   const init = function() {
-    intervalVal = setInterval(Type, 100);
+    intervalVal = setInterval(Type, 150);
   }
 
 return {

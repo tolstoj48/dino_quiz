@@ -1,13 +1,4 @@
+/*Container of the typewriter effect*/
 #container-twe {
 	text-align: center;
-}
-
-@keyframes blink {
-	from, to { 
-		background-color: transparent 
-	}
-}
-
-.phat {
-  height: 100px;
 }

@@ -1,138 +1,140 @@
-<!-- seznam dinos - objekt a js / u výsledků info o tom, že to vychází z dat uložených v prohlížeči uživatele 
-/ prio  - dodělat // 
-      - do popisu o stránce popsat ukládání dat, poděkování images, wiki, fontawesome, odkaz na mojí stránku, github
-      -dodělat kvíz - strukturaze appQuiz.js - konkrétně užití jedné metody obecné na dosažení obsahu otázek a odpovědí, místo init + clicker
+<!--
+
+/ do popisu o stránce napsat vtipnou hlášku, popsat ukládání dat, poděkování images, wiki, fontawesome, odkaz na mojí stránku, github
+/ dodělat kvíz - strukturaze appQuiz.js - konkrétně užití jedné metody obecné na dosažení obsahu otázek a odpovědí, místo init + clicker
 / metadescktipce, titulky a metatagy pro každou stránku zvlášť
-/ css organizace - scss aspoň na barvy, přebarvit podle schémat/ dodělat funkcionality
-/ dodělat email stránku
-/ dodělat index stránku
+/ dodělat email stránku - zajistit mailovou službu
 / jazyková mutace? internacionalizace
 / verifikace html, css, js / registrace sitemapy na google.com
-// JS load jen na webu, kde je to nutné a jen příslušnou část
-/ kopírovat všechny části webu vyjma sekcí header, scripts, main do všech jiných souborů
+/ JS load jen na webu, kde je to nutné a jen příslušnou část
+/ sjednotit CSS popisky, prázdný řádky
+/ naplnit daty
+
 -->
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
-  <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
-  <meta name="author" content="Petr Musil">
-  <title>Hry s dinosaury a fakta o dinosaurech</title>
-  <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-  <link type="text/css" rel="stylesheet" href="./css/styles.css">
-</head>
-
-<body>
-  <header>
-    <nav class="my-green">
-      <div class="nav-wrapper">
-        <div class="logo">
-          <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
-          <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
+    <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
+    <meta name="author" content="Petr Musil">
+    <title>Hry s dinosaury a fakta o dinosaurech</title>
+    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/styles.css">
+    <link type="text/css" rel="stylesheet" href="./css/typewriterEffect.css">
+  </head>
+  <!-- Body -->
+  <body>
+    <header>
+      <nav class="my-green">
+        <div class="nav-wrapper">
+          <div class="logo">
+            <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon.png" alt="Egg dino"> kvíz</a>
+            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+          </div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
+            <!-- Search component-->
+            <li> 
+              <form>
+                <div class="input-field">
+                  <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
+                  <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
+                </div>
+              </form>
+            </li>
+            <!-- Menu links -->
+            <li class="right"><a href="results.html">Výsledky</a></li>
+            <li class="right"><a href="dinos.html">Dinosauři</a></li>
+            <!-- Dropdown links -->
+            <li class="right"><a class="dropdown-trigger" href="#!" data-target="recognize">Poznávačka</a></li>
+            <li class="right"><a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a></li>
+          </ul>
         </div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
-          <!-- search component-->
-          <li> 
-            <form>
-              <div class="input-field">
-                <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
-                <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
-              </div>
-            </form>
-          </li>
-          <!-- menu links -->
-          <li class="right"><a href="results.html">Výsledky</a></li>
-          <li class="right"><a href="dinos.html">Dinosauři</a></li>
-          <!-- dropdown links -->
-          <li class="right"><a class="dropdown-trigger" href="#!" data-target="recognize">Poznávačka</a></li>
-          <li class="right"><a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- dropdown menu full  -->
-    <ul id="quiz" class="dropdown-content">
-      <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
-      <li><a class="quiz" href="quiz.html">Býložravci</a></li>
-      <li><a class="quiz" href="quiz.html">Masožravci</a></li>
-    </ul>
-    <ul id="recognize" class="dropdown-content">
-      <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
-      <li><a class="recogn" href="recognition.html">Býložravci</a></li>
-      <li><a class="recogn" href="recognition.html">Masožravci</a></li>
-    </ul>
-    <ul id="mobile" class="sidenav right my-green">
-      <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
-      <li class="moved-to-right">Kvíz
-      <ul>
+      </nav>
+      <!-- Dropdown menu full  -->
+      <ul id="quiz" class="dropdown-content">
         <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
         <li><a class="quiz" href="quiz.html">Býložravci</a></li>
         <li><a class="quiz" href="quiz.html">Masožravci</a></li>
       </ul>
-    </li>
-      <li class="moved-to-right"> Poznávačka
+      <ul id="recognize" class="dropdown-content">
+        <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
+        <li><a class="recogn" href="recognition.html">Býložravci</a></li>
+        <li><a class="recogn" href="recognition.html">Masožravci</a></li>
+      </ul>
+      <ul id="mobile" class="sidenav right my-green">
+        <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
+        <li class="moved-to-right">Kvíz
         <ul>
-          <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
-          <li><a class="recogn" href="recognition.html">Býložravci</a></li>
-          <li><a class="recogn" href="recognition.html">Masožravci</a></li>
+          <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
+          <li><a class="quiz" href="quiz.html">Býložravci</a></li>
+          <li><a class="quiz" href="quiz.html">Masožravci</a></li>
         </ul>
       </li>
-      <li class="last-lis"><a href="results.html">Výsledky</a></li>
-      <li class="last-lis"><a href="#!">O stránce</a></li>
-      <li class="last-lis"><a href="#!">Kontakt</a></li>
-    </ul>
-  </header>
-
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col s10 right margin-top-4rem">
-        <span class="big underline"> Dinokvízy </span>
-      </div>
-      <div class="col s6 right">
-        <span class="middle"> pro nejmenší</span>
-      </div>
-      <div id="container-twe" class="margin-top-2rem col s6 middle my-dark-blue phat">
-        <div id="text-twe">
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer class="page-footer footer-green">
-  <div class="container ">
-    <div class="row">
-      <div class="col s12">
-        <div class="col s4">
+        <li class="moved-to-right"> Poznávačka
           <ul>
-            <li><a href="#!">O stránce</a></li>
+            <li><a class="recogn" href="recognition.html">Všichni dinosauři</a></li>
+            <li><a class="recogn" href="recognition.html">Býložravci</a></li>
+            <li><a class="recogn" href="recognition.html">Masožravci</a></li>
           </ul>
-        </div>
-        <div class="col s4">
-          <ul>
-            <li>
-              <a href="#"><i class="fas fa-blog fa-2x"></i></a>
-              <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div class="col s4">
-          <ul>
-            <li id="moje"><a href="email.html">Napište mi</a></li>
-          </ul>
+        </li>
+        <li class="last-lis"><a href="results.html">Výsledky</a></li>
+        <li class="last-lis"><a href="#!">O stránce</a></li>
+        <li class="last-lis"><a href="#!">Kontakt</a></li>
+      </ul>
+    </header>
+    <!-- Main content of the page -->
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col s10 right margin-top-4rem">
+            <span class="big underline"> Dinokvízy </span>
+          </div>
+          <div class="col s6 right">
+            <span class="middle"> pro nejmenší</span>
+          </div>
+          <div id="container-twe" class="margin-top-2rem col s6 middle my-dark-blue">
+            <div id="text-twe" class="bold">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</footer>
-
-  <script src="./js/dinosData.js"></script>
-  <script src="./js/searchBarAutocomplete.js"></script>
-  <script src="./js/materialize.min.js"></script>
-  <script src="./js/app.js"></script>
-  <script src="./js/typewriterEffect.js"></script>
-  <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
-</body>
+    </main>
+    <!-- Footer content of the page -->
+    <footer class="page-footer footer-green">
+      <div class="container ">
+        <div class="row">
+          <div class="col s12">
+            <div class="col s4">
+              <ul>
+                <li><a href="#!">O stránce</a></li>
+              </ul>
+            </div>
+            <div class="col s4">
+              <ul>
+                <li>
+                  <a href="#"><i class="fas fa-blog fa-2x"></i></a>
+                  <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col s4">
+              <ul>
+                <li><a href="email.html"><span id="arrows-alert"> >> </span>Napište mi</a></li>
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer>
+    <!-- Scripts links -->
+    <script src="./js/dinosData.js"></script>
+    <script src="./js/searchBarAutocomplete.js"></script>
+    <script src="./js/materialize.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/typewriterEffect.js"></script>
+    <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
+  </body>
 </html>

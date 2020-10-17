@@ -88,6 +88,7 @@ const UICtrlDinoList = (function () {
     },
     // Show dino detail after search bar visit
     showDinoDetailFromSearchBar: function(dinoName) {
+      
       const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(dinoName);
       showHTMLDinoDetail(dinoDetailData); 
       moveToDinoDetail();
@@ -141,8 +142,11 @@ const AppDinoList = (function(UICtrlDinoList) {
   // Redirection through the search bar handling
   const redirectedFromSearchBar = function () {
     // Get clickedDino variable from localStorage set by searchBarAutocomplete.js and send to show detail
-    UICtrlDinoList.showDinoDetailFromSearchBar(localStorage.getItem("clickedDino"));
-    localStorage.removeItem("clickedDino");
+    
+    if (localStorage.getItem("clickedDino")) {
+      UICtrlDinoList.showDinoDetailFromSearchBar(localStorage.getItem("clickedDino"));
+      localStorage.removeItem("clickedDino");
+   }
   }
 
   // Public methods
