@@ -74,7 +74,7 @@ const UICtrlResults = (function () {
   // UI Selectors
   UISelectors = {
     quiz: ".quiz",
-    recogn: ".recogn",
+    recognition: ".recognition",
     mainFrameResults: "#main-frame-results",
     quizFrame: "#quiz-frame",
     recognitionFrame: "#recognition-frame",
@@ -127,7 +127,7 @@ const UICtrlResults = (function () {
     /* Event listener for quiz and recognition - sets up variable to 
      identify the kind of quiz or recognition game */
     const arrAllQuizLinks = document.querySelectorAll(UISelectors.quiz);
-    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recogn);
+    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recognition);
     Array.from(arrAllQuizLinks).forEach(element => {
       element.addEventListener("click", DataCtrl.setCurrentGameId)
     })
@@ -249,7 +249,7 @@ const UICtrlResults = (function () {
 
 
 // Application controler
-const resultsApp = (function(UICtrlResults, DataCtrl) {
+const ResultsApp = (function(UICtrlResults, DataCtrl) {
   
   // Public available methods
   return {
@@ -265,7 +265,7 @@ const resultsApp = (function(UICtrlResults, DataCtrl) {
 
 })(UICtrlResults, DataCtrl);
 
-resultsApp.init();
+ResultsApp.init();
 
 
 

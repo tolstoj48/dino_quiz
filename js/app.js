@@ -25,7 +25,7 @@ const ItemCtrl = (function () {
 const UICtrl = (function () {
   UISelectors = {
     quiz: ".quiz",
-    recogn: ".recogn",
+    recognition: ".recognition",
   }
   
   const eventListenersInit = function eventListenersInit() {
@@ -59,7 +59,7 @@ const UICtrl = (function () {
     /* Event listener for quiz and recognition - sets up variable to 
      identify the kind of quiz or recognition game */
     const arrAllQuizLinks = document.querySelectorAll(UISelectors.quiz);
-    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recogn);
+    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recognition);
     Array.from(arrAllQuizLinks).forEach(element => {
       element.addEventListener("click", ItemCtrl.setCurrentGameId)
     })

@@ -63,9 +63,9 @@ img {
   height: auto;
 }
 
-.middle {
-  font-size: 3rem;
-  font-weight: 500;
+.big {
+  font-weight: 700;
+  font-size: 4rem;
   color: var(--my-yellow-white);
 }
 
@@ -73,9 +73,32 @@ img {
   font-weight: 800;
 }
 
-.big {
-  font-weight: 700;
-  font-size: 4rem;
+.bold-light {
+  font-weight: 600;
+}
+
+.btn {
+  background-color: var(--my-grey-green);
+}
+
+.btn:hover {
+  background-color: var(--my-green);
+}
+
+.card {
+  background-color: var(--my-yellow-white);
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.card-content {
+  background-color: var(--my-yellow-white);
+}
+
+.middle {
+  font-size: 3rem;
+  font-weight: 500;
   color: var(--my-yellow-white);
 }
 
@@ -276,7 +299,7 @@ li.first-li a {
   background-color: var(--my-light-green);
 }
 
-/*Animations*/
+/* || Animations*/
 
 @keyframes alerting {
   0% {

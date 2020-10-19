@@ -10,12 +10,14 @@
     let questionSet;
     const gameId = localStorage.getItem("gameId");
     const gameType = localStorage.getItem("gameTypeId");
+    let q = {};
+    gameType === "quiz" ? q = quizArray : q = recognArray;
     if (gameId === "Všichni dinosauři") {
-      questionSet = quizArray.all;
+      questionSet = q.all;
     } else if (gameId === "Býložravci") {
-      questionSet = quizArray.herbivores;
+      questionSet = q.herbivores;
     } else {
-      questionSet = quizArray.carnivores;
+      questionSet = q.carnivores;
     }
     return questionSet;
   }
@@ -98,6 +100,7 @@
     let gameTypeId = localStorage.getItem("gameTypeId");
     let gameId = localStorage.getItem("gameId");
     let resultsTable = {};
+    let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     // If localStorage doesnt contain results, set up the table
     if (localStorage.getItem("resultsArray") === null) {
       resultsTable = {
@@ -130,9 +133,11 @@
     } else {
       gameId = "carnivores";
     }
+    console.log(gameTypeId);
+    console.log(resultsTable[gameTypeId]);
     // Set the values
     resultsTable[gameTypeId][gameId][Object.keys(resultsTable[gameTypeId][gameId]).length] = {
-      date: date.getUTCDate() + ". " + date.getUTCMonth() + ". " + date.getUTCFullYear() + " " + date.getUTCHours() + ":" + date.getUTCMinutes(),
+      date: date.getUTCDate() + ". " + months[date.getUTCMonth()] + ". " + date.getUTCFullYear() + " " + date.getHours() + ":" + date.getUTCMinutes(),
       result: numberOfCorrectAnswers,
       time: finalTime
     }
@@ -196,7 +201,7 @@ const UICtrl = (function () {
   UIAnswersCounter = 1;  
   UISelectors = {
     quiz: ".quiz",
-    recogn: ".recogn",
+    recognition: ".recognition",
     gameType: "#game-type",
     resultTable: "#result-table",
     questionContainer: "#question-container",
@@ -239,7 +244,7 @@ const UICtrl = (function () {
     /* Event listener for quiz and recognition - sets up variable to 
      identify the kind of quiz or recognition game */
     const arrAllQuizLinks = document.querySelectorAll(UISelectors.quiz);
-    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recogn);
+    const arrAllRecognLinks = document.querySelectorAll(UISelectors.recognition);
     Array.from(arrAllQuizLinks).forEach(element => {
       element.addEventListener("click", dataCtrl.setCurrentGameId)
     })
@@ -257,6 +262,8 @@ const UICtrl = (function () {
     // Set title text of the game type
     if (localStorage.getItem("gameTypeId") === "quiz") {
       title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
+    } else {
+      title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
     }
     gameTypeName.innerHTML = title;
     // Question content after initialization
@@ -314,6 +321,8 @@ const UICtrl = (function () {
     // Set title text of the game type
     if (localStorage.getItem("gameTypeId") === "quiz") {
       title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
+    } else {
+      title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
     }
     gameTypeName.innerHTML = title;
     // Question content - fetching next question
@@ -367,7 +376,7 @@ const UICtrl = (function () {
       <br><br>
       Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
       <br><br>
-      <a href="quiz.html"> <em>Zopakovat kvíz</em> <i class="fas fa-redo-alt"></i></a>
+      <a href="${localStorage.getItem("gameTypeId")}.html"> <em>Zopakovat </em> <i class="fas fa-redo-alt"></i></a>
     </div>
     `;
 

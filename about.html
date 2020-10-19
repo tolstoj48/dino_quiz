@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
   <!-- Head -->
@@ -7,10 +8,10 @@
     <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
     <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
     <meta name="author" content="Petr Musil">
-    <title>Kvíz s dinosaury</title>
+    <title>Hry s dinosaury a fakta o dinosaurech</title>
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
     <link type="text/css" rel="stylesheet" href="./css/styles.css">
+    <link type="text/css" rel="stylesheet" href="./css/typewriterEffect.css">
   </head>
   <!-- Body -->
   <body>
@@ -75,46 +76,34 @@
     <!-- Main content of the page -->
     <main>
       <div class="container">
-        <section>
-          <div class="row">
-            <article>
-              <div class="col s12 margin-top-2rem">
-                <div id="main-card-quiz" class="card">
-                  <div class="card-content">
-                    <div class="col s8">
-                      <span class="card-title"><h5 id="game-type"></h5></span>
-                    </div>
-                    <div class="col s4">
-                      <span><h5 id="time" class="right"></h5></span>
-                    </div>
-                    <div id="question-answers-container" class="row">
-                      <div id="question-container" class="col s12 margin-top-2rem">
-                      </div>
-                      <div>
-                        <ul id="answers-list" class="col s12 margin-top-2rem center-align">
-                        </ul>
-                      </div>
-                    </div>
-                    <div id="indicator-wrapper">
-                      <div id="first-question" class="indicator">1</div>
-                      <div id="second-question" class="indicator">2</div>
-                      <div id="third-question" class="indicator">3</div>
-                      <div id="fourth-question" class="indicator">4</div>
-                      <div id="fifth-question" class="indicator">5</div>
-                      <div id="sixth-question" class="indicator">6</div>
-                      <div id="seventh-question" class="indicator">7</div>
-                      <div id="eight-question" class="indicator">8</div>
-                      <div id="ninth-question" class="indicator">9</div>
-                      <div id="tenth-question" class="indicator">10</div>
-                      <div id="eleventh-question" class="indicator">11</div>
-                      <div id="twelfth-question" class="indicator">12</div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
+        <div class="row">
+          <div class="col s12 right margin-top-4rem">
+            <div class="card">
+              <div class="card-content bold-light">
+                <p>
+                  Dětí mívají dinosauří období. Také naše dítko je mělo a stále má. Pokud patříte k rodičům
+                  těchto dětí, pak jste na správné webové stránce. Najdete zde několik kvízů a poznávacích her.
+                  Díky nim můžete se svými ratolestmi, pokud ještě samy neumí s počítačem pracovat, strávit pár
+                  chvilek zábavy. Najdete je v sekci Kvíz a Poznávačka.
+                </p>
+                <br>
+                <p>
+                  Seznam dinosaurů s některými jejich charakteristikami a zajímavostmi najdete v sekci Dinosauři.
+                </p>
+                <br>
+                <p>
+                  Výsledky her jsou dostupné pouze z paměti vašeho prohlížeče, nikam se neposílají a je možné je 
+                  smazat. Najdete je v sekci Výsledky. Je možné je řadit dle výsledků a času. Pro zábavu.
+                </p>
+                <br>
+                <p>
+                Chtěl bych tímto poděkovat lidem stojícím za otevřenými projekty - wikipedia, fontawesome, pixabay 
+                - jejichž licence umožňují využít obsah vhodný pro tyto stránky. Bez nich by nebyly mo
+                </p>
               </div>
-        </section>
+            </div>            
+          </div>
+        </div>
       </div>
     </main>
     <!-- Footer content of the page -->
@@ -145,12 +134,8 @@
         </div>
     </footer>
     <!-- Scripts links -->
-    <script src="./js/dinosData.js"></script>
-    <script src="./js/searchBarAutocomplete.js"></script>
     <script src="./js/materialize.min.js"></script>
-    <script src="./js/helperFunctions.js"></script>
-    <script src="./js/quizData.js"></script>
-    <script src="./js/appQuiz.js"></script>
+    <script src="./js/app.js"></script>
     <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
   </body>
 </html>
