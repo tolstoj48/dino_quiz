@@ -1,7 +1,10 @@
+/* ||| results.html page styles */
+
 /* Results gameId stripes */
 .my-red, .my-green, .my-blue-results {
   border-radius: 5px;
   padding: 5px;
+  overflow: auto;
 }
 
 /* Background of all dinos games */
@@ -17,7 +20,7 @@
           text-decoration: underline;
 }
 
-/* Active class for the sorter text*/
+/* Active class for the sorter text */
 .active-sorter {
   background: rgba(239, 84, 159, 0.4);
   border-radius: 5px;

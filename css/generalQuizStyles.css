@@ -1,3 +1,5 @@
+/* ||| results.html page styles */
+
 /* || General quiz styles */
 .indicator {
   text-align: center;
@@ -6,7 +8,6 @@
   width: 35px;
   border-radius: 5px;
   margin: 1%;
-
 }
 
 #indicator-wrapper {
@@ -33,6 +34,17 @@
   background-color: var(--my-dark-blue);
   font-weight: 600;
   color: var(--my-yellow-white);
+}
+
+.center-content {
+  text-align: center;
+}
+
+#question-container img {
+  border-radius: 5px;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #answers-list li {

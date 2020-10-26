@@ -1,22 +1,23 @@
+/* ||| dinos.html page styles */
 
-/* || Dino list section*/
+/* dino list */
 #nav-dinos {
   width: 80%;
   margin:auto;
 }
 
-/* dino list li*/
+/* dino list li */
 #nav-dinos li {
   float: left;
   padding-right: 2rem;
 }
 
-/* dino list a*/
+/* dino list a */
 #nav-dinos li a {
   color: var(--my-dark-blue);
 }
 
-/* dino list a hovered*/
+/* dino list a hovered */
 #nav-dinos li a:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -36,7 +37,7 @@
   height: 230px;
 }
 
-/* carousel headline*/
+/* carousel headline */
 .carousel a {
   color: var(--my-dark-blue);
   font-weight: 700;
@@ -54,47 +55,36 @@ blockquote {
   font-style: italic;
 }
 
-
-/* stegos card*/
-.stego {
-  border: 1px solid var(--my-dark-blue) ;
-  border-radius: 5px;
-}
-
-/* stegos card quote border color*/
+/* stegos card quote border color */
 .stego blockquote {
   border-color:  #EC008C;
 }
 
-/* ankylos card*/
-.ankylo {
-  border: 1px solid var(--my-dark-blue) ;
-  border-radius: 5px;
-}
-
-/* ankylos card quote border color*/
+/* ankylos card quote border color */
 .ankylo blockquote {
   border-color:  #EFE301;
 }
 
-/* link in the dino detail on the card*/
+/* link in the dino detail on the card */
 div.card-content p a:hover {
   -webkit-text-decoration: underline;
   -webkit-text-decoration: underline;
           text-decoration: underline;
 }
 
+/* base badge */
 .badge {
   border-radius: 5px;
   font-size: 0.8rem;
-  
 }
 
+/* herbivore badge */
 .badge.my-green {
   background-color: var(--my-light-green);
   color: var(--my-dark-blue)
 }
 
+/* carnivore badge */
 .badge.my-red {
   color: var(--my-dark-blue);
   background-color: var(--my-red);
@@ -104,11 +94,25 @@ div.card-content p a:hover {
   font-weight: 500;
 }
 
-/* centered dino card*/
+/* centered dino card */
 #centered {
   margin:auto;
   float: none;
   -webkit-transition: all 1s;
   -o-transition: all 1s;
   transition: all 1s;
+}
+
+/* || Media */
+
+/* Hide carousel under 400px */
+@media only screen and (max-width: 400px) {
+  .carousel {
+    display: none;
+  }
+
+  /* Adding margin due to the missing carousel */
+  #nav-dinos {
+    margin-top: 4rem;
+  }
 }

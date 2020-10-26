@@ -9,8 +9,8 @@
     <meta name="author" content="Petr Musil">
     <title>Kvíz s dinosaury</title>
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
     <link type="text/css" rel="stylesheet" href="./css/styles.css">
+    <link type="text/css" rel="stylesheet" href="./css/generalQuizStyles.css">
   </head>
   <!-- Body -->
   <body>
@@ -75,46 +75,46 @@
     <!-- Main content of the page -->
     <main>
       <div class="container">
-        <section>
+        <article>
           <div class="row">
-            <article>
               <div class="col s12 margin-top-2rem">
                 <div id="main-card-quiz" class="card">
                   <div class="card-content">
                     <div class="col s8">
-                      <span class="card-title"><h5 id="game-type"></h5></span>
+                      <h5 id="game-type" class="card-title"></h5>
                     </div>
                     <div class="col s4">
-                      <span><h5 id="time" class="right"></h5></span>
+                      <h5 id="time" class="right"></h5>
                     </div>
-                    <div id="question-answers-container" class="row">
-                      <div id="question-container" class="col s12 margin-top-2rem">
+                      <div id="question-answers-container" class="row">
+                        <div id="question-container" class="col s12 margin-top-2rem">
+                        </div>
+                        <div>
+                          <ul id="answers-list" class="col s12 margin-top-2rem center-align">
+                          </ul>
+                        </div>
                       </div>
-                      <div>
-                        <ul id="answers-list" class="col s12 margin-top-2rem center-align">
-                        </ul>
-                      </div>
-                    </div>
-                    <div id="indicator-wrapper">
-                      <div id="first-question" class="indicator">1</div>
-                      <div id="second-question" class="indicator">2</div>
-                      <div id="third-question" class="indicator">3</div>
-                      <div id="fourth-question" class="indicator">4</div>
-                      <div id="fifth-question" class="indicator">5</div>
-                      <div id="sixth-question" class="indicator">6</div>
-                      <div id="seventh-question" class="indicator">7</div>
-                      <div id="eight-question" class="indicator">8</div>
-                      <div id="ninth-question" class="indicator">9</div>
-                      <div id="tenth-question" class="indicator">10</div>
-                      <div id="eleventh-question" class="indicator">11</div>
-                      <div id="twelfth-question" class="indicator">12</div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              </div>
-        </section>
+                      <section>
+                        <div id="indicator-wrapper">
+                          <div id="first-question" class="indicator">1</div>
+                          <div id="second-question" class="indicator">2</div>
+                          <div id="third-question" class="indicator">3</div>
+                          <div id="fourth-question" class="indicator">4</div>
+                          <div id="fifth-question" class="indicator">5</div>
+                          <div id="sixth-question" class="indicator">6</div>
+                          <div id="seventh-question" class="indicator">7</div>
+                          <div id="eight-question" class="indicator">8</div>
+                          <div id="ninth-question" class="indicator">9</div>
+                          <div id="tenth-question" class="indicator">10</div>
+                          <div id="eleventh-question" class="indicator">11</div>
+                          <div id="twelfth-question" class="indicator">12</div>
+                        </div>
+                      </section>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </article>
       </div>
     </main>
     <!-- Footer content of the page -->
@@ -122,12 +122,12 @@
       <div class="container ">
         <div class="row">
           <div class="col s12">
-            <div class="col s4">
+            <div class="col s12 m4">
               <ul>
                 <li><a href="about.html">O stránce</a></li>
               </ul>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
               <ul>
                 <li>
                   <a href="#"><i class="fas fa-blog fa-2x"></i></a>
@@ -135,7 +135,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
               <ul>
                 <li><a href="contact.html"><span id="arrows-alert"> >> </span>Napište mi</a></li>
               </ul>
@@ -149,8 +149,8 @@
     <script src="./js/searchBarAutocomplete.js"></script>
     <script src="./js/materialize.min.js"></script>
     <script src="./js/helperFunctions.js"></script>
-    <script src="./js/quizData.js"></script>
-    <script src="./js/appQuiz.js"></script>
+    <script src="./js/gameData.js"></script>
+    <script src="./js/gameApp.js"></script>
     <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous"></script>
   </body>
 </html>

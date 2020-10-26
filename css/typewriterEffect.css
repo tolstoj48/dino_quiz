@@ -1,4 +1,21 @@
-/*Container of the typewriter effect*/
+/* ||| index.html page style for typewriter effect */
+
+/* Container of the typewriter effect */
 #container-twe {
 	text-align: center;
+}
+
+@media only screen and (max-width: 350px) {
+	#text-twe, .middle {
+	font-size: 1.2rem;
+	padding: 2rem;
+	}
+
+	.big {
+		font-size: 1.2rem;
+	}
+
+	#container-twe {
+		margin-top: 0.5rem;
+	}
 }

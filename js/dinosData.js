@@ -1,6 +1,9 @@
+"use strict";
+
 const dinosArray = {
   Stegosaurus:{
     name: "Stegosaurus",
+    era: "svrchní jura - asi před 155 až 150 miliony let",
     food: "býložravec",
     foodCls: "my-green",
     height: "až 4 metry",
@@ -13,13 +16,41 @@ const dinosArray = {
   },
   Ankylosaurus:{
     name: "Ankylosaurus",
+    era: "svrchní křída - asi před 68 až 66 miliony let",
     food: "býložravec",
     foodCls: "my-green",
     height: "až 2 metry",
     length: "až 9 metrů",
     weigth: "až 8000 kg",
-    interestingPoint: "„Ankylosaurus se často objevuje ve filmech i dokumentech. Nechybí například ve filmu Jurský park 3, v dokumentech jako je Putování s dinosaury nebo v knižních příbězích, například v knize Poslední dny dinosaurů.“",  imgSrc: "./images/ankylosaurus.png",
+    interestingPoint: "„Ankylosaurus se často objevuje ve filmech i dokumentech. Nechybí například ve filmu Jurský park 3, v dokumentech jako je Putování s dinosaury nebo v knižních příbězích, například v knize Poslední dny dinosaurů.“",
+    imgSrc: "./images/ankylosaurus.png",
     cardCls: "ankylo",
     source: "https://cs.wikipedia.org/w/index.php?title=Ankylosaurus&oldid=18900792",
+  },
+  Amargasaurus:{
+    name: "Amargasaurus",
+    era: "spodní křída",
+    food: "býložravec",
+    foodCls: "my-green",
+    height: "-",
+    length: "12 až 13 metrů",
+    weigth: "2500 až 4000 kg",
+    interestingPoint: "„Amargasuarus se měl objevit ve filmu Dinosaurus(2000) od Walta Disneyho, ale byl vyřazen v předprodukční fázi. Jeho zbarvení, stejně jako zbarvení jiných dinosaurů, je spíše spekulací. Účel jeho kostěných výběžků na krku není s jistotou znám.“",  
+    imgSrc: "./images/amargasaurus.png",
+    cardCls: "amarga",
+    source: "https://cs.wikipedia.org/wiki/Amargasaurus",
+  },
+  Tyrannosaurus:{
+    name: "Tyrannosaurus rex",
+    era: "Svrchní křída - asi před 68 až 66 miliony let",
+    food: "masožravec",
+    foodCls: "my-red",
+    height: "asi 13 metrů",
+    length: "asi 5 metrů",
+    weigth: "kolem 6 000 až 7 500 kg",
+    interestingPoint: "„Do roku 2019 byl za největšího známého teropoda vůbec považován druh Spinosaurus aegyptiacus, u něhož je odhadována celková tělesná délka možná až na víc než 15 metrů. Ve zmíněném roce byl nicméně popsán obří jedinec tyranosaura 'Scotty', který sice nebyl tak dlouhý jako největší spinosauři (délka 12 až 13 metrů), celkově jej ale výrazně předčil svojí mohutností a tedy i hmotností (kolem 8870 kg). Je tedy pravděpodobné, že druh T. rex byl skutečně největším známým teropodním dinosaurem (alespoň co se celkové hmotnosti týká).“",  
+    imgSrc: "./images/tyrannosaurus.jpg",
+    cardCls: "tyrano",
+    source: "https://cs.wikipedia.org/wiki/Tyrannosaurus_rex",
   },
 }

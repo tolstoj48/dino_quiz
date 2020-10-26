@@ -1,3 +1,5 @@
+/* ||| all html pages styles */
+
 /* || Colors for all pages */
 :root {
   --my-dark-blue: #05386B;
@@ -48,24 +50,30 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh; /* footer at the bottom */
   font-family: "Segoe UI";
   background-color: var(--my-green);
   color: var(--my-dark-blue);
+  display: flex; /* footer at the bottom */
+  flex-direction: column; /* footer at the bottom */
 }
 
-main {
-  min-height: 75vh;
-  }
+.card .card-title {
+  font-size: 1.5rem;
+}
 
 img {
   max-width: 100%;
   height: auto;
 }
+        
+main {
+  flex: 1 0 auto; /* footer at the bottom */
+}
 
 .big {
   font-weight: 700;
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--my-yellow-white);
 }
 
@@ -87,9 +95,9 @@ img {
 
 .card {
   background-color: var(--my-yellow-white);
-  overflow: hidden;
-  border: 1px solid black;
+  border: 1px solid var(--my-dark-blue);
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .card-content {
@@ -97,7 +105,7 @@ img {
 }
 
 .middle {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 500;
   color: var(--my-yellow-white);
 }
@@ -106,26 +114,30 @@ img {
   text-decoration: underline;
 }
 
+/* || General helpers  */
+
 /* general moved padding to right */
 .moved-to-right {
   font-size: 14px;
   padding-left: 1.5rem;
 }
 
-/* general top margin class 2rem */
-
+/* general top margin class 0.7 rem */
 .margin-top-07rem {
   margin-top: 0.7rem;
 }
 
+/* general top margin class 2 rem */
 .margin-top-2rem {
   margin-top: 2rem;
 }
 
+/* general top margin class 4 rem */
 .margin-top-4rem {
   margin-top: 4rem;
 }
 
+/* general bottom margin class 4 rem */
 .margin-bottom-4rem {
   margin-top: 4rem;
 }
@@ -134,7 +146,7 @@ img {
 
 a.brand-logo {
   margin-left: 1rem;
-  font-weight: 780;
+  font-weight: 700;
   font-size: 2rem;
 }
 
@@ -153,20 +165,26 @@ i.fa-bars{
   max-width: 35px;    
   }
 
-/* search input*/
+/* search input */
 input#search{
   color: var(--my-dark-blue);
   border-radius: 5px;
 }
 
-/* search input*/
+/* search input */
 input[type="search"] {
   height: 60px !important;
 }
 
-/* search div background color - materialize changed*/
+/* search div background color - materialize changed */
 input[type=search]:not(.browser-default){
   background-color: var(--my-yellow-white);
+}
+
+.my-green-nav {
+  overflow: visible;
+  background-color: var(--my-green);
+  box-shadow: none;
 }
 
 /* main navbar */
@@ -188,19 +206,19 @@ nav ul a {
   font-weight: 900;
 }
 
-/* search field label color*/
+/* search field label color */
 nav .input-field label {
   color: var(--my-dark-blue); 
   top: -10px; 
   left: 10px;
 }
 
-/* search filed label icon */
+/* search field label icon */
 nav .input-field label i {
   color: var(--my-dark-blue);
 }
 
-/* search filed label icon active*/
+/* search field label icon active */
 nav .input-field label.active i {
   color: var(--my-dark-blue);
 }
@@ -299,7 +317,7 @@ li.first-li a {
   background-color: var(--my-light-green);
 }
 
-/* || Animations*/
+/* || Animations */
 
 @keyframes alerting {
   0% {
@@ -313,4 +331,19 @@ li.first-li a {
 #arrows-alert {
   display: inline-block;
   animation: alerting 1.5s ease-in infinite;
+}
+
+/* || Materializce change */
+
+/* Dropdown links to fit its div */
+.dropdown-content {
+  overflow: visible;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 350px) {
+  #ikona {
+    display: none;
+  }
 }

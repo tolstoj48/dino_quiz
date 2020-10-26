@@ -1,12 +1,10 @@
 <!--
-
-/ do popisu o stránce napsat vtipnou hlášku
-/ dodělat kvíz - strukturaze appQuiz.js - konkrétně užití jedné metody obecné na dosažení obsahu otázek a odpovědí, místo init + clicker
 / metadescktipce, titulky a metatagy pro každou stránku zvlášť
 / dodělat email - zajistit mailovou službu - umístit na about.html odkaz někde rozumě nahoře - kwes účet
-/ verifikace html, css, js / registrace sitemapy na google.com
-/ sjednotit CSS popisky, prázdný řádky
+/ registrace sitemapy na google.com
 / naplnit daty
+/ minifikace
+/ stabilní výška framů pro obrázky
 
 -->
 <!DOCTYPE html>
@@ -90,13 +88,15 @@
           <div class="col s10 right margin-top-4rem">
             <span class="big underline"> Dinokvízy </span>
           </div>
+        <div class="row">
           <div class="col s6 right">
             <span class="middle"> pro nejmenší</span>
           </div>
-          <div id="container-twe" class="margin-top-2rem col s6 middle my-dark-blue">
+          <div id="container-twe" class="margin-top-2rem col s12 m6 middle my-dark-blue">
             <div id="text-twe" class="bold">
             </div>
           </div>
+        </div>
         </div>
       </div>
     </main>
@@ -105,12 +105,12 @@
       <div class="container ">
         <div class="row">
           <div class="col s12">
-            <div class="col s4">
+            <div class="col s12 l4">
               <ul>
                 <li><a href="about.html">O stránce</a></li>
               </ul>
             </div>
-            <div class="col s4">
+            <div class="col s12 l4">
               <ul>
                 <li>
                   <a href="#"><i class="fas fa-blog fa-2x"></i></a>
@@ -118,7 +118,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col s4">
+            <div class="col s12 l4">
               <ul>
                 <li><a href="contact.html"><span id="arrows-alert"> >> </span>Napište mi</a></li>
               </ul>
@@ -126,7 +126,7 @@
             </div>
           </div>
         </div>
-    </footer>
+      </footer>
     <!-- Scripts links -->
     <script src="./js/dinosData.js"></script>
     <script src="./js/searchBarAutocomplete.js"></script>
