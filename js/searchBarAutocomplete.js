@@ -1,5 +1,5 @@
 // IIFE
-;(function () {
+;(function searchBarAutocompleteIIEF () {
     "use strict";
 
     // Autocomplete solution for the search bar
@@ -10,13 +10,23 @@
         document.addEventListener("DOMContentLoaded", function () {
           let elems = document.querySelectorAll(".autocomplete");
           let instances = M.Autocomplete.init(elems, {
-            data: dinosArray,
+            data: DinosListObjCtrl.getDinosArray(),
             limit: 3,
             onAutocomplete: setGlobalVariable,
           });
           M.Autocomplete.getInstance(elems[0]).updateData({
             "Ankylosaurus": "./images/ankylosaurus.png",
             "Stegosaurus": "./images/stegosaurus.png",
+            "Amargasaurus": "./images/amargasaurus.png",
+            "Argentinosaurus": "./images/argentinosaurus.jpg",
+            "Archeopteryx": "./images/archeopteryx.png",
+            "Brachiosaurus": "./images/brachiosaurus.png",
+            "Diplodocus": "./images/diplodocus.png",
+            "Iguanodon": "./images/iguanodon.jpg",
+            "Pteranodon": "./images/pteranodon.png",
+            "Spinosaurus": "./images/spinosaurus.png",
+            "Triceratops": "./images/triceratops.png",
+            "Tyrannosaurus": "./images/tyrannosaurus.jpg",
           })
         })
       }

@@ -28,6 +28,7 @@
   border: 1px solid var(--my-dark-blue);
   border-radius: 5px;
   background-color: rgba(255,255,255, 1);
+  max-width: 130px;
 }
 
 .carousel img:hover {
@@ -53,16 +54,6 @@
 blockquote {
   border-left: 4px solid;
   font-style: italic;
-}
-
-/* stegos card quote border color */
-.stego blockquote {
-  border-color:  #EC008C;
-}
-
-/* ankylos card quote border color */
-.ankylo blockquote {
-  border-color:  #EFE301;
 }
 
 /* link in the dino detail on the card */
@@ -115,4 +106,59 @@ div.card-content p a:hover {
   #nav-dinos {
     margin-top: 4rem;
   }
+}
+
+/* || Quotes colors */
+
+.stego blockquote {
+  border-color:  #EC008C;
+}
+
+.ankylo blockquote {
+  border-color:  #EFE301;
+
+}
+
+.spinos blockquote {
+  border-color:  #8A904A;
+}
+
+.iguano blockquote {
+  border-color:  #D8C8D9;
+}
+
+.argentino blockquote {
+  border-color:  #7E7A77;
+}
+
+.brachio blockquote {
+  border-color:  #a95a36;
+}
+
+.archeopt blockquote {
+  border-color: #FABD30;
+}
+
+.amarga blockquote {
+  border-color: #AEA9A6;
+}
+
+.diplo blockquote {
+  border-color: #63638e;
+}
+
+.pteranod blockquote {
+  border-color: #000000;
+}
+
+.tricera blockquote {
+  border-color: #7E8465;
+}
+
+.tyranno blockquote {
+  border-color: #605531;
+}
+
+.apato blockquote {
+  border-color: #605531;
 }

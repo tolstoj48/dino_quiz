@@ -1,5 +1,5 @@
 // IIEF
-;(function () {
+;(function typewriterEffectIIEF() {
 		"use strict";
 
 		const TypeWriterEffect = (function(){

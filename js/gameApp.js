@@ -1,16 +1,20 @@
 // IIFE
-;(function () {
+;(function gameAppIIFE() {
     "use strict";
 
     //Data Controler
     const DataCtrl = (function () {
+    
+    //Questions-answers obj after initialization
+    let questionsAnswers;
+    
     // Setter of the gameId and gameTypeId variables
     const setCurrentGameId = function (e) {
       localStorage.setItem("gameId", e.target.text);
       localStorage.setItem("gameTypeId", e.target.className);
     }
     // Set questions
-    const getQuestions = function getQuestions() {
+    const initGetQuestions = function getQuestions() {
       const map = {
         "Všichni dinosauři": "all",
         "Býložravci": "herbivores",
@@ -18,7 +22,12 @@
       }
       const gameId = localStorage.getItem("gameId");
       const gameType = localStorage.getItem("gameTypeId");
-      return GameDataCtrl.fetchChoosenData(gameType,map[gameId]);;
+      questionsAnswers = GameDataCtrl.fetchChoosenData(gameType,map[gameId]);
+    }
+
+    // Get questions
+    const getQuestions = function getQuestions() {
+      return questionsAnswers;
     }
 
       // Setting game timer
@@ -160,6 +169,10 @@
         }
       },
       // Set questions
+      initGetQuestions: function () {
+        return initGetQuestions();
+      },
+      // Set questions
       getQuestions: function () {
         return getQuestions();
       },
@@ -200,7 +213,7 @@
     const UICtrl = (function () {
       let UIAnswersCounter = 1;
       // Selectors for the app
-      let UISelectors = {
+      const UISelectors = {
         quiz: ".quiz",
         recognition: ".recognition",
         gameType: "#game-type",
@@ -271,6 +284,7 @@
         gameTypeName.innerHTML = title;
         // Question content after initialization
         let questionContainer = document.querySelector(UISelectors.questionContainer);
+        DataCtrl.initGetQuestions();
         let questionSet = DataCtrl.getQuestions();
         questionContainer.innerHTML = questionSet[0].question;
         // Answers content after initialization
@@ -321,6 +335,8 @@
         let title; 
         // Set name of the game type
         let gameTypeName = document.querySelector(UISelectors.gameType);
+        // Get questions set
+        let questionSet = DataCtrl.getQuestions();
         // Set title text of the game type
         if (localStorage.getItem("gameTypeId") === "quiz") {
           title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
@@ -328,8 +344,6 @@
          title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
         }
         gameTypeName.innerHTML = title;
-        // Question content - fetching next question
-        let questionSet = DataCtrl.getQuestions();
         // Last answer or not
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);

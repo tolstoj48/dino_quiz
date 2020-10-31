@@ -4,140 +4,135 @@
 Game data controler - fetches all the data 
 - random questions - maximum 12 (can be set up), random numbers 0 - length of the data object
 */
-;const GameDataCtrl = (function () {
+;const GameDataCtrl = (function gameDataCtrlIIFE() {
   
   // All data object
   const allDataObj = {
     recognition: {
       all:  {
         0: {
-          question: "<img src='./images/stegosaurus.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno","Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "skovno",
+          question: "<img src='./images/images_lg/amargasaurus.png' alt='dino-image'>",
+          answers: ["Ankylosaurus", "Tyrannosaurus", "Stegosaurus", "Amargasaurus"],
+          correctAnswer: "Amargasaurus",
         },
         1: {
-          question: "<img src='./images/ankylosaurus.png' alt='dino-image'>",
-          answers: ["áčko", "béčk", "céčko", "déčko"],
-          correctAnswer: "céčko",
+          question: "<img src='./images/images_lg/ankylosaurus.png' alt='dino-image'>",
+          answers: ["Stegosaurus", "Triceratops", "Archeopteryx", "Ankylosaurus"],
+          correctAnswer: "Ankylosaurus",
         },
         2: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/apatosaurus.png' alt='dino-image'>",
+          answers: ["Megalodon", "Apatosaurus", "Stegosaurus", "Spinosaurus"],
+          correctAnswer: "Apatosaurus",
         },
         3: {
-          question: "<img src='./images/stegosaurus.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno","Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "skovno",
+          question: "<img src='./images/images_lg/argentinosaurus.jpg' alt='dino-image'>",
+          answers: ["Argentinosaurus", "Stagosaurus", "Spinosaurus", "Apatosaurus"],
+          correctAnswer: "Argentinosaurus",
         },
         4: {
-          question: "<img src='./images/ankylosaurus.png' alt='dino-image'>",
-          answers: ["áčko", "béčk", "céčko", "déčko"],
-          correctAnswer: "céčko",
+          question: "<img src='./images/images_lg/archeopteryx.png' alt='dino-image'>",
+          answers: ["Pteranodon", "Archeopteryx", "Pterodaktyl", "Kakadu"],
+          correctAnswer: "Archeopteryx",
         },
         5: {
-          question: "<img src='./images/argentinosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/brachiosaurus.png' alt='dino-image'>",
+          answers: ["Brachiosaurus", "Iguanodon", "Pteranodon", "Diplodocus"],
+          correctAnswer: "Brachiosaurus",
         },
         6: {
-          question: "<img src='./images/triceratops.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno","Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "skovno",
+          question: "<img src='./images/images_lg/diplodocus.png' alt='dino-image'>",
+          answers: ["Titanosaurus", "Lycaenops", "Brachiosaurus", "Diplodocus"],
+          correctAnswer: "Diplodocus",
         },
         7: {
-          question: "<img src='./images/spinosaurus.png' alt='dino-image'>",
-          answers: ["áčko", "béčk", "céčko", "déčko"],
-          correctAnswer: "céčko",
+          question: "<img src='./images/images_lg/iguanodon.jpg' alt='dino-image'>",
+          answers: ["Velociraptor", "Lycaenops", "Spinosaurus", "Iguanodon"],
+          correctAnswer: "Iguanodon",
         },
         8: {
-          question: "<img src='./images/pteranodon.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/pteranodon.png' alt='dino-image'>",
+          answers: ["Pterodaktyl", "Pteranodon", "Archeopteryx", "Ara"],
+          correctAnswer: "Pteranodon",
         },
         9: {
-          question: "<img src='./images/diplodocus.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno","Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "skovno",
+          question: "<img src='./images/images_lg/spinosaurus.png' alt='dino-image'>",
+          answers: ["Spinosaurus", "Tyrannosaurus", "Apatosaurus", "Brachiosaurus"],
+          correctAnswer: "Spinosaurus",
         },
         10: {
-          question: "<img src='./images/archeopteryx.png' alt='dino-image'>",
-          answers: ["áčko", "béčk", "céčko", "déčko"],
-          correctAnswer: "céčko",
+          question: "<img src='./images/images_lg/stegosaurus.png' alt='dino-image'>",
+          answers: ["Brontosaurus", "Ankylosaurus", "Stegosaurus", "Velociraptor"],
+          correctAnswer: "Stegosaurus",
         },
         11: {
-          question: "<img src='./images/iguanodon.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/tyrannosaurus.jpg' alt='dino-image'>",
+          answers: ["Spinosaurus", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
+          correctAnswer: "Tyrannosaurus",
         },
       },
       herbivores: {
         0: {
-          question: "<img src='./images/pteranodon.png' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/amargasaurus.png' alt='dino-image'>",
+          answers: ["Ankylosaurus", "Tyrannosaurus", "Stegosaurus", "Amargasaurus"],
+          correctAnswer: "Amargasaurus",
+        },
+        1: {
+          question: "<img src='./images/images_lg/ankylosaurus.png' alt='dino-image'>",
+          answers: ["Stegosaurus", "Triceratops", "Archeopteryx", "Ankylosaurus"],
+          correctAnswer: "Ankylosaurus",
+        },
+        2: {
+          question: "<img src='./images/images_lg/apatosaurus.png' alt='dino-image'>",
+          answers: ["Megalodon", "Apatosaurus", "Stegosaurus", "Spinosaurus"],
+          correctAnswer: "Apatosaurus",
+        },
+        3: {
+          question: "<img src='./images/images_lg/argentinosaurus.jpg' alt='dino-image'>",
+          answers: ["Argentinosaurus", "Stagosaurus", "Spinosaurus", "Apatosaurus"],
+          correctAnswer: "Argentinosaurus",
+        },
+        4: {
+          question: "<img src='./images/images_lg/brachiosaurus.png' alt='dino-image'>",
+          answers: ["Brachiosaurus", "Iguanodon", "Pteranodon", "Diplodocus"],
+          correctAnswer: "Brachiosaurus",
+        },
+        5: {
+          question: "<img src='./images/images_lg/diplodocus.png' alt='dino-image'>",
+          answers: ["Titanosaurus", "Lycaenops", "Brachiosaurus", "Diplodocus"],
+          correctAnswer: "Diplodocus",
+        },
+        6: {
+          question: "<img src='./images/images_lg/iguanodon.jpg' alt='dino-image'>",
+          answers: ["Velociraptor", "Lycaenops", "Spinosaurus", "Iguanodon"],
+          correctAnswer: "Iguanodon",
+        },
+        7: {
+          question: "<img src='./images/images_lg/stegosaurus.png' alt='dino-image'>",
+          answers: ["Brontosaurus", "Ankylosaurus", "Stegosaurus", "Velociraptor"],
+          correctAnswer: "Stegosaurus",
         },
       },  
       carnivores: {
         0: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/archeopteryx.png' alt='dino-image'>",
+          answers: ["Pteranodon", "Archeopteryx", "Pterodaktyl", "Kakadu"],
+          correctAnswer: "Archeopteryx",
         },
         1: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/pteranodon.png' alt='dino-image'>",
+          answers: ["Pterodaktyl", "Pteranodon", "Archeopteryx", "Ara"],
+          correctAnswer: "Pteranodon",
         },
         2: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/spinosaurus.png' alt='dino-image'>",
+          answers: ["Spinosaurus", "Tyrannosaurus", "Apatosaurus", "Brachiosaurus"],
+          correctAnswer: "Spinosaurus",
         },
         3: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        4: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        5: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        6: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        7: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        8: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        9: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        10: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
-        },
-        11: {
-          question: "<img src='./images/tyrannosaurus.jpg' alt='dino-image'>",
-          answers: ["Hovno", "skovno", "provno", "divno"],
-          correctAnswer: "provno",
+          question: "<img src='./images/images_lg/tyrannosaurus.jpg' alt='dino-image'>",
+          answers: ["Spinosaurus", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
+          correctAnswer: "Tyrannosaurus",
         },
       }
     }, 
@@ -180,9 +175,10 @@ Game data controler - fetches all the data
 const fetchChoosenData = function fetchChoosenData (gameType, gameId, randomNumbersArray) {
   let finalDataObj = {};
   // Setting the result object's key/values pairs
-  randomNumbersArray.forEach( (x, index) => {
-    finalDataObj[index] = allDataObj[gameType][gameId][x]
+  randomNumbersArray.forEach( (element, index) => {
+    finalDataObj[index] = allDataObj[gameType][gameId][element];
   })
+  console.log(finalDataObj);
   return finalDataObj;
 }
   

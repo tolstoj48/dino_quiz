@@ -17,10 +17,6 @@
   justify-content: center;
 }
 
-#answers-list li {
-  cursor: pointer;
-}
-
 #main-card-quiz{
   border: 1px solid var(--my-dark-blue);
   border-radius: 5px;
@@ -34,6 +30,7 @@
   background-color: var(--my-dark-blue);
   font-weight: 600;
   color: var(--my-yellow-white);
+  height: 220px;
 }
 
 .center-content {
@@ -42,7 +39,10 @@
 
 #question-container img {
   border-radius: 5px;
-  max-width: 50%;
+  max-height: 180px;
+  max-width: 90%;
+  height: auto;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -53,10 +53,12 @@
   border-radius: 5px;
   padding: 20px;
   margin: 2%;
+  overflow: hidden;
   max-width: 20%;
-  min-width: 100px;
+  min-width: 150px;
   background-color: var(--my-light-green);
   font-weight: 500;
+  cursor: pointer;
 }
 
 #answers-list li:hover {

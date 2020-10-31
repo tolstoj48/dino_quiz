@@ -1,6 +1,6 @@
 "use strict";  
 
-;const Helpers = (function helpers() {
+;const Helpers = (function helpersIIFE() {
   
   // Adds zeros in front of numbers
   const checkTime = function checkTime(i) {

@@ -1,5 +1,5 @@
 // IIFE
-;(function () {
+;(function resultsAppIIFE() {
     "use strict";
 
     //Data Controler
@@ -75,7 +75,7 @@
     // UI controler
     const UICtrlResults = (function () {
       // UI Selectors
-      let UISelectors = {
+      const UISelectors = {
         quiz: ".quiz",
         recognition: ".recognition",
         mainFrameResults: "#main-frame-results",
@@ -85,7 +85,7 @@
         endTimeKey: ".time"
       }
       // Map for UI names of results tables
-      let UIMapNames = {
+      const UIMapNames = {
         all: "Všichni dinosauři <i class='fas fa-leaf right'></i><i class='fas fa-drumstick-bite right'></i>",
         herbivores: "Býložravci <i class='fas fa-leaf right'></i>",
         carnivores: "Masožravci <i class='fas fa-drumstick-bite right'></i>",
@@ -93,7 +93,7 @@
         recognition: "Poznávačka"
       }
       // Map for UI classes
-      let UIMapClasses = {
+      const UIMapClasses = {
         all: "my-blue-results",
         herbivores: "my-green",
         carnivores: "my-red",    

@@ -1,10 +1,10 @@
 // IIFE
-;(function () {
+;(function dinoListAppIIFE () {
   "use strict";
 
     // UI Controler
     const UICtrlDinoList = (function () {
-      let UISelectors = {
+      const UISelectors = {
         dinoLinks: ".dino-link",
         main: "main",
         pasted: "#pasted",
@@ -22,7 +22,11 @@
                     <div class="card-content">\n
                       <span class="badge ${dinoDetailData.foodCls}">${dinoDetailData.food}</span>
                       <div class="card-image">
-                        <img src="${dinoDetailData.imgSrc}" alt="${dinoDetailData.name}">
+                        <picture>
+                          <source srcset="${dinoDetailData.imgSrcSm}" media="(max-width: 600px">
+                          <source srcset="${dinoDetailData.imgSrc}" media="(min-width: 601px">
+                          <img src="${dinoDetailData.imgSrc}" class="tooltipped" data-tooltip="Autor: ${dinoDetailData.toolTip}" alt="${dinoDetailData.name}">
+                        </picture>
                       </div>
                       <span class="card-title"><h5>${dinoDetailData.name}</h5></span>
                       <p>
@@ -50,7 +54,6 @@
                         <b>Zdroj:</b>
                         <a href="${dinoDetailData.source}"> wikipedia.org </a>
                       </p>
-
                       <div>
                     </div>
                   </div>
@@ -70,7 +73,11 @@
           div.id = "pasted";
           div.innerHTML = htmlResult;
           document.querySelector(UISelectors.main).appendChild(div);
-        } 
+        }
+        document.addEventListener('mouseover', function() {
+          var elems = document.querySelector('.tooltipped');
+          var instances = M.Tooltip.init(elems);
+        });
       }
     
       // Move to position of the detail information
@@ -85,10 +92,10 @@
         showDinoDetail: function(e) {
           // if not img on carousel, then get data and show detail
           if (e.target.tagName !== "IMG") {
-          const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(e.target.text);
-          showHTMLDinoDetail(dinoDetailData); 
-          moveToDinoDetail();
-          e.preventDefault();
+            const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(e.target.text);
+            showHTMLDinoDetail(dinoDetailData); 
+            moveToDinoDetail();
+            e.preventDefault();
           }
         },
         // Show dino detail after search bar visit
@@ -110,7 +117,7 @@
     // Item Controler
     const ItemCtrlDinoList = (function () {
       // Data
-      const data = dinosArray;
+      const data = DinosListObjCtrl.getDinosArray();
     
       return {
         getDinoDetailData: function (name) {
@@ -132,8 +139,26 @@
         dinoLinks.forEach( function (element) {
           element.addEventListener("click", UICtrlDinoList.showDinoDetail);        
         })
-
       }
+
+        // Materialize setup for carousel
+       document.addEventListener('DOMContentLoaded', function() {
+          let elem = document.querySelector('.carousel');
+          let instances = M.Carousel.init(elem, {
+            numVisible: 12,
+            dist: -80,
+          })});
+
+        // Left, right arrow keypresses for the carousel on the page
+        document.addEventListener("keydown", function (event) {
+          let elem = document.querySelector('.carousel');
+          if (event.which == 37) {
+            M.Carousel.getInstance(elem).prev();
+          } else if (event.which == 39) {
+            M.Carousel.getInstance(elem).next();
+          }
+        });
+
     
       // Lists all dinos from dinsoData object
       const listDinos = function () {
@@ -165,7 +190,7 @@
         },
         listDinos: function(){
           listDinos()
-        },
+        }
       }
     
     })(UICtrlDinoList)

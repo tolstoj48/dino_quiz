@@ -1,5 +1,5 @@
 // IIFE
-;(function () {
+;(function appIIFE() {
     "use strict";
 
     //ItemCtrl
@@ -27,7 +27,7 @@
 
     // UI controler
     const UICtrl = (function () {
-      let UISelectors = {
+      const UISelectors = {
         quiz: ".quiz",
         recognition: ".recognition",
       }
@@ -43,15 +43,6 @@
             constrainWidth: false,
           });
 
-        });
-
-        // Materialize setup for carousel
-        document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.carousel');
-          let instances = M.Carousel.init(elems, {
-            numVisible: 10,
-            dist: -60,
-          });
         });
 
         // Materialize setup for sidenav menu
