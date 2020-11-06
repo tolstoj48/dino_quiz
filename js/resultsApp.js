@@ -1,5 +1,5 @@
-// IIFE
-;(function resultsAppIIFE() {
+// Man block scope
+;{
     "use strict";
 
     //Data Controler
@@ -152,8 +152,7 @@
       const showResults = function showResults(data) {
         let mainFrameResults = document.querySelector(UISelectors.mainFrameResults);
         if (!data) {
-          mainFrameResults.innerHTML = `
-          <div class="row">
+          mainFrameResults.innerHTML = `<div class="row">
             <div class="col s12 margin-top-2rem">
               <h4> Ještě jste neodehráli žádnou hru a nebo jste si vymazali pamět prohlížeče.</h4>
             </div>
@@ -170,8 +169,7 @@
               let article = document.createElement("article");
               let divToAppend = document.createElement("div");
               divToAppend.className = "col s12 card-content";
-              html += `
-              <h5 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h5>
+              html += `<h5 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h5>
               <table class="striped centered">
                 <thead>
                   <tr>
@@ -180,22 +178,18 @@
                     <th class="time">Celkový čas hry <i class="fas fa-sort-numeric-up fa-lg"></i></th>
                   </tr>
                 </thead>
-                <tbody>
-              `;
+                <tbody>`;
               for (const propertyResult in data[property][gameId]) {
                 if (`${data[property][gameId][propertyResult]["result"]}` !== "undefined") {
-                  html += `
-                  <tr>
+                  html += `<tr>
                     <td>${data[property][gameId][propertyResult]["date"]}</td>
                     <td>${data[property][gameId][propertyResult]["result"]}</td>
                     <td>${data[property][gameId][propertyResult]["time"]}</td>
                   </tr>`;
                 }
               }
-            html += `
-              </tbody>
-            </table>
-            `;
+            html += `</tbody>
+            </table>`;
             divToAppend.innerHTML = html;
             article.appendChild(divToAppend);
             mainDivToAppend.appendChild(article);
@@ -220,8 +214,7 @@
         }
         sortedData.forEach(element => {
           if (sortedData !== "undefined") {
-            html += `
-            <tr>
+            html += `<tr>
               <td>${element["date"]}</td>
               <td>${element["result"]}</td>
               <td>${element["time"]}</td>
@@ -274,7 +267,6 @@
     })(UICtrlResults, DataCtrl);
 
     ResultsApp.init();
-  }
-)();
+}
 
 

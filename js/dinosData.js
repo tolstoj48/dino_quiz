@@ -2,7 +2,7 @@
 ;const DinosListObjCtrl = (function dinosArrayCtrl () {
   "use strict";
 
-  const dinosArray = {
+  const dinosObj = {
     Stegosaurus:{
       name: "Stegosaurus",
       era: "svrchní jura - asi před 155 až 150 miliony let",
@@ -40,7 +40,7 @@
       foodCls: "my-green",
       height: "-",
       length: "12 až 13 metrů",
-      weigth: "kolem 2500 až 4000 kilogramů",
+      weigth: "2 500 až 4 000 kilogramů",
       interestingPoint: "Amargasuarus se měl objevit ve filmu Dinosaurus(2000) od Walta Disneyho, ale byl vyřazen v předprodukční fázi. Jeho zbarvení, stejně jako zbarvení jiných dinosaurů, je spíše spekulací. Účel jeho kostěných výběžků na krku není s jistotou znám.",  
       imgSrc: "./images/images_lg/amargasaurus.png",
       imgSrcSm: "./images/images_sm/amargasaurus.png",
@@ -50,12 +50,12 @@
     },
     Tyrannosaurus:{
       name: "Tyrannosaurus rex",
-      era: "Svrchní křída - asi před 68 až 66 miliony let",
+      era: "svrchní křída - asi před 68 až 66 miliony let",
       food: "masožravec",
       foodCls: "my-red",
       height: "až 13 metrů",
       length: "až 5 metrů",
-      weigth: "kolem 6 000 až 7 500 kilogramů",
+      weigth: "6 000 až 7 500 kilogramů",
       interestingPoint: "„Do roku 2019 byl za největšího známého teropoda vůbec považován druh Spinosaurus aegyptiacus, u něhož je odhadována celková tělesná délka možná až na víc než 15 metrů. Ve zmíněném roce byl nicméně popsán obří jedinec tyranosaura 'Scotty', který sice nebyl tak dlouhý jako největší spinosauři (délka 12 až 13 metrů), celkově jej ale výrazně předčil svojí mohutností a tedy i hmotností (kolem 8870 kilogramů). Je tedy pravděpodobné, že druh T. rex byl skutečně největším známým teropodním dinosaurem (alespoň co se celkové hmotnosti týká).“",  
       imgSrc: "./images/images_lg/tyrannosaurus.jpg",
       imgSrcSm: "./images/images_sm/tyrannosaurus.jpg",
@@ -70,7 +70,7 @@
       foodCls: "my-red",
       height: "40 až 50 centimetrů",
       length: "rozpětí křídel zhruba 70 centimetrů",
-      weigth: "kolem 0,5 až 1 kilogramu",
+      weigth: "0,5 až 1 kilogramu",
       interestingPoint: "Navzdory jeho opeření se dodnes vedou spory o to, zda byl archeopteryx schopen letu či nikoliv. Byl objeven v roce 1860, tzn. pouhé dva roky po vydání slavného díla Charlese Darwina - O původu druhů. V té době šlo o prvního lidem známého opeřeného dinosaura.",  
       imgSrc: "./images/images_lg/archeopteryx.png",
       imgSrcSm: "./images/images_sm/archeopteryx.png",
@@ -85,7 +85,7 @@
       foodCls: "my-green",
       height: "-",
       length: "22 až 26 metrů",
-      weigth: "kolem 73 000 až 96 400 kilogramů",
+      weigth: "73 000 až 96 400 kilogramů",
       interestingPoint: "Jedná se o jednoho z největších dinosaurů všech dob a pravděpodobně jde o největšího známého suchozemského živočicha vůbec. Navzdory tomu „existují však jisté indicie v podobě obrovitých izolovaných kostí o ještě větších dinosaurech než byl Argentinosaurus, ty se však ztratily nebo o jejich příslušnosti panují dohady (např. Amphicoelias či Bruhathkayosaurus, jehož pozůstatky mohou být zkamenělým kmenem stromu). Zhruba stejně velký byl i Patagotitan, jehož objev byl v médiích oznámen roku 2014 a oficiální popis vyšel roku 2017.",  
       imgSrc: "./images/images_lg/argentinosaurus.jpg",
       imgSrcSm: "./images/images_sm/argentinosaurus.jpg",
@@ -100,7 +100,7 @@
       foodCls: "my-green",
       height: "až 13 metrů",
       length: "22 až 26 metrů",
-      weigth: "kolem 35 000 až 58 000 kilogramů",
+      weigth: "35 000 až 58 000 kilogramů",
       interestingPoint: "„Brachiosaurus patří k nejznámějším a nejpopulárnějším dinosaurům, mimo jiné byl také největším dinosaurem ve filmu Jurský park, díky kterému se stal obecně známým. Ve většině knih o dinosaurech až do počátku 90. let byl také uváděn jako největší známý dinosaurus. Kostra afrického brachiosaura v berlínském Humboldtově muzeu (Museum für Naturkunde) je stále nejvyšší smontovanou kostrou dinosaura na světě (výška exponátu v roce 2010 činila 13,26 metru, délka asi 23 metrů).“",  
       imgSrc: "./images/images_lg/brachiosaurus.png",
       imgSrcSm: "./images/images_sm/brachiosaurus.png",
@@ -110,12 +110,12 @@
     },
     Diplodocus: {
       name: "Diplodocus",
-      era: "Svrchní jura - asi před 154 až 148 miliony let",
+      era: "svrchní jura - asi před 154 až 148 miliony let",
       food: "býložravec",
       foodCls: "my-green",
       height: "-",
       length: "25 až 30 metrů",
-      weigth: "kolem 16 000 kilogramů",
+      weigth: "až 16 000 kilogramů",
       interestingPoint: "„Diplodokus byl podle stavby chrupu nepochybně býložravec. Zuby mu ale sloužily pouze pro trhání potravy (například listí ze stromů), ne pro její rozžvýkání. Po sežrání potravy někdy polykal kameny (gastrolity), kterými v prvním žaludku potravu rozmělnil. Z tohoto důvodu nejspíš také žil blízko vody, kde je zeleň měkčí, šťavnatější a lépe stravitelná. Z tohoto důvodu nejspíš také žil blízko vody, kde je zeleň měkčí, šťavnatější a lépe stravitelná. Do vody však často nevstupoval. S délkou kolem 30 metrů patřil k nejdelším živočichům všech dob. Samotný jeho ocas mohl být dlouhý přes 15 metrů, krk pak přes 6 metrů.“",  
       imgSrc: "./images/images_lg/diplodocus.png",
       imgSrcSm: "./images/images_sm/diplodocus.png",
@@ -125,13 +125,13 @@
     },
     Iguanodon: {
       name: "Iguanodon",
-      era: "Spodní křída - asi před 126 až 125 miliony let",
+      era: "spodní křída - asi před 126 až 125 miliony let",
       food: "býložravec",
       foodCls: "my-green",
       height: "-",
       length: "10 až 13 metrů",
-      weigth: "kolem 3 000 až 15 000 kilogramů",
-      interestingPoint: "Dodnes se vedou spory o to, jakou potravu iguanodoni přesně jedli. Pravděpodobně šlo o býložravce, který byl ve své době dominantním druhem. „V České republice lze modely iguanodona vidět v tzv. DinoParku Plzeň a DinoParku Vyškov.Iguanodon byl také hrdinou několika filmů. Například v Disneyho filmu Dinosaurus (anglicky: Dinosaur) hraje hlavní roli Iguanodon Aladar a mezi ostatními postavami jsou ještě další tři iguanodoni. Vzdáleně s filmem souvisí i strašidelná jízda stejného názvu ve Walt Disney World Resort, jejíž zápletka spočívá v hledání iguanodona a jeho přenesení do současnosti. Iguanodon je také jeden ze tří dinosauřích rodů, které inspirovaly tvůrce Godzilly; další dva jsou Tyrannosaurus a Stegosaurus. Iguanodon se objevil i v některých filmech série The Land Before Time či epizodách stejnojmenného televizního seriálu.“",  
+      weigth: "3 000 až 15 000 kilogramů",
+      interestingPoint: "Dodnes se vedou spory o to, jakou potravu iguanodoni přesně jedli. Pravděpodobně šlo o býložravce, který byl ve své době dominantním druhem. „V České republice lze modely iguanodona vidět v tzv. DinoParku Plzeň a DinoParku Vyškov. Iguanodon byl také hrdinou několika filmů. Například v Disneyho filmu Dinosaurus (anglicky: Dinosaur) hraje hlavní roli Iguanodon Aladar a mezi ostatními postavami jsou ještě další tři iguanodoni. Vzdáleně s filmem souvisí i strašidelná jízda stejného názvu ve Walt Disney World Resort, jejíž zápletka spočívá v hledání iguanodona a jeho přenesení do současnosti. Iguanodon je také jeden ze tří dinosauřích rodů, které inspirovaly tvůrce Godzilly; další dva jsou Tyrannosaurus a Stegosaurus. Iguanodon se objevil i v některých filmech série The Land Before Time či epizodách stejnojmenného televizního seriálu.“",  
       imgSrc: "./images/images_lg/iguanodon.jpg",
       imgSrcSm: "./images/images_sm/iguanodon.jpg",
       cardCls: "iguano",
@@ -140,7 +140,7 @@
     },
     Pteranodon: {
       name: "Pteranodon",
-      era: "Svrchní křída - asi před 86 až 84,5 miliony let",
+      era: "svrchní křída - asi před 86 až 84,5 miliony let",
       food: "masožravec",
       foodCls: "my-red",
       height: "-",
@@ -155,7 +155,7 @@
     },
     Spinosaurus: {
       name: "Spinosaurus",
-      era: "Přelom spodní a svrchní křídy - asi před 112 až 97 miliony let",
+      era: "přelom spodní a svrchní křídy - asi před 112 až 97 miliony let",
       food: "masožravec",
       foodCls: "my-red",
       height: "-",
@@ -170,7 +170,7 @@
     },
     Triceratops: {
       name: "Triceratops",
-      era: "Svrchní křída - asi před 68 až 66 miliony let",
+      era: "svrchní křída - asi před 68 až 66 miliony let",
       food: "býložravec",
       foodCls: "my-green",
       height: "-",
@@ -185,7 +185,7 @@
     },
     Apatosaurus: {
       name: "Apatosaurus",
-      era: "Svrchní jura - asi před 150 miliony let",
+      era: "svrchní jura - asi před 150 miliony let",
       food: "býložravec",
       foodCls: "my-green",
       height: "-",
@@ -198,12 +198,72 @@
       source: "https://cs.wikipedia.org/wiki/Apatosaurus",
       toolTip: "https://pixabay.com/",
     },
+    Velociraptor: {
+      name: "Velociraptor",
+      era: "svrchní křída - asi před 75 až 71 miliony let",
+      food: "masožravec",
+      foodCls: "my-red",
+      height: "-",
+      length: "2,1 metru",
+      weigth: "až 25 kilogramů",
+      interestingPoint: "„Tento dinosaurus je známý především díky své záporné „roli“ dravého zabijáka ve velkofilmu Jurský park z roku 1993 (i jeho třech pokračování a také ve filmu Jurský svět). V tomto filmu byl velociraptor ve svých charakteristikách prezentován dosti přehnaně (dvakrát větší než ve skutečnosti, neuvěřitelně inteligentní, bleskově rychlý, s nekonečným apetitem). Důvodem je prostá skutečnost, že filmový velociraptor byl vytvořen podle svého severoamerického příbuzného, mohutnějšího rodu Deinonychus (v době natáčení filmu panovala mezi některými vědci domněnka, že se jedná o stejný rod). Objevuje se také například v pseudo-dokumentárním cyklu Dinosaur Planet z roku 2003, v díle seriálu Putování s dinosaury: Gigantičtí ještěři a kameo hraje také v Putování s dinosaury: Monstra pravěkých oceánů, kde na začátku pronásleduje hlavního hrdinu. Mládě Velociraptora se objevuje také ve čtvrté epizodě třetí řady britského sci-fi seriálu Pravěk útočí.“",  
+      imgSrc: "./images/images_lg/velociraptor.png",
+      imgSrcSm: "./images/images_sm/velociraptor.png",
+      cardCls: "veloci",
+      source: "https://cs.wikipedia.org/wiki/Velociraptor",
+      toolTip: "https://pixabay.com/",
+    },
+    Carnotaurus: {
+      name: "Carnotaurus",
+      era: "svrchní křída - asi před 72 až 69,9 miliony let",
+      food: "masožravec",
+      foodCls: "my-red",
+      height: "až 8 metrů",
+      length: "až 9 metrů",
+      weigth: "až 2 700 kilogramů",
+      interestingPoint: "„Carnotaurus schopný měnit barvu kůže (literární smyšlenka) se objevuje také v románu Michaela Crichtona Ztracený svět: Jurský park. Model kostry karnotaura o délce 8 metrů je od prosince roku 2008 možné vidět v Chlupáčově muzeu historie Země v Praze. Jde o vůbec první dinosauří kostru v Čechách, umístěnou v trvalé expozici.“",  
+      imgSrc: "./images/images_lg/carnotaurus.jpg",
+      imgSrcSm: "./images/images_sm/carnotaurus.jpg",
+      cardCls: "carno",
+      source: "https://cs.wikipedia.org/wiki/Carnotaurus",
+      toolTip: "https://pixabay.com/",
+    },
+    Allosaurus: {
+      name: "Allosaurus",
+      era: "svrchní jura - asi před 155 až 150 miliony let",
+      food: "masožravec",
+      foodCls: "my-red",
+      height: "až 12 metrů",
+      length: "7 až 9 metrů",
+      weigth: "až 3 000 kilogramů",
+      interestingPoint: "„Allosaurus se objevil v Putování s dinosaury - Balada o Alosaurovi.“",  
+      imgSrc: "./images/images_lg/allosaurus.jpg",
+      imgSrcSm: "./images/images_sm/allosaurus.jpg",
+      cardCls: "carno",
+      source: "https://cs.wikipedia.org/wiki/Allosaurus",
+      toolTip: "https://pixabay.com/",
+    },
+    Parasaurolophus: {
+      name: "Parasaurolophus",
+      era: "svrchní křída - asi před 76 až 74 miliony let",
+      food: "býložravec",
+      foodCls: "my-red",
+      height: "až 5 metrů",
+      length: "až 10 metrů",
+      weigth: "až 2 800 kilogramů",
+      interestingPoint: "„Parasaurolofové se objevují v románu i filmu Jurský park i ve filmu Jurský park 3. Jsou správně zobrazeni jako stádní zvířata, dorozumívající se troubením za pomoci svých lebečních hřebenů. Stejně tak se objevují v šestém díle seriálu Prehistorický park nebo též v trikovém dokumentu Země albertosaura.“",  
+      imgSrc: "./images/images_lg/parasaurolophus.jpg",
+      imgSrcSm: "./images/images_sm/parasaurolophus.jpg",
+      cardCls: "parasaur",
+      source: "https://cs.wikipedia.org/wiki/Parasaurolophus",
+      toolTip: "https://pixabay.com/",
+    },
 
   }
 
   return {
-    getDinosArray: function () {
-      return dinosArray;
+    getDinosObj: function () {
+      return dinosObj;
     }
   }
 })();

@@ -1,6 +1,10 @@
 /* ||| results.html page styles */
 
 /* || General quiz styles */
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
 .indicator {
   text-align: center;
   border: 0px solid var(--my-grey-green);
@@ -68,6 +72,25 @@
 
 #game-type, #time {
   font-weight: 700;
+}
+
+/* || Questions answers UI - questions, images, indicators */
+
+/* Images and correct ansers texts */
+.correct-answers {
+  border-right: 1px solid var(--my-dark-blue);
+}
+
+.correct-answers i {
+  font-size: 1.5rem;
+  color: var(--my-grey-green);
+}
+
+/* Images and incorrect ansers texts */
+
+.incorrect-answers i {
+  font-size: 1.5rem;
+  color: var(--my-red);
 }
 
 #question-answers-container a {

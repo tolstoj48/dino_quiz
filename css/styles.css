@@ -347,3 +347,8 @@ li.first-li a {
     display: none;
   }
 }
+
+/* Materialize fix 1px white under li elements in the navigation ul */
+.dropdown-content li>a, .dropdown-content li>span {
+  padding-bottom: 15px;
+}

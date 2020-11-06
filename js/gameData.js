@@ -27,7 +27,7 @@ Game data controler - fetches all the data
         },
         3: {
           question: "<img src='./images/images_lg/argentinosaurus.jpg' alt='dino-image'>",
-          answers: ["Argentinosaurus", "Stagosaurus", "Spinosaurus", "Apatosaurus"],
+          answers: ["Argentinosaurus", "Stegosaurus", "Spinosaurus", "Apatosaurus"],
           correctAnswer: "Argentinosaurus",
         },
         4: {
@@ -69,6 +69,26 @@ Game data controler - fetches all the data
           question: "<img src='./images/images_lg/tyrannosaurus.jpg' alt='dino-image'>",
           answers: ["Spinosaurus", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
           correctAnswer: "Tyrannosaurus",
+        },
+        12: {
+          question: "<img src='./images/images_lg/velociraptor.png' alt='dino-image'>",
+          answers: ["Archeopteryx", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
+          correctAnswer: "Velociraptor",
+        },
+        13: {
+          question: "<img src='./images/images_lg/carnotaurus.jpg' alt='dino-image'>",
+          answers: ["Archeopteryx", "Apatosaurus", "Tyrannosaurus", "Carnotaurus"],
+          correctAnswer: "Carnotaurus",
+        },
+        14: {
+          question: "<img src='./images/images_lg/parasaurolophus.png' alt='dino-image'>",
+          answers: ["Ankylosaurus", "Apatosaurus", "Gallimimus", "Parasaurolophus"],
+          correctAnswer: "Parasaurolophus",
+        },
+        15: {
+          question: "<img src='./images/images_lg/allosaurus.png' alt='dino-image'>",
+          answers: ["Allosaurus", "Velociraptor", "Carnotaurus", "Parasaurolophus"],
+          correctAnswer: "Allosaurus",
         },
       },
       herbivores: {
@@ -112,6 +132,11 @@ Game data controler - fetches all the data
           answers: ["Brontosaurus", "Ankylosaurus", "Stegosaurus", "Velociraptor"],
           correctAnswer: "Stegosaurus",
         },
+        8: {
+          question: "<img src='./images/images_lg/parasaurolophus.png' alt='dino-image'>",
+          answers: ["Ankylosaurus", "Apatosaurus", "Gallimimus", "Parasaurolophus"],
+          correctAnswer: "Parasaurolophus",
+        },
       },  
       carnivores: {
         0: {
@@ -134,6 +159,20 @@ Game data controler - fetches all the data
           answers: ["Spinosaurus", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
           correctAnswer: "Tyrannosaurus",
         },
+        4: {
+          question: "<img src='./images/images_lg/velociraptor.png' alt='dino-image'>",
+          answers: ["Archeopteryx", "Velociraptor", "Tyrannosaurus", "Gallimimus"],
+          correctAnswer: "Velociraptor",
+        },
+        5: {
+          question: "<img src='./images/images_lg/carnotaurus.png' alt='dino-image'>",
+          answers: ["Archeopteryx", "Apatosaurus", "Tyrannosaurus", "Carnotaurus"],
+          correctAnswer: "Carnotaurus",
+        },
+        15: {
+          question: "<img src='./images/images_lg/allosaurus.png' alt='dino-image'>",
+          answers: ["Allosaurus", "Velociraptor", "Carnotaurus", "Parasaurolophus"],
+          correctAnswer: "Allosaurus",
       }
     }, 
     quiz: {
@@ -169,7 +208,7 @@ Game data controler - fetches all the data
         },
       }
     }
-  }
+  }}
 
 // Gets the final data object from the data object - base on parameters
 const fetchChoosenData = function fetchChoosenData (gameType, gameId, randomNumbersArray) {
@@ -178,7 +217,6 @@ const fetchChoosenData = function fetchChoosenData (gameType, gameId, randomNumb
   randomNumbersArray.forEach( (element, index) => {
     finalDataObj[index] = allDataObj[gameType][gameId][element];
   })
-  console.log(finalDataObj);
   return finalDataObj;
 }
   

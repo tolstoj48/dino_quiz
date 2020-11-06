@@ -1,5 +1,5 @@
-// IIFE
-;(function appIIFE() {
+// Man block scope
+;{
     "use strict";
 
     //ItemCtrl
@@ -85,5 +85,4 @@
     })(UICtrl);
 
     App.init();
-  }
-)();
+}

@@ -1,5 +1,5 @@
-// IIFE
-;(function searchBarAutocompleteIIEF () {
+// Man block scope
+;{
     "use strict";
 
     // Autocomplete solution for the search bar
@@ -7,27 +7,26 @@
     
       // Load event listeners
       const loadEventListeners = function () {
+        // Getting corect obj of all dinos for search autocomplete
+        const dinosObj = DinosListObjCtrl.getDinosObj();
+        const dinosObjFinal = {};
+        for (let property in dinosObj) {
+          dinosObjFinal[property] = dinosObj[property]["imgSrc"];
+        };
+
+        // Search bar initialization
         document.addEventListener("DOMContentLoaded", function () {
           let elems = document.querySelectorAll(".autocomplete");
           let instances = M.Autocomplete.init(elems, {
-            data: DinosListObjCtrl.getDinosArray(),
+            data: DinosListObjCtrl.getDinosObj(),
             limit: 3,
             onAutocomplete: setGlobalVariable,
           });
-          M.Autocomplete.getInstance(elems[0]).updateData({
-            "Ankylosaurus": "./images/ankylosaurus.png",
-            "Stegosaurus": "./images/stegosaurus.png",
-            "Amargasaurus": "./images/amargasaurus.png",
-            "Argentinosaurus": "./images/argentinosaurus.jpg",
-            "Archeopteryx": "./images/archeopteryx.png",
-            "Brachiosaurus": "./images/brachiosaurus.png",
-            "Diplodocus": "./images/diplodocus.png",
-            "Iguanodon": "./images/iguanodon.jpg",
-            "Pteranodon": "./images/pteranodon.png",
-            "Spinosaurus": "./images/spinosaurus.png",
-            "Triceratops": "./images/triceratops.png",
-            "Tyrannosaurus": "./images/tyrannosaurus.jpg",
-          })
+          
+        // Data for search bar autocomplete updated base on obj of all dinos
+          M.Autocomplete.getInstance(elems[0]).updateData(
+            dinosObjFinal
+          )
         })
       }
     
@@ -44,8 +43,6 @@
           loadEventListeners();
         }
       }
-    })();
-
+    })()
     SearchBarCtrl.init();
-  }
-)();
+}

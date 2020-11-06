@@ -1,5 +1,5 @@
-// IIFE
-;(function gameAppIIFE() {
+// Man block scope
+;{
     "use strict";
 
     //Data Controler
@@ -68,7 +68,7 @@
         }
       }
 
-    // Saves answers to localStorage
+    // Save answers to localStorage
     const answers = {};
     const saveAnswer = function saveAnswer(answer) {
       if (localStorage.getItem("answers") === null || !localStorage.getItem("answers")) {
@@ -81,12 +81,12 @@
       }
       }
 
-    // Gets answers from localStorage
+    // Get answers from localStorage
     const getAnswersFromLocalStorage = function getAnswersFromLocalStorage() {
       return JSON.parse(localStorage.getItem("answers"));
     }
 
-    // Deletes answers item in localStorage
+    // Delete answers item in localStorage
     const deleteAnswersItem = function deleteAnswersItem() {
       localStorage.removeItem("answers");
     }
@@ -202,7 +202,7 @@
       getCorrectAnswers: function() {
         return getCorrectAnswers();
       },
-      // Saves restult to the localStorage
+      // Save restult to the localStorage
       saveResultsToLocalStorage: function (date, numberOfCorrectAnswers, finalTime) {
         saveResultsToLocalStorage(date, numberOfCorrectAnswers, finalTime);
         return true;
@@ -220,11 +220,13 @@
         resultTable: "#result-table",
         questionContainer: "#question-container",
         answersList: "#answers-list",
-        correctAnswers: "#correct-answers",
-        incorrectAnswers: "#incorrect-answers",
+        correctAnswers: ".correct-answers",
+        incorrectAnswers: ".incorrect-answers",
         time: "#time",
         questionsAnswersContainer: "#question-answers-container",
         indicator: ".indicator",
+        openOverviewBtn: "#open-overview-btn",
+        overview: "#overview",
       };
 
       const eventListenersInit = function eventListenersInit() {
@@ -268,6 +270,29 @@
           element.addEventListener("click", DataCtrl.setCurrentGameId)
         })
 
+        // Set listener to the button for opening the list of correct and incorrect answers
+        const openOverviewBtn = document.querySelector(UISelectors.openOverviewBtn);
+        openOverviewBtn.addEventListener("click", function () {
+          const overview = document.querySelector(UISelectors.overview);
+          // Toggle materialize hide class depending on the state
+          overview.classList.toggle("hide");
+          // Change the text of the open button of the list of correct and incorrect answers
+          openOverviewBtn.textContent = openOverviewBtn.textContent.includes("Otevřít") ?  "Zavřít přehled správných a špatných odpovědí" : "Otevřít přehled správných a špatných odpovědí";
+          }
+        );
+
+      }
+
+      // Insert img with correct name of dino in the correct div list
+      const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
+        console.log(correctAnswerDataObj);
+        let correctDivCard = document.createElement("div");
+        correctDivCard.innerHTML = `
+          ${correctAnswerDataObj.question}${correctAnswerDataObj.correctAnswer}`;
+        correctDivCard.className = "col s6";
+        // To which wrapper wrap the created div
+        let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
+        answersWrapper.appendChild(correctDivCard);
       }
 
       // Init of the game UI
@@ -312,15 +337,18 @@
             // Get answers saved in localStorage
             let answersFromLS = DataCtrl.getAnswersFromLocalStorage();
             let lastCorrectnessIndicator = Array.from(correctnessIndicatorList)[Object.keys(answersFromLS)[Object.keys(answersFromLS).length-1]];
+            const correctAnswerDetailInfoObj = DataCtrl.getQuestions()[Object.keys(answersFromLS).length-1];
             // Is userAnswer equal to correct question from questions set
-            if (userAnswer === DataCtrl.getQuestions()[Object.keys(answersFromLS).length-1].correctAnswer) {
+            if (userAnswer === correctAnswerDetailInfoObj.correctAnswer) {
               // Set correct mark in correctnes indicator list
               lastCorrectnessIndicator.innerHTML="+";
               lastCorrectnessIndicator.classList.add("my-grey-green");
+              insertCorrectImgAndName(correctAnswerDetailInfoObj, true);
             } else {
               // Set incorrect mark in correctnes indicator list
               lastCorrectnessIndicator.innerHTML="x";
               lastCorrectnessIndicator.classList.add("my-red");
+              insertCorrectImgAndName(correctAnswerDetailInfoObj, false);
             }       
             // Get another question from generator function
             clicker.next();
@@ -361,7 +389,7 @@
         } else {
           UIAnswersCounter = 1;
           endOfGameStateUI(interval);
-      }
+        }
       }
 
       const endOfGameStateUI = function endOfGameStateUI(interval) {
@@ -387,15 +415,14 @@
 
         // End state html markup
         container.innerHTML=`
-        <div class="col s12 margin-top-2rem">
+          <div class="col s12 margin-top-2rem">
           Správně jsi zodpověděl/a celkem
           ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${finalTime}
           <br><br>
           Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
           <br><br>
           <a href="${localStorage.getItem("gameTypeId")}.html"> <em>Zopakovat </em> <i class="fas fa-redo-alt"></i></a>
-        </div>
-        `;
+        </div>`;
 
         // Send the number of correct answers and user´s final time to localStorage
         DataCtrl.saveResultsToLocalStorage(new Date(), correctAnswersCounter, finalTime);
@@ -446,7 +473,6 @@
     })(UICtrl, DataCtrl);
 
     App.init();
-  }
-)();
+}
 
 

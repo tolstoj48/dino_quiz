@@ -1,5 +1,5 @@
-// IIEF
-;(function typewriterEffectIIEF() {
+// Man block scope
+;{
 		"use strict";
 
 		const TypeWriterEffect = (function(){
@@ -80,5 +80,4 @@
 		})();
 
 		TypeWriterEffect.init();
-	}
-)();
+}
