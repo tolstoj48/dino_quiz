@@ -9,7 +9,7 @@
       const setCurrentGameId = function (e) {
         localStorage.setItem("gameId", e.target.text);
         localStorage.setItem("gameTypeId", e.target.className);
-      }
+      };
 
       //Get results
       const getResults = function () {
@@ -53,7 +53,7 @@
         } else {
           return false;
         }
-      }
+      };
 
       return {
         // To set current game type and id based on the last link click
@@ -68,9 +68,8 @@
         getSortedData: function (accordingToKey, gameTypeId, gameId) {
           return getSortedData(accordingToKey, gameTypeId, gameId);
         },
-        }
-      }
-    )();
+      };
+    })();
 
     // UI controler
     const UICtrlResults = (function () {
@@ -83,7 +82,8 @@
         recognitionFrame: "#recognition-frame",
         correctAnswersKey: ".result",
         endTimeKey: ".time"
-      }
+      };
+
       // Map for UI names of results tables
       const UIMapNames = {
         all: "Všichni dinosauři <i class='fas fa-leaf right'></i><i class='fas fa-drumstick-bite right'></i>",
@@ -91,7 +91,8 @@
         carnivores: "Masožravci <i class='fas fa-drumstick-bite right'></i>",
         quiz: "Kvíz",
         recognition: "Poznávačka"
-      }
+      };
+
       // Map for UI classes
       const UIMapClasses = {
         all: "my-blue-results",
@@ -109,13 +110,12 @@
             coverTrigger: false,
             constrainWidth: false,
           });
-
         });
 
         // Materialize setup for carousel
         document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.carousel');
-          let instances = M.Carousel.init(elems, {
+          const elems = document.querySelectorAll('.carousel');
+          const instances = M.Carousel.init(elems, {
             numVisible: 10,
             dist: -60,
           });
@@ -123,8 +123,8 @@
 
         // Materialize setup for sidenav menu
         document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.sidenav');
-          let instances = M.Sidenav.init(elems);
+          const elems = document.querySelectorAll('.sidenav');
+          const instances = M.Sidenav.init(elems);
         });
 
         /* 
@@ -135,18 +135,18 @@
         const arrAllRecognLinks = document.querySelectorAll(UISelectors.recognition);
         Array.from(arrAllQuizLinks).forEach(element => {
           element.addEventListener("click", DataCtrl.setCurrentGameId)
-        })
+        });
         Array.from(arrAllRecognLinks).forEach(element => {
           element.addEventListener("click", DataCtrl.setCurrentGameId)
-        })
+        });
 
         const mainFrameResults = document.querySelector(UISelectors.mainFrameResults);
         mainFrameResults.addEventListener("click", function (e) {
           if (e.target.className === "result" || e.target.className === "time") {
             sortResults(e);
           }
-        })
-      }
+        });
+      };
 
       // Showing all the results from localStorage
       const showResults = function showResults(data) {
@@ -201,7 +201,7 @@
           mainSection.appendChild(mainDivToAppend);
           mainFrameResults.appendChild(mainSection);
         }}
-      }
+      };
 
       const showSortedData = function (sortedData, e) {
         let html = "";
@@ -220,21 +220,21 @@
               <td>${element["time"]}</td>
             </tr>`;
           }
-        })
+        });
         e.target.parentElement.parentElement.parentElement.childNodes[3].innerHTML = html;
-      }
+      };
 
       // Inititalize sorting UI
       const sortResults = function (e) {
         // Get the key according which is sorted
-        let accordingToKey = e.target.className;
+        const accordingToKey = e.target.className;
         // Get gameId by traversing from the clicked key
-        let gameId = e.target.parentElement.parentElement.parentElement.previousElementSibling.textContent.trim();
-        let gameTypeId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.textContent.trim();
-        let sortedData = DataCtrl.getSortedData(accordingToKey, gameTypeId, gameId);
+        const gameId = e.target.parentElement.parentElement.parentElement.previousElementSibling.textContent.trim();
+        const gameTypeId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.textContent.trim();
+        const sortedData = DataCtrl.getSortedData(accordingToKey, gameTypeId, gameId);
         // Send sorted data
         showSortedData(sortedData, e);
-      }
+      };
 
       return {
         eventListenersInit: function(){
@@ -245,7 +245,7 @@
         showResults: function (data) {
           showResults(data);
         },
-      }
+      };
     })();
 
 
@@ -256,16 +256,15 @@
       return {
         init: function () {
           // Getting all results data from localStorage
-          let data = DataCtrl.getResults();
+          const data = DataCtrl.getResults();
           // Loading event listeners
           UICtrlResults.eventListenersInit();
           // Showing all the results from localStorage
           UICtrlResults.showResults(data);
         },
-      }
+      };
 
     })(UICtrlResults, DataCtrl);
-
     ResultsApp.init();
 }
 

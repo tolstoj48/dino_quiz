@@ -10,7 +10,7 @@
         pasted: "#pasted",
         navDinos: "#nav-dinos",
         carousel: ".carousel",
-      }
+      };
     
       // Shows and switches detail of dino
       const showHTMLDinoDetail = function (dinoDetailData) {
@@ -75,16 +75,16 @@
           document.querySelector(UISelectors.main).appendChild(div);
         }
         document.addEventListener('mouseover', function() {
-          let elems = document.querySelector('.tooltipped');
-          let instances = M.Tooltip.init(elems);
+          const elems = document.querySelector('.tooltipped');
+          const instances = M.Tooltip.init(elems);
         });
-      }
+      };
     
       // Move to position of the detail information
       const moveToDinoDetail = function () {
-        let rect = document.querySelector(UISelectors.navDinos);
+        const rect = document.querySelector(UISelectors.navDinos);
         rect.scrollIntoView();
-      }
+      };
     
       return {
 
@@ -111,7 +111,7 @@
           return UISelectors;
         }
       
-      }
+      };
     })();
 
     // Item Controler
@@ -123,7 +123,7 @@
         getDinoDetailData: function (name) {
           return data[name];
         }
-      }
+      };
     })();
 
 
@@ -147,7 +147,7 @@
   
         document.querySelector(UISelectors.carousel).innerHTML = htmlCarousel;
         document.querySelector(UISelectors.navDinos).innerHTML = htmlNavDinos;
-      }
+      };
 
       // Load event listeners
       const loadEventListeners = function() {
@@ -156,8 +156,8 @@
           element.addEventListener("click", UICtrlDinoList.showDinoDetail);        
           // Materialize setup for carousel
          document.addEventListener('DOMContentLoaded', function() {
-            let elem = document.querySelector('.carousel');
-            let instances = M.Carousel.init(elem, {
+            const elem = document.querySelector('.carousel');
+            const instances = M.Carousel.init(elem, {
               numVisible: 12,
               dist: -80,
             })       
@@ -165,7 +165,7 @@
     
           // Left, right arrow keypresses for the carousel on the page
           document.addEventListener("keydown", function (event) {
-            let elem = document.querySelector('.carousel');
+            const elem = document.querySelector('.carousel');
             if (event.which == 37) {
               M.Carousel.getInstance(elem).prev();
             } else if (event.which == 39) {
@@ -173,7 +173,7 @@
             }
           });
         })
-      }
+      };
     
       // Lists all dinos from dinsoData object
       const listDinos = function () {
@@ -192,7 +192,7 @@
           UICtrlDinoList.showDinoDetailFromSearchBar(localStorage.getItem("clickedDino"));
           localStorage.removeItem("clickedDino");
        }
-      }
+      };
     
       // Public methods
       return {
@@ -208,12 +208,9 @@
         listDinos: function(){
           listDinos()
         }
-      }
+      };
     
-    })(UICtrlDinoList)
+    })(UICtrlDinoList);
     
     AppDinoList.init();
 }
-
-
-

@@ -8,7 +8,7 @@
       const setCurrentGameId = function (e) {
         localStorage.setItem("gameId", e.target.text);
         localStorage.setItem("gameTypeId", e.target.className);
-      }
+      };
 
       return {
         // To set current game type and id based on the last link click
@@ -22,7 +22,7 @@
             type: localStorage.getItem("gameTypeId"),
           }
         }
-      }
+      };
     })();
 
     // UI controler
@@ -30,7 +30,7 @@
       const UISelectors = {
         quiz: ".quiz",
         recognition: ".recognition",
-      }
+      };
 
       const eventListenersInit = function eventListenersInit() {
         // Materialize setup for dropdowns in menu
@@ -47,8 +47,8 @@
 
         // Materialize setup for sidenav menu
         document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.sidenav');
-          let instances = M.Sidenav.init(elems);
+          const elems = document.querySelectorAll('.sidenav');
+          const instances = M.Sidenav.init(elems);
         });
 
         /* 
@@ -59,17 +59,17 @@
         const arrAllRecognLinks = document.querySelectorAll(UISelectors.recognition);
         Array.from(arrAllQuizLinks).forEach(element => {
           element.addEventListener("click", ItemCtrl.setCurrentGameId)
-        })
+        });
         Array.from(arrAllRecognLinks).forEach(element => {
           element.addEventListener("click", ItemCtrl.setCurrentGameId)
-        })
-
-      }
+        });
+      };
 
       return {
         eventListenersInit: function(){
           eventListenersInit()
-      }}
+        }
+      };
     })();
 
     // Application controler
@@ -80,7 +80,7 @@
           // Loading event listeners
           UICtrl.eventListenersInit();
         },
-      }
+      };
 
     })(UICtrl);
 

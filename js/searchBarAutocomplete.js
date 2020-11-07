@@ -16,8 +16,8 @@
 
         // Search bar initialization
         document.addEventListener("DOMContentLoaded", function () {
-          let elems = document.querySelectorAll(".autocomplete");
-          let instances = M.Autocomplete.init(elems, {
+          const elems = document.querySelectorAll(".autocomplete");
+          const instances = M.Autocomplete.init(elems, {
             data: DinosListObjCtrl.getDinosObj(),
             limit: 3,
             onAutocomplete: setGlobalVariable,
@@ -28,21 +28,20 @@
             dinosObjFinal
           )
         })
-      }
+      };
     
       // Set variable for redirection to list of dinos
       const setGlobalVariable = function (e) {
         localStorage.setItem("clickedDino", e);
         window.location.href = "dinos.html";
-      
-      }
+      };
     
       return {
         init: function () {
           // Load event listener for the bar
           loadEventListeners();
         }
-      }
-    })()
+      };
+    })();
     SearchBarCtrl.init();
 }

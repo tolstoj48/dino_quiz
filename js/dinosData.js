@@ -258,12 +258,11 @@
       source: "https://cs.wikipedia.org/wiki/Parasaurolophus",
       toolTip: "https://pixabay.com/",
     },
-
-  }
+  };
 
   return {
     getDinosObj: function () {
       return dinosObj;
     }
-  }
+  };
 })();

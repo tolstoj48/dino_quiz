@@ -69,15 +69,13 @@
 		
 		  const init = function() {
 		    intervalVal = setInterval(Type, 150);
-		  }
+		  };
 		
-		return {
-		  init: function () {
-		    init();
-		  }
-		}
-
+			return {
+				init: function () {
+					init();
+				}
+			};
 		})();
-
 		TypeWriterEffect.init();
 }

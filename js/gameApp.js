@@ -12,7 +12,8 @@
     const setCurrentGameId = function (e) {
       localStorage.setItem("gameId", e.target.text);
       localStorage.setItem("gameTypeId", e.target.className);
-    }
+    };
+
     // Set questions
     const initGetQuestions = function getQuestions() {
       const map = {
@@ -23,12 +24,12 @@
       const gameId = localStorage.getItem("gameId");
       const gameType = localStorage.getItem("gameTypeId");
       questionsAnswers = GameDataCtrl.fetchChoosenData(gameType,map[gameId]);
-    }
+    };
 
     // Get questions
     const getQuestions = function getQuestions() {
       return questionsAnswers;
-    }
+    };
 
       // Setting game timer
       const setTime = function setTime(timeElement) {
@@ -59,14 +60,14 @@
           }
         }, 1000);
         return interval;
-      }
+      };
 
       // Generator fetching next question
       const getNextQuestion = function* gen(questionsObj) {
         for (const property in questionsObj) {
           yield questionsObj[property];
         }
-      }
+      };
 
     // Save answers to localStorage
     const answers = {};
@@ -79,29 +80,29 @@
         localStorageAnswers[Object.keys(localStorageAnswers).length] = answer;
         localStorage.setItem("answers", JSON.stringify(localStorageAnswers));
       }
-      }
+      };
 
     // Get answers from localStorage
     const getAnswersFromLocalStorage = function getAnswersFromLocalStorage() {
       return JSON.parse(localStorage.getItem("answers"));
-    }
+    };
 
     // Delete answers item in localStorage
     const deleteAnswersItem = function deleteAnswersItem() {
       localStorage.removeItem("answers");
-    }
+    };
 
     // Get correct answers from JS array file based on choosen type game saved in localStorage
     const getCorrectAnswers = function getCorrectAnswers() {
       let counter = 0;
       let correctAnswers = {}
-      let questionsObj = getQuestions();
+      const questionsObj = getQuestions();
       for (const property in questionsObj) {
         correctAnswers[counter] = questionsObj[property].correctAnswer;
         counter += 1;
       }
       return correctAnswers;
-    }
+    };
 
     // Saves correct answers number and the user´s end time to localStorage
     const saveResultsToLocalStorage = function (date, numberOfCorrectAnswers, finalTime) {
@@ -109,7 +110,7 @@
       let gameId = localStorage.getItem("gameId");
       let resultsTable = {};
       let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-      // If localStorage doesnt contain results, set up the table
+      // If localStorage doesn¨t contain results, set up the table
       if (localStorage.getItem("resultsArray") === null) {
         resultsTable = {
           quiz: {
@@ -146,15 +147,15 @@
         date: date.getUTCDate() + 
         ". " + months[date.getUTCMonth()] + 
         ". " + date.getUTCFullYear() + 
-        " " + date.getHours() + 
+        " " + date.getHours() +
+        // Insert null at the start of the minutes number 
         ":" + date.getUTCMinutes().toString().padStart(2,0),
         result: numberOfCorrectAnswers,
         time: finalTime
       }
       // Save new results to the localStorage variable
       localStorage.setItem("resultsArray", JSON.stringify(resultsTable));
-
-    }
+    };
 
     return {
       // To set current game type and id based on the last link click
@@ -187,7 +188,7 @@
         return finalTime;
       },
       getNextQuestion: function () {
-        let questions = getQuestions();
+        const questions = getQuestions();
         return getNextQuestion(questions);
       },
       saveAnswer: function (answer) {
@@ -207,7 +208,8 @@
         saveResultsToLocalStorage(date, numberOfCorrectAnswers, finalTime);
         return true;
       }
-    }})();
+    };
+  })();
 
     // UI controler
     const UICtrl = (function () {
@@ -244,8 +246,8 @@
 
         // Materialize setup for carousel
         document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.carousel');
-          let instances = M.Carousel.init(elems, {
+          const elems = document.querySelectorAll('.carousel');
+          const instances = M.Carousel.init(elems, {
             numVisible: 10,
             dist: -60,
           });
@@ -253,8 +255,8 @@
 
         // Materialize setup for sidenav menu
         document.addEventListener('DOMContentLoaded', function() {
-          let elems = document.querySelectorAll('.sidenav');
-          let instances = M.Sidenav.init(elems);
+          const elems = document.querySelectorAll('.sidenav');
+          const instances = M.Sidenav.init(elems);
         });
 
         /* 
@@ -280,12 +282,10 @@
           openOverviewBtn.textContent = openOverviewBtn.textContent.includes("Otevřít") ?  "Zavřít přehled správných a špatných odpovědí" : "Otevřít přehled správných a špatných odpovědí";
           }
         );
-
-      }
+      };
 
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
-        console.log(correctAnswerDataObj);
         let correctDivCard = document.createElement("div");
         correctDivCard.innerHTML = `
           ${correctAnswerDataObj.question}${correctAnswerDataObj.correctAnswer}`;
@@ -293,7 +293,7 @@
         // To which wrapper wrap the created div
         let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
         answersWrapper.appendChild(correctDivCard);
-      }
+      };
 
       // Init of the game UI
       const initilizeGameUIContent = function initilizeGameUI(interval) {
@@ -316,7 +316,7 @@
         let html = ``;
         let answersList = document.querySelector(UISelectors.answersList);
         questionSet[0].answers.forEach((answer, index) => {
-          html += `<li id=${index} class="answer-item collection-item col s4">${answer}</li>`
+          html += `<li id=${index} class="answer-item collection-item col s12 m5">${answer}</li>`
         })
         answersList.innerHTML = html;
 
@@ -356,7 +356,7 @@
             nextQuestionUI(clicker, interval);
           }
         })
-      }
+      };
 
       // Next question UI
       const nextQuestionUI = function nextQuestionUI(clicker, interval) {
@@ -372,7 +372,7 @@
          title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
         }
         gameTypeName.innerHTML = title;
-        // Last answer or not
+        // Last answer or not?
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);
           questionContainer.innerHTML = questionSet[UIAnswersCounter].question; // 
@@ -380,7 +380,7 @@
           let html = ``;
           let answersList = document.querySelector(UISelectors.answersList);
           questionSet[UIAnswersCounter].answers.forEach((answer, index) => {
-            html += `<li id=${index} class="answer-item collection-item col s">${answer}</li>`
+            html += `<li id=${index} class="answer-item collection-item col s12 m5">${answer}</li>`
           })
           answersList.innerHTML = html;
           // Counter of number of answered questions
@@ -390,7 +390,7 @@
           UIAnswersCounter = 1;
           endOfGameStateUI(interval);
         }
-      }
+      };
 
       const endOfGameStateUI = function endOfGameStateUI(interval) {
         // Final time for results table and UI
@@ -430,13 +430,12 @@
         clearInterval(interval);
         // Deletes users answers (item "answers") from localStorage
         DataCtrl.deleteAnswersItem();
-      }
+      };
 
       return {
         // Adding listeners
         eventListenersInit: function(){
           return eventListenersInit();
-
       },
         // Initialization of game
         initilizeGameUI: function (questions) {
@@ -468,11 +467,9 @@
           // Inititalization of a game
           UICtrl.initilizeGameUI(clicker);
         },
-      }
+      };
 
     })(UICtrl, DataCtrl);
 
     App.init();
 }
-
-
