@@ -60,7 +60,7 @@
                 </div>
               </article>
             </div>`;
-        if (document.querySelector(UISelectors.pasted) === null ) {
+        if (document.querySelector(UISelectors.pasted) == null ) {
           let div = document.createElement("div");
           div.className = "container";
           div.id = "pasted";
@@ -140,7 +140,7 @@
         // Sort the object alphabetically
         const keys = Object.keys(dinosObj);
         keys.sort();
-        for(var i=0; i<keys.length; ++i){
+        for(let i = 0; i < keys.length; ++i){
           htmlCarousel += `<a class="carousel-item dino-link" href="#"><img src="${dinosObj[keys[i]]["imgSrcSm"]}" alt="${keys[i]}" >${keys[i]}</a>`
           htmlNavDinos += `<li><a class="dino-link" href="#">${keys[i]}</a></li>`
         }
@@ -163,12 +163,12 @@
             })       
           });
     
-          // Left, right arrow keypresses for the carousel on the page
+          // Left, right arrow keypresses for the carousel list of dinos
           document.addEventListener("keydown", function (event) {
             const elem = document.querySelector('.carousel');
-            if (event.which == 37) {
+            if (event.key == "ArrowLeft") {
               M.Carousel.getInstance(elem).prev();
-            } else if (event.which == 39) {
+            } else if (event.key == "ArrowRight") {
               M.Carousel.getInstance(elem).next();
             }
           });

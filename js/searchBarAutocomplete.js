@@ -11,7 +11,7 @@
         const dinosObj = DinosListObjCtrl.getDinosObj();
         const dinosObjFinal = {};
         for (let property in dinosObj) {
-          dinosObjFinal[property] = dinosObj[property]["imgSrc"];
+          dinosObjFinal[property] = dinosObj[property]["imgSrcSm"];
         };
 
         // Search bar initialization

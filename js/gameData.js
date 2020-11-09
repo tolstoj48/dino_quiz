@@ -39,37 +39,52 @@ Game data controler - fetches all the data
 
   // All questions with categories
   const arrOfQuestionsCorrectAnswers = [
-    ["recognition", "all",`<img src='${dataObj["Allosaurus"]["imgSrc"]}' alt='dino-image'>`, "Allosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Amargasaurus"]["imgSrc"]}' alt='dino-image'>`, "Amargasaurus"],
-    ["recognition", "all",`<img src='${dataObj["Apatosaurus"]["imgSrc"]}' alt='dino-image'>`, "Apatosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Argentinosaurus"]["imgSrc"]}' alt='dino-image'>`, "Argentinosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Archeopteryx"]["imgSrc"]}' alt='dino-image'>`, "Archeopteryx"],
-    ["recognition", "all",`<img src='${dataObj["Brachiosaurus"]["imgSrc"]}' alt='dino-image'>`, "Brachiosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Diplodocus"]["imgSrc"]}' alt='dino-image'>`, "Diplodocus"],
-    ["recognition", "all",`<img src='${dataObj["Iguanodon"]["imgSrc"]}' alt='dino-image'>`, "Iguanodon"],
-    ["recognition", "all",`<img src='${dataObj["Pteranodon"]["imgSrc"]}' alt='dino-image'>`, "Pteranodon"],
-    ["recognition", "all",`<img src='${dataObj["Spinosaurus"]["imgSrc"]}' alt='dino-image'>`, "Spinosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Stegosaurus"]["imgSrc"]}' alt='dino-image'>`, "Stegosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Tyrannosaurus"]["imgSrc"]}' alt='dino-image'>`, "Tyrannosaurus"],
-    ["recognition", "all",`<img src='${dataObj["Velociraptor"]["imgSrc"]}' alt='dino-image'>`, "Velociraptor"],
-    ["recognition", "all",`<img src='${dataObj["Carnotaurus"]["imgSrc"]}' alt='dino-image'>`, "Carnotaurus"],
-    ["recognition", "all",`<img src='${dataObj["Parasaurolophus"]["imgSrc"]}' alt='dino-image'>`, "Parasaurolophus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Amargasaurus"]["imgSrc"]}' alt='dino-image'>`, "Amargasaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Ankylosaurus"]["imgSrc"]}' alt='dino-image'>`, "Ankylosaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Apatosaurus"]["imgSrc"]}' alt='dino-image'>`, "Apatosaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Argentinosaurus"]["imgSrc"]}' alt='dino-image'>`, "Argentinosaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Brachiosaurus"]["imgSrc"]}' alt='dino-image'>`, "Brachiosaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Diplodocus"]["imgSrc"]}' alt='dino-image'>`, "Diplodocus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Iguanodon"]["imgSrc"]}' alt='dino-image'>`, "Iguanodon"],
-    ["recognition", "herbivores",`<img src='${dataObj["Stegosaurus"]["imgSrc"]}' alt='dino-image'>`, "Stegosaurus"],
-    ["recognition", "herbivores",`<img src='${dataObj["Parasaurolophus"]["imgSrc"]}' alt='dino-image'>`, "Parasaurolophus"],
-    ["recognition","carnivores",`<img src='${dataObj["Allosaurus"]["imgSrc"]}' alt='dino-image'>`, "Allosaurus"],
-    ["recognition","carnivores",`<img src='${dataObj["Archeopteryx"]["imgSrc"]}' alt='dino-image'>`, "Archeopteryx"],
-    ["recognition","carnivores",`<img src='${dataObj["Carnotaurus"]["imgSrc"]}' alt='dino-image'>`, "Carnotaurus"],
-    ["recognition","carnivores",`<img src='${dataObj["Pteranodon"]["imgSrc"]}' alt='dino-image'>`, "Pteranodon"],
-    ["recognition","carnivores",`<img src='${dataObj["Spinosaurus"]["imgSrc"]}' alt='dino-image'>`, "Spinosaurus"],
-    ["recognition","carnivores",`<img src='${dataObj["Tyrannosaurus"]["imgSrc"]}' alt='dino-image'>`, "Tyrannosaurus"],
-    ["recognition","carnivores",`<img src='${dataObj["Velociraptor"]["imgSrc"]}' alt='dino-image'>`, "Velociraptor"],
+    ["recognition", "all", dataObj["Allosaurus"]["imgSrc"], dataObj["Allosaurus"]["imgSrcSm"], "Allosaurus"],
+    ["recognition", "all", dataObj["Amargasaurus"]["imgSrc"], dataObj["Amargasaurus"]["imgSrcSm"], "Amargasaurus"],
+    ["recognition", "all", dataObj["Amurosaurus"]["imgSrc"], dataObj["Amurosaurus"]["imgSrcSm"], "Amurosaurus"],
+    ["recognition", "all", dataObj["Apatosaurus"]["imgSrc"], dataObj["Apatosaurus"]["imgSrcSm"], "Apatosaurus"],
+    ["recognition", "all", dataObj["Argentinosaurus"]["imgSrc"], dataObj["Argentinosaurus"]["imgSrcSm"], "Argentinosaurus"],
+    ["recognition", "all", dataObj["Archeopteryx"]["imgSrc"], dataObj["Archeopteryx"]["imgSrcSm"], "Archeopteryx"],
+    ["recognition", "all", dataObj["Brachiosaurus"]["imgSrc"], dataObj["Brachiosaurus"]["imgSrcSm"], "Brachiosaurus"],
+    ["recognition", "all", dataObj["Condorraptor"]["imgSrc"], dataObj["Condorraptor"]["imgSrcSm"], "Condorraptor"],
+    ["recognition", "all", dataObj["Carnotaurus"]["imgSrc"], dataObj["Carnotaurus"]["imgSrcSm"], "Carnotaurus"],
+    ["recognition", "all", dataObj["Deinonychus"]["imgSrc"], dataObj["Deinonychus"]["imgSrcSm"], "Deinonychus"],
+    ["recognition", "all", dataObj["Diplodocus"]["imgSrc"], dataObj["Diplodocus"]["imgSrcSm"], "Diplodocus"],
+    ["recognition", "all", dataObj["Gallimimus"]["imgSrc"], dataObj["Gallimimus"]["imgSrcSm"], "Gallimimus"],
+    ["recognition", "all", dataObj["Iguanodon"]["imgSrc"], dataObj["Iguanodon"]["imgSrcSm"], "Iguanodon"],
+    ["recognition", "all", dataObj["Pachycephalosaurus"]["imgSrc"], dataObj["Pachycephalosaurus"]["imgSrcSm"], "Pachycephalosaurus"],
+    ["recognition", "all", dataObj["Parasaurolophus"]["imgSrc"], dataObj["Parasaurolophus"]["imgSrcSm"], "Parasaurolophus"],
+    ["recognition", "all", dataObj["Pteranodon"]["imgSrc"], dataObj["Pteranodon"]["imgSrcSm"], "Pteranodon"],
+    ["recognition", "all", dataObj["Spinosaurus"]["imgSrc"], dataObj["Spinosaurus"]["imgSrcSm"], "Spinosaurus"],
+    ["recognition", "all", dataObj["Stegosaurus"]["imgSrc"], dataObj["Stegosaurus"]["imgSrcSm"], "Stegosaurus"],
+    ["recognition", "all", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
+    ["recognition", "all", dataObj["Tyrannosaurus"]["imgSrc"], dataObj["Tyrannosaurus"]["imgSrcSm"], "Tyrannosaurus"],
+    ["recognition", "all", dataObj["Velociraptor"]["imgSrc"], dataObj["Velociraptor"]["imgSrcSm"], "Velociraptor"],
+    ["recognition", "herbivores", dataObj["Amargasaurus"]["imgSrc"], dataObj["Amargasaurus"]["imgSrcSm"], "Amargasaurus"],
+    ["recognition", "herbivores", dataObj["Amurosaurus"]["imgSrc"], dataObj["Amurosaurus"]["imgSrcSm"], "Amurosaurus"],
+    ["recognition", "herbivores", dataObj["Ankylosaurus"]["imgSrc"], dataObj["Ankylosaurus"]["imgSrcSm"], "Ankylosaurus"],
+    ["recognition", "herbivores", dataObj["Apatosaurus"]["imgSrc"], dataObj["Apatosaurus"]["imgSrcSm"], "Apatosaurus"],
+    ["recognition", "herbivores", dataObj["Argentinosaurus"]["imgSrc"], dataObj["Argentinosaurus"]["imgSrcSm"], "Argentinosaurus"],
+    ["recognition", "herbivores", dataObj["Brachiosaurus"]["imgSrc"], dataObj["Brachiosaurus"]["imgSrcSm"], "Brachiosaurus"],
+    ["recognition", "herbivores", dataObj["Diplodocus"]["imgSrc"], dataObj["Diplodocus"]["imgSrcSm"], "Diplodocus"],
+    ["recognition", "herbivores", dataObj["Gallimimus"]["imgSrc"], dataObj["Gallimimus"]["imgSrcSm"], "Gallimimus"],
+    ["recognition", "herbivores", dataObj["Iguanodon"]["imgSrc"], dataObj["Iguanodon"]["imgSrcSm"], "Iguanodon"],
+    ["recognition", "herbivores", dataObj["Pachycephalosaurus"]["imgSrc"], dataObj["Pachycephalosaurus"]["imgSrcSm"], "Pachycephalosaurus"],
+    ["recognition", "herbivores", dataObj["Parasaurolophus"]["imgSrc"], dataObj["Parasaurolophus"]["imgSrcSm"], "Parasaurolophus"],
+    ["recognition", "herbivores", dataObj["Stegosaurus"]["imgSrc"], dataObj["Stegosaurus"]["imgSrcSm"], "Stegosaurus"],
+    ["recognition", "herbivores", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
+    ["recognition", "carnivores", dataObj["Allosaurus"]["imgSrc"], dataObj["Allosaurus"]["imgSrcSm"], "Allosaurus"],
+    ["recognition", "carnivores", dataObj["Amurosaurus"]["imgSrc"], dataObj["Amurosaurus"]["imgSrcSm"], "Amurosaurus"],
+    ["recognition", "carnivores", dataObj["Archeopteryx"]["imgSrc"], dataObj["Archeopteryx"]["imgSrcSm"], "Archeopteryx"],
+    ["recognition", "carnivores", dataObj["Carnotaurus"]["imgSrc"], dataObj["Carnotaurus"]["imgSrcSm"], "Carnotaurus"],
+    ["recognition", "carnivores", dataObj["Condorraptor"]["imgSrc"], dataObj["Condorraptor"]["imgSrcSm"], "Condorraptor"],
+    ["recognition", "carnivores", dataObj["Deinonychus"]["imgSrc"], dataObj["Deinonychus"]["imgSrcSm"], "Deinonychus"],
+    ["recognition", "carnivores", dataObj["Gallimimus"]["imgSrc"], dataObj["Gallimimus"]["imgSrcSm"], "Gallimimus"],
+    ["recognition", "carnivores", dataObj["Pteranodon"]["imgSrc"], dataObj["Pteranodon"]["imgSrcSm"], "Pteranodon"],
+    ["recognition", "carnivores", dataObj["Spinosaurus"]["imgSrc"], dataObj["Spinosaurus"]["imgSrcSm"], "Spinosaurus"],
+    ["recognition", "carnivores", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
+    ["recognition", "carnivores", dataObj["Tyrannosaurus"]["imgSrc"], dataObj["Tyrannosaurus"]["imgSrcSm"], "Tyrannosaurus"],
+    ["recognition", "carnivores", dataObj["Velociraptor"]["imgSrc"], dataObj["Velociraptor"]["imgSrcSm"], "Velociraptor"],
   ];
 
   // Fetch random numbers for allDataObj getter of answers
@@ -110,7 +125,9 @@ Game data controler - fetches all the data
     }
   };
 
-  // Creating allDataObj object from array of basic data - get all objects with specific prototype
+  /* Creating allDataObj object from array of basic data - get all objects with specific prototype - creating dynamically
+   answers each time init happens
+   */
   const createObjectsFromArOfQuestionsAndCorrectAnswers = function createObjectsFromArOfQuestionsAndCorrectAnswers() {
     // Prototype object to be prototype of the rest of answers objects
     const protoObj = {
@@ -122,7 +139,9 @@ Game data controler - fetches all the data
     arrOfQuestionsCorrectAnswers.forEach(element => {
       let inserted = Object.create(protoObj);
       inserted.question = element[2];
-      inserted.correctAnswer = element[3];
+      inserted.questionSmallImg = element[3];
+      inserted.correctAnswer = element[4];
+      // Get the last key and use it to add the object to the allDataObj - holding all the questions and answers data
       allDataObj[element[0]][element[1]][Object.keys(allDataObj[element[0]][element[1]]).length] = inserted;
     })
   };

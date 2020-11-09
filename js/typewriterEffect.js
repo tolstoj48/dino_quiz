@@ -32,7 +32,7 @@
 		  	partIndex++;
 			
 		  	// If full sentence has been displayed then start to delete the sentence after some time
-		  	if(text === content[part]) {
+		  	if(text == content[part]) {
 		  		// Hide the cursor
 		  		clearInterval(intervalVal);
 		  		setTimeout(function() {
@@ -49,7 +49,7 @@
 		  	partIndex--;
 			
 		  	// If sentence has been deleted then start to display the next sentence
-		  	if(text === '') {
+		  	if(text == '') {
 		  		clearInterval(intervalVal);
 				
 		  		// If current sentence was last then display the first one, else move to the next

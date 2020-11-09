@@ -79,19 +79,31 @@
 
 /* || Questions answers UI - questions, images, indicators */
 
-/* Images and correct ansers texts */
+/* Images and correct answers texts */
 .correct-answers {
-  border-right: 1px solid var(--my-dark-blue);
+  border: 1px solid var(--my-dark-blue);
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 .correct-answers i {
+  margin-top: 1rem;
   font-size: 1.5rem;
   color: var(--my-grey-green);
 }
 
 /* Images and incorrect ansers texts */
 
+.incorrect-answers {
+  border: 1px solid var(--my-dark-blue);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
 .incorrect-answers i {
+  margin-top: 1rem;
   font-size: 1.5rem;
   color: var(--my-red);
 }
@@ -99,4 +111,16 @@
 #question-answers-container a {
   color: var(--my-dark-blue);
   font-weight: 600;
+}
+
+#overview {
+  transition: all 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+}
+#overview.active {
+  opacity: 1 !important;
+  height: auto;
 }

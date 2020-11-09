@@ -27,14 +27,14 @@
         let presortedDataObj;
         let arrPresorted = [];
         let resultsFromLocalStorage = JSON.parse(localStorage.getItem("resultsArray"));
-        if (gameTypeId === "Kvíz") {
+        if (gameTypeId == "Kvíz") {
           gameTypeId = "quiz";
         } else {
           gameTypeId = "recognition";
         }
-        if (gameId === "Všichni dinosauři") {
+        if (gameId == "Všichni dinosauři") {
           gameId = "all";
-        } else if (gameId === "Býložravci") {
+        } else if (gameId == "Býložravci") {
           gameId = "herbivores";
         } else {
           gameId = "carnivores";
@@ -45,7 +45,7 @@
         }
 
         window.accordingToKey = accordingToKey;
-        sortedData = accordingToKey === "result" ? arrPresorted.sort(Helpers.compare) : arrPresorted.sort(Helpers.negativeCompare);
+        sortedData = accordingToKey == "result" ? arrPresorted.sort(Helpers.compare) : arrPresorted.sort(Helpers.negativeCompare);
         window.accordingToKey = undefined;
 
         if (sortedData) {
@@ -142,7 +142,7 @@
 
         const mainFrameResults = document.querySelector(UISelectors.mainFrameResults);
         mainFrameResults.addEventListener("click", function (e) {
-          if (e.target.className === "result" || e.target.className === "time") {
+          if (e.target.className == "result" || e.target.className == "time") {
             sortResults(e);
           }
         });
@@ -205,7 +205,7 @@
 
       const showSortedData = function (sortedData, e) {
         let html = "";
-        if (e.target.textContent.trim() === "Správných odpovědí") {
+        if (e.target.textContent.trim() == "Správných odpovědí") {
           e.target.classList.add("active-sorter");
           e.target.parentElement.children[2].classList.remove("active-sorter");
         } else {

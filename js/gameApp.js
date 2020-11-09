@@ -23,7 +23,7 @@
       }
       const gameId = localStorage.getItem("gameId");
       const gameType = localStorage.getItem("gameTypeId");
-      questionsAnswers = GameDataCtrl.fetchChoosenData(gameType,map[gameId]);
+      questionsAnswers = GameDataCtrl.fetchChoosenData(gameType, map[gameId]);
     };
 
     // Get questions
@@ -41,13 +41,13 @@
         let interval = window.setInterval(function () {
           let gameTime = timeElement;
           s = Helpers.checkTime(today.getSeconds());
-          if (s === 60) {
+          if (s == 60) {
             s = Helpers.checkTime(today.getSeconds() + 1);
-          } else if (s === 0) {
+          } else if (s == 0) {
             s = "00";
           }
           m = Helpers.checkTime(today.getMinutes());
-          if (m === 0) {
+          if (m == 0) {
             m = "00";
           }
           gameTime.innerHTML = m + ":" + s;
@@ -72,7 +72,7 @@
     // Save answers to localStorage
     const answers = {};
     const saveAnswer = function saveAnswer(answer) {
-      if (localStorage.getItem("answers") === null || !localStorage.getItem("answers")) {
+      if (localStorage.getItem("answers") == null || !localStorage.getItem("answers")) {
         answers[0] = answer;
         localStorage.setItem("answers", JSON.stringify(answers));
       } else {
@@ -111,7 +111,7 @@
       let resultsTable = {};
       let months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
       // If localStorage doesn¨t contain results, set up the table
-      if (localStorage.getItem("resultsArray") === null) {
+      if (localStorage.getItem("resultsArray") == null) {
         resultsTable = {
           quiz: {
             all: {
@@ -135,9 +135,9 @@
         resultsTable = JSON.parse(localStorage.getItem("resultsArray"));
       }
 
-      if (gameId === "Všichni dinosauři") {
+      if (gameId == "Všichni dinosauři") {
         gameId = "all";
-      } else if (gameId === "Býložravci") {
+      } else if (gameId == "Býložravci") {
         gameId = "herbivores";
       } else {
         gameId = "carnivores";
@@ -277,7 +277,7 @@
         openOverviewBtn.addEventListener("click", function () {
           const overview = document.querySelector(UISelectors.overview);
           // Toggle materialize hide class depending on the state
-          overview.classList.toggle("hide");
+          overview.classList.toggle("active");
           // Change the text of the open button of the list of correct and incorrect answers
           openOverviewBtn.textContent = openOverviewBtn.textContent.includes("Otevřít") ?  "Zavřít přehled správných a špatných odpovědí" : "Otevřít přehled správných a špatných odpovědí";
           }
@@ -287,8 +287,7 @@
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
-        correctDivCard.innerHTML = `
-          ${correctAnswerDataObj.question}${correctAnswerDataObj.correctAnswer}`;
+        correctDivCard.innerHTML = `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}`;
         correctDivCard.className = "col s6";
         // To which wrapper wrap the created div
         let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
@@ -301,7 +300,7 @@
         // Set name of the game type
         let gameTypeName = document.querySelector(UISelectors.gameType);
         // Set title text of the game type
-        if (localStorage.getItem("gameTypeId") === "quiz") {
+        if (localStorage.getItem("gameTypeId") == "quiz") {
           title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
         } else {
           title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
@@ -311,7 +310,7 @@
         let questionContainer = document.querySelector(UISelectors.questionContainer);
         DataCtrl.initGetQuestions();
         let questionSet = DataCtrl.getQuestions();
-        questionContainer.innerHTML = questionSet[0].question;
+        questionContainer.innerHTML = `<img src='${questionSet[0].question}' alt='dino-image'>`;
         // Answers content after initialization
         let html = ``;
         let answersList = document.querySelector(UISelectors.answersList);
@@ -327,7 +326,7 @@
 
         // Click event on answers
         answersList.addEventListener("click", function (e) {
-          if (e.target.classList.contains("answer-item")) {
+          e.target.classList.contains("answer-item") && (function() {
             // Answer variable
             let userAnswer = e.target.innerHTML;
             // List items variable
@@ -339,7 +338,7 @@
             let lastCorrectnessIndicator = Array.from(correctnessIndicatorList)[Object.keys(answersFromLS)[Object.keys(answersFromLS).length-1]];
             const correctAnswerDetailInfoObj = DataCtrl.getQuestions()[Object.keys(answersFromLS).length-1];
             // Is userAnswer equal to correct question from questions set
-            if (userAnswer === correctAnswerDetailInfoObj.correctAnswer) {
+            if (userAnswer == correctAnswerDetailInfoObj.correctAnswer) {
               // Set correct mark in correctnes indicator list
               lastCorrectnessIndicator.innerHTML="+";
               lastCorrectnessIndicator.classList.add("my-grey-green");
@@ -354,7 +353,7 @@
             clicker.next();
             // Call next question UI
             nextQuestionUI(clicker, interval);
-          }
+          })()
         })
       };
 
@@ -366,7 +365,7 @@
         // Get questions set
         let questionSet = DataCtrl.getQuestions();
         // Set title text of the game type
-        if (localStorage.getItem("gameTypeId") === "quiz") {
+        if (localStorage.getItem("gameTypeId") == "quiz") {
           title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
         } else {
          title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
@@ -375,7 +374,7 @@
         // Last answer or not?
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);
-          questionContainer.innerHTML = questionSet[UIAnswersCounter].question; // 
+          questionContainer.innerHTML = `<img src='${questionSet[UIAnswersCounter].question}' alt='dino-image'>`; 
           // Answers content after fetching next question
           let html = ``;
           let answersList = document.querySelector(UISelectors.answersList);
@@ -407,7 +406,7 @@
         let correctAnswersCounter = 0;
         correctAnswers = Object.values(correctAnswers)
         for (const element of Object.values(userAnswers)) {
-          if (element === correctAnswers[index]) {
+          if (element == correctAnswers[index]) {
             correctAnswersCounter +=1;
           }
           index += 1;
