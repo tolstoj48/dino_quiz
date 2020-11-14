@@ -124,3 +124,16 @@
   opacity: 1 !important;
   height: auto;
 }
+
+/* Media queries */
+@media only screen and (max-width: 600px) {
+  #overview {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /*Otherwise materialize push them to the right - margin-left in on auto*/
+  .incorrect-answers, .correct-answers{
+    margin-right: auto !important;
+  }
+}

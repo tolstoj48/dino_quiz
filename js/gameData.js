@@ -4,7 +4,7 @@
 Game data controler - fetches all the data 
 - random questions - maximum 12 (can be set up), random numbers 0 - length of the data object
 */
-;const GameDataCtrl = (function gameDataCtrlIIFE() {
+;const GameDataCtrl = (function () {
   
   // All possible answers for dynamic generation of possible choices in the answers list UI
   const arrayOfAllPossibleAnswers = [
@@ -26,10 +26,11 @@ Game data controler - fetches all the data
     "Pachycephalosaurus",
     "Parasaurolophus",
     "Pteranodon",
-    "Pterodaktyl",
+    "Pterodactylus",
     "Spinosaurus",
     "Stegosaurus",
     "Therizinosaurus",
+    "Triceratops",
     "Tyrannosaurus",
     "Velociraptor",
   ];
@@ -52,12 +53,15 @@ Game data controler - fetches all the data
     ["recognition", "all", dataObj["Diplodocus"]["imgSrc"], dataObj["Diplodocus"]["imgSrcSm"], "Diplodocus"],
     ["recognition", "all", dataObj["Gallimimus"]["imgSrc"], dataObj["Gallimimus"]["imgSrcSm"], "Gallimimus"],
     ["recognition", "all", dataObj["Iguanodon"]["imgSrc"], dataObj["Iguanodon"]["imgSrcSm"], "Iguanodon"],
+    ["recognition", "all", dataObj["Lycaenops"]["imgSrc"], dataObj["Lycaenops"]["imgSrcSm"], "Lycaenops"],
     ["recognition", "all", dataObj["Pachycephalosaurus"]["imgSrc"], dataObj["Pachycephalosaurus"]["imgSrcSm"], "Pachycephalosaurus"],
     ["recognition", "all", dataObj["Parasaurolophus"]["imgSrc"], dataObj["Parasaurolophus"]["imgSrcSm"], "Parasaurolophus"],
     ["recognition", "all", dataObj["Pteranodon"]["imgSrc"], dataObj["Pteranodon"]["imgSrcSm"], "Pteranodon"],
+    ["recognition", "all", dataObj["Pterodactylus"]["imgSrc"], dataObj["Pterodactylus"]["imgSrcSm"], "Pterodactylus"],
     ["recognition", "all", dataObj["Spinosaurus"]["imgSrc"], dataObj["Spinosaurus"]["imgSrcSm"], "Spinosaurus"],
     ["recognition", "all", dataObj["Stegosaurus"]["imgSrc"], dataObj["Stegosaurus"]["imgSrcSm"], "Stegosaurus"],
     ["recognition", "all", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
+    ["recognition", "all", dataObj["Triceratops"]["imgSrc"], dataObj["Triceratops"]["imgSrcSm"], "Triceratops"],
     ["recognition", "all", dataObj["Tyrannosaurus"]["imgSrc"], dataObj["Tyrannosaurus"]["imgSrcSm"], "Tyrannosaurus"],
     ["recognition", "all", dataObj["Velociraptor"]["imgSrc"], dataObj["Velociraptor"]["imgSrcSm"], "Velociraptor"],
     ["recognition", "herbivores", dataObj["Amargasaurus"]["imgSrc"], dataObj["Amargasaurus"]["imgSrcSm"], "Amargasaurus"],
@@ -73,6 +77,7 @@ Game data controler - fetches all the data
     ["recognition", "herbivores", dataObj["Parasaurolophus"]["imgSrc"], dataObj["Parasaurolophus"]["imgSrcSm"], "Parasaurolophus"],
     ["recognition", "herbivores", dataObj["Stegosaurus"]["imgSrc"], dataObj["Stegosaurus"]["imgSrcSm"], "Stegosaurus"],
     ["recognition", "herbivores", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
+    ["recognition", "herbivores", dataObj["Triceratops"]["imgSrc"], dataObj["Triceratops"]["imgSrcSm"], "Triceratops"],
     ["recognition", "carnivores", dataObj["Allosaurus"]["imgSrc"], dataObj["Allosaurus"]["imgSrcSm"], "Allosaurus"],
     ["recognition", "carnivores", dataObj["Amurosaurus"]["imgSrc"], dataObj["Amurosaurus"]["imgSrcSm"], "Amurosaurus"],
     ["recognition", "carnivores", dataObj["Archeopteryx"]["imgSrc"], dataObj["Archeopteryx"]["imgSrcSm"], "Archeopteryx"],
@@ -80,7 +85,9 @@ Game data controler - fetches all the data
     ["recognition", "carnivores", dataObj["Condorraptor"]["imgSrc"], dataObj["Condorraptor"]["imgSrcSm"], "Condorraptor"],
     ["recognition", "carnivores", dataObj["Deinonychus"]["imgSrc"], dataObj["Deinonychus"]["imgSrcSm"], "Deinonychus"],
     ["recognition", "carnivores", dataObj["Gallimimus"]["imgSrc"], dataObj["Gallimimus"]["imgSrcSm"], "Gallimimus"],
+    ["recognition", "carnivores", dataObj["Lycaenops"]["imgSrc"], dataObj["Lycaenops"]["imgSrcSm"], "Lycaenops"],
     ["recognition", "carnivores", dataObj["Pteranodon"]["imgSrc"], dataObj["Pteranodon"]["imgSrcSm"], "Pteranodon"],
+    ["recognition", "carnivores", dataObj["Pterodactylus"]["imgSrc"], dataObj["Pterodactylus"]["imgSrcSm"], "Pterodactylus"],
     ["recognition", "carnivores", dataObj["Spinosaurus"]["imgSrc"], dataObj["Spinosaurus"]["imgSrcSm"], "Spinosaurus"],
     ["recognition", "carnivores", dataObj["Therizinosaurus"]["imgSrc"], dataObj["Therizinosaurus"]["imgSrcSm"], "Therizinosaurus"],
     ["recognition", "carnivores", dataObj["Tyrannosaurus"]["imgSrc"], dataObj["Tyrannosaurus"]["imgSrcSm"], "Tyrannosaurus"],
@@ -181,7 +188,7 @@ Game data controler - fetches all the data
   return {
     // Game init
     init: function () {
-      createObjectsFromArOfQuestionsAndCorrectAnswers();
+      return createObjectsFromArOfQuestionsAndCorrectAnswers();
     },
     // Gets array of random numbers for getting the data from the object containing the data
     getRandomNumbersArray: function (numberOfNumbers, numberOfChoices) {

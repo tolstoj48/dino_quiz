@@ -77,5 +77,6 @@
 				}
 			};
 		})();
+		
 		TypeWriterEffect.init();
 }

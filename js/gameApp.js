@@ -288,7 +288,7 @@
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
         correctDivCard.innerHTML = `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}`;
-        correctDivCard.className = "col s6";
+        correctDivCard.className = "col s12 m6";
         // To which wrapper wrap the created div
         let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
         answersWrapper.appendChild(correctDivCard);
@@ -437,7 +437,7 @@
           return eventListenersInit();
       },
         // Initialization of game
-        initilizeGameUI: function (questions) {
+        initilizeGameUI: function () {
           const timeElement = document.querySelector(UISelectors.time);
           // Starts time in UI and DataCtrl
           const interval = DataCtrl.startGameTime(timeElement);

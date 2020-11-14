@@ -69,6 +69,12 @@ div.card-content p a:hover {
   font-size: 0.8rem;
 }
 
+/* all badge */
+.badge.my-orange {
+  background-color: var(--my-orange);
+  color: var(--my-dark-blue)
+}
+
 /* herbivore badge */
 .badge.my-green {
   background-color: var(--my-light-green);
