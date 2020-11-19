@@ -82,8 +82,7 @@
     
       // Move to position of the detail information
       const moveToDinoDetail = function () {
-        const rect = document.querySelector(UISelectors.navDinos);
-        rect.scrollIntoView();
+        document.getElementById("nav-dinos").scrollIntoView();
       };
     
       return {
@@ -91,26 +90,22 @@
         // Show dino detail
         showDinoDetail: function(e) {
           // if not img on carousel, then get data and show detail
-          if (e.target.tagName !== "IMG") {
+          if (e.target.tagName !== "img") {
             const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(e.target.text);
             showHTMLDinoDetail(dinoDetailData); 
             moveToDinoDetail();
-            e.preventDefault();
           }
         },
         // Show dino detail after search bar visit
         showDinoDetailFromSearchBar: function(dinoName) {
-
           const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(dinoName);
           showHTMLDinoDetail(dinoDetailData); 
           moveToDinoDetail();
         },
-      
         // Returns all selectors used
         getSelectors: function () {
           return UISelectors;
-        }
-      
+        }      
       };
     })();
 
@@ -141,8 +136,8 @@
         const keys = Object.keys(dinosObj);
         keys.sort();
         for(let i = 0; i < keys.length; ++i){
-          htmlCarousel += `<a class="carousel-item dino-link" href="#"><img src="${dinosObj[keys[i]]["imgSrcSm"]}" alt="${keys[i]}" >${keys[i]}</a>`
-          htmlNavDinos += `<li><a class="dino-link" href="#">${keys[i]}</a></li>`
+          htmlCarousel += `<a class="carousel-item dino-link"><img src="${dinosObj[keys[i]]["imgSrcSm"]}" alt="${keys[i]}" >${keys[i]}</a>`
+          htmlNavDinos += `<li><a class="dino-link">${keys[i]}</a></li>`
         }
   
         document.querySelector(UISelectors.carousel).innerHTML = htmlCarousel;
@@ -153,15 +148,17 @@
       const loadEventListeners = function() {
         const dinoLinks = document.querySelectorAll(UISelectors.dinoLinks);
         dinoLinks.forEach( function (element) {
-          element.addEventListener("click", UICtrlDinoList.showDinoDetail);        
+          element.addEventListener("click", UICtrlDinoList.showDinoDetail);   
+        })
           // Materialize setup for carousel
          document.addEventListener('DOMContentLoaded', function() {
             const elem = document.querySelector('.carousel');
             const instances = M.Carousel.init(elem, {
               numVisible: 12,
               dist: -80,
-            })       
-          });
+            })
+          })       
+          
     
           // Left, right arrow keypresses for the carousel list of dinos
           document.addEventListener("keydown", function (event) {
@@ -172,10 +169,10 @@
               M.Carousel.getInstance(elem).next();
             }
           });
-        })
+        
       };
     
-      // Lists all dinos from dinsoData object
+      // Lists all dinos from dinosData object
       const listDinos = function () {
         let result=[];
         Object.keys(dinosArray).forEach(function (key) {

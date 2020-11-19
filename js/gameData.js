@@ -5,9 +5,23 @@ Game data controler - fetches all the data
 - random questions - maximum 12 (can be set up), random numbers 0 - length of the data object
 */
 ;const GameDataCtrl = (function () {
-  
-  // All possible answers for dynamic generation of possible choices in the answers list UI
-  const arrayOfAllPossibleAnswers = [
+  // Gametyp const for different functions in the controler
+  const gameType = localStorage.getItem("gameTypeId");
+
+
+  // All possible answers for dynamic generation of the choices in the answers list UI
+  const arrayOfAllPossibleAnswers = {
+    quiz: [
+      "Tohle", 
+      "Tamto", 
+      "Onohle",
+      "Vymohle",
+      "Tohle", 
+      "Tamto", 
+      "Onohle",
+      "Vymohle",
+    ],
+    recognition : [
     "Allosaurus",
     "Amargasaurus",
     "Amurosaurus",
@@ -33,13 +47,15 @@ Game data controler - fetches all the data
     "Triceratops",
     "Tyrannosaurus",
     "Velociraptor",
-  ];
+  ],
+}
   
   // Get dataObj of all dinos for getting image links
   const dataObj = DinosListObjCtrl.getDinosObj();
 
   // All questions with categories
   const arrOfQuestionsCorrectAnswers = [
+    ["quiz", "all", "Co chceš", "Co chceš", "Vymohle"],
     ["recognition", "all", dataObj["Allosaurus"]["imgSrc"], dataObj["Allosaurus"]["imgSrcSm"], "Allosaurus"],
     ["recognition", "all", dataObj["Amargasaurus"]["imgSrc"], dataObj["Amargasaurus"]["imgSrcSm"], "Amargasaurus"],
     ["recognition", "all", dataObj["Amurosaurus"]["imgSrc"], dataObj["Amurosaurus"]["imgSrcSm"], "Amurosaurus"],
@@ -99,8 +115,8 @@ Game data controler - fetches all the data
     let randomNumbersArray = [];
     for (let i = 0; i < numberOfChoices; i ++) {
       // Random number - maximum is numberOfChoices - 1 (the length of the data object)
-      const randomInt = Math.floor(Math.random() * arrayOfAllPossibleAnswers.length);
-      if (!randomNumbersArray.includes(randomInt) && arrayOfAllPossibleAnswers[randomInt] !== correctAnswer) {
+      const randomInt = Math.floor(Math.random() * arrayOfAllPossibleAnswers[gameType].length);
+      if (!randomNumbersArray.includes(randomInt) && arrayOfAllPossibleAnswers[gameType][randomInt] !== correctAnswer) {
         randomNumbersArray.push(randomInt);
       } else {
         i -= 1;
@@ -109,7 +125,7 @@ Game data controler - fetches all the data
     // Generate final array of answers
     let finalArrayOfAnswers = [];
     randomNumbersArray.forEach(element => {
-      finalArrayOfAnswers.push(arrayOfAllPossibleAnswers[element]);
+      finalArrayOfAnswers.push(arrayOfAllPossibleAnswers[gameType][element]);
     });
     // Insert correct answer to the final answers array
     const randomInt = Math.floor(Math.random() * numberOfChoices);
@@ -138,15 +154,16 @@ Game data controler - fetches all the data
   const createObjectsFromArOfQuestionsAndCorrectAnswers = function createObjectsFromArOfQuestionsAndCorrectAnswers() {
     // Prototype object to be prototype of the rest of answers objects
     const protoObj = {
-      question: "<img src='./images/images_lg/ankylosaurus.png' alt='dino-image'>",
-      correctAnswer: "Ankylosaurus",
+      question: "",
+      questionSmallImg: "",
+      correctAnswer: "",
       // Getter for the answers choices - dynamic generation of the choices
       get answers() {return getRandomAnswers(4, this.correctAnswer)},
     }
     arrOfQuestionsCorrectAnswers.forEach(element => {
       let inserted = Object.create(protoObj);
       inserted.question = element[2];
-      inserted.questionSmallImg = element[3];
+      inserted.questionSmallImg = gameType == "quiz" ? "" : element[3];
       inserted.correctAnswer = element[4];
       // Get the last key and use it to add the object to the allDataObj - holding all the questions and answers data
       allDataObj[element[0]][element[1]][Object.keys(allDataObj[element[0]][element[1]]).length] = inserted;
@@ -201,7 +218,7 @@ Game data controler - fetches all the data
     // Fetches the final data object to the gameApp.js
     fetchChoosenData: function (gameType, gameId) {
       const numberOfChoices = getNumberOfChoicesFromAllDataObj(gameType, gameId);
-      const randomNumbersArray = getRandomNumbersArray(12, numberOfChoices);
+      const randomNumbersArray = gameType == "recognition" ? getRandomNumbersArray(12, numberOfChoices) : getRandomNumbersArray(1, numberOfChoices)
       return fetchChoosenData(gameType, gameId, randomNumbersArray);
     },
   };

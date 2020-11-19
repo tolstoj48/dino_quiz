@@ -79,7 +79,26 @@
 
 /* || Questions answers UI - questions, images, indicators */
 
+/* Questions of the quiz gameTypeId*/
+.question {
+  color: var(--my-dark-blue);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
 /* Images and correct answers texts */
+.bordered {
+  border: 1px solid var(--my-dark-blue);
+  border-radius: 5px;
+  margin-bottom: 3px;
+  font-size: 0.8rem;
+}
+
+/* Question in the correct/incorrect overview detail */
+.bordered .question {
+  font-size: 0.9rem;
+}
+
 .correct-answers {
   border: 1px solid var(--my-dark-blue);
   padding: 10px;
@@ -93,7 +112,7 @@
   color: var(--my-grey-green);
 }
 
-/* Images and incorrect ansers texts */
+/* Images and incorrect answers texts */
 
 .incorrect-answers {
   border: 1px solid var(--my-dark-blue);

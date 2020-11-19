@@ -287,7 +287,8 @@
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
-        correctDivCard.innerHTML = `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}`;
+        console.log(correctAnswerDataObj);
+        correctDivCard.innerHTML = DataCtrl.getCurrentGame().type == "recognition" ? `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}` : `<div class="bordered"><span class="question">${correctAnswerDataObj.question} :</span> ${correctAnswerDataObj.correctAnswer}</div>`;
         correctDivCard.className = "col s12 m6";
         // To which wrapper wrap the created div
         let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
@@ -296,11 +297,12 @@
 
       // Init of the game UI
       const initilizeGameUIContent = function initilizeGameUI(interval) {
+        const gameTypeId =  localStorage.getItem("gameTypeId");
         let title; 
         // Set name of the game type
-        let gameTypeName = document.querySelector(UISelectors.gameType);
+        const gameTypeName = document.querySelector(UISelectors.gameType);
         // Set title text of the game type
-        if (localStorage.getItem("gameTypeId") == "quiz") {
+        if (gameTypeId == "quiz") {
           title = "Kvíz - " + localStorage.getItem("gameId").toLowerCase();
         } else {
           title = "Poznávačka - " + localStorage.getItem("gameId").toLowerCase();
@@ -310,7 +312,7 @@
         let questionContainer = document.querySelector(UISelectors.questionContainer);
         DataCtrl.initGetQuestions();
         let questionSet = DataCtrl.getQuestions();
-        questionContainer.innerHTML = `<img src='${questionSet[0].question}' alt='dino-image'>`;
+        questionContainer.innerHTML = gameTypeId == "recognition" ? `<img src='${questionSet[0].question}' alt='dino-image'>` : `<div class="question">${questionSet[0].question}</div>`;
         // Answers content after initialization
         let html = ``;
         let answersList = document.querySelector(UISelectors.answersList);

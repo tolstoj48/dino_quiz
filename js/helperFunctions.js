@@ -35,7 +35,7 @@
     }
     return comparison;
   };
-
+  
   return {
     checkTime: function(i) {
       return checkTime(i);
@@ -45,6 +45,6 @@
     },
     negativeCompare: function (a, b) {
       return negativeCompare(a, b);
-    }
+    },
   };
-})();
+})()

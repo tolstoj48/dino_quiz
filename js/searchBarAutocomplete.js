@@ -1,32 +1,28 @@
-// Man block scope
+// Main block scope
 ;{
     "use strict";
 
     // Autocomplete solution for the search bar
     const SearchBarCtrl = (function () {
-    
+      
       // Load event listeners
       const loadEventListeners = function () {
         // Getting corect obj of all dinos for search autocomplete
         const dinosObj = DinosListObjCtrl.getDinosObj();
-        const dinosObjFinal = {};
+        const dinosObjFinal={};
         for (let property in dinosObj) {
+          // Init the autocomplete object
           dinosObjFinal[property] = dinosObj[property]["imgSrcSm"];
-        };
+      }
 
         // Search bar initialization
         document.addEventListener("DOMContentLoaded", function () {
           const elems = document.querySelectorAll(".autocomplete");
           const instances = M.Autocomplete.init(elems, {
-            data: DinosListObjCtrl.getDinosObj(),
-            limit: 3,
+            data: dinosObjFinal,
+            limit: 5,
             onAutocomplete: setGlobalVariable,
           });
-          
-        // Data for search bar autocomplete updated base on obj of all dinos
-          M.Autocomplete.getInstance(elems[0]).updateData(
-            dinosObjFinal
-          )
         })
       };
     
@@ -43,5 +39,8 @@
         }
       };
     })();
-    SearchBarCtrl.init();
+    
+SearchBarCtrl.init();
+
+
 }
