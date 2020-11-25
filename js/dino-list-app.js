@@ -1,7 +1,7 @@
 // Man block scope
 ;{
   "use strict";
-
+  var start = window.performance.now();
     // UI Controler
     const UICtrlDinoList = (function () {
       const UISelectors = {
@@ -159,7 +159,6 @@
             })
           })       
           
-    
           // Left, right arrow keypresses for the carousel list of dinos
           document.addEventListener("keydown", function (event) {
             const elem = document.querySelector('.carousel');
@@ -210,4 +209,6 @@
     })(UICtrlDinoList);
     
     AppDinoList.init();
+    var end = window.performance.now();
+    console.log(`Execution time: ${end - start} ms`);
 }

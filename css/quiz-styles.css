@@ -10,7 +10,7 @@
   border: 0px solid var(--my-grey-green);
   padding: 2px;
   width: 35px;
-  border-radius: 5px;
+  border-radius:0.5em;
   margin: 1%;
 }
 
@@ -23,13 +23,13 @@
 
 #main-card-quiz{
   border: 1px solid var(--my-dark-blue);
-  border-radius: 5px;
+  border-radius: 0.5em;
   background: white;
 }
 
 #question-container {
   border: 1px solid var(--my-grey-green);
-  border-radius: 5px;
+  border-radius: 0.5em;
   padding: 20px;
   font-weight: 600;
   color: var(--my-yellow-white);
@@ -40,7 +40,7 @@
 }
 
 #question-container img {
-  border-radius: 5px;
+  border-radius: 0.5em;
   max-height: 220px;
   max-width: 90%;
   height: auto;
@@ -58,7 +58,7 @@
 #answers-list li {
   text-align: center;
   border: 0px solid  var(--my-grey-green);
-  border-radius: 5px;
+  border-radius: 0.5em;
   padding: 20px;
   margin: 1%;
   overflow: hidden;
@@ -89,7 +89,7 @@
 /* Images and correct answers texts */
 .bordered {
   border: 1px solid var(--my-dark-blue);
-  border-radius: 5px;
+  border-radius: 0.5em;
   margin-bottom: 3px;
   font-size: 0.8rem;
 }
@@ -103,7 +103,7 @@
   border: 1px solid var(--my-dark-blue);
   padding: 10px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 0.5em;
 }
 
 .correct-answers i {
@@ -118,7 +118,7 @@
   border: 1px solid var(--my-dark-blue);
   padding: 5px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 0.5em;
 }
 
 .incorrect-answers i {
@@ -130,6 +130,10 @@
 #question-answers-container a {
   color: var(--my-dark-blue);
   font-weight: 600;
+}
+
+#open-overview-btn {
+  border-radius: 0.5em;
 }
 
 #overview {

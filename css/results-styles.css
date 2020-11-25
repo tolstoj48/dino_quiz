@@ -2,7 +2,7 @@
 
 /* Results gameId stripes */
 .my-red, .my-green, .my-blue-results {
-  border-radius: 5px;
+  border-radius: 0.5em;
   padding: 5px;
   overflow: auto;
 }
@@ -23,6 +23,6 @@
 /* Active class for the sorter text */
 .active-sorter {
   background: rgba(239, 84, 159, 0.4);
-  border-radius: 5px;
+  border-radius: 0.5em;
 }
 

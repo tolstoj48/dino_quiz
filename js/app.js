@@ -1,7 +1,6 @@
 // Man block scope
 ;{
     "use strict";
-
     //ItemCtrl
     const ItemCtrl = (function () {
       // Setter of the gameId and gameTypeId variables

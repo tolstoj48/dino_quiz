@@ -11,8 +11,8 @@
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="./css/styles.css">
     <!-- Scripts links -->
-    <script src="./js/dinosData.js" defer></script>
-    <script src="./js/searchBarAutocomplete.js" defer></script>
+    <script src="./js/dinos-data.js" defer></script>
+    <script src="./js/search-bar-autocomplete.js" defer></script>
     <script src="./js/materialize.min.js" defer></script>
     <script src="./js/app.js" defer></script>
     <script src="./js/contact.js" defer></script>
@@ -86,33 +86,36 @@
             <div class="card col s12 margin-top-4rem">
               <div class="card-contact">
                 <form action="index.html" method="get" class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="first_name" type="text" name="first-name" class="validate" required>
-                      <label for="first_name"><i class="far fa-address-book"></i> Jméno</label>
+                  <section>
+                    <h2>Zanechte mi vzkaz</h2>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="first_name" type="text" name="first-name" class="validate" autofocus="true" required>
+                        <label for="first_name"><i class="far fa-address-book"></i> Jméno</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="last_name" type="text" name="last-name" class="validate" required>
+                        <label for="last_name"><i class="far fa-address-book"></i> Příjmení</label>
+                      </div>
                     </div>
-                    <div class="input-field col s6">
-                      <input id="last_name" type="text" name="last-name" class="validate" required>
-                      <label for="last_name"><i class="far fa-address-book"></i> Příjmení</label>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="email" type="email" name="email" class="validate" required>
+                        <label for="email"><i class="fas fa-at"></i> Email</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="email" type="email" name="email" class="validate" required>
-                      <label for="email"><i class="fas fa-at"></i> Email</label>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" name="mail-content" class="materialize-textarea" data-length="1000" rows="10" required></textarea>
+                        <label for="textarea1">Váš vzkaz</label>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" name="mail-content" class="materialize-textarea" data-length="1000" required></textarea>
-                      <label for="textarea1">Váš vzkaz</label>
+                    <div class="row">
+                      <div class="col s12 center-align">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Odeslat vzkaz</button>
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col s12 center-align">
-                      <button class="btn waves-effect waves-light" type="submit" name="action">Odeslat vzkaz</button>
-                    </div>
-                  </div>
+                  </section>
                 </form>
               </div>
             </div>
@@ -147,5 +150,15 @@
           </div>
         </div>
     </footer>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+         .register('/sw.js')
+         .then(function() { console.log('Service Worker Registered'); })
+         .catch(function(err) {
+         console.log("Service Worker Failed to Register", err);
+        })
+      }
+    </script>
   </body>
 </html>

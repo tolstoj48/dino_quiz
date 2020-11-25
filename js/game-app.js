@@ -279,7 +279,7 @@
           // Toggle materialize hide class depending on the state
           overview.classList.toggle("active");
           // Change the text of the open button of the list of correct and incorrect answers
-          openOverviewBtn.textContent = openOverviewBtn.textContent.includes("Otevřít") ?  "Zavřít přehled správných a špatných odpovědí" : "Otevřít přehled správných a špatných odpovědí";
+          openOverviewBtn.textContent = openOverviewBtn.textContent.includes("Zobrazit") ?  "Skrýt přehled správných a špatných odpovědí" : "Zobrazit přehled správných a špatných odpovědí";
           }
         );
       };
