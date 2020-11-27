@@ -287,7 +287,6 @@
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
-        console.log(correctAnswerDataObj);
         correctDivCard.innerHTML = DataCtrl.getCurrentGame().type == "recognition" ? `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}` : `<div class="bordered"><span class="question">${correctAnswerDataObj.question} :</span> ${correctAnswerDataObj.correctAnswer}</div>`;
         correctDivCard.className = "col s12 m6";
         // To which wrapper wrap the created div
@@ -317,7 +316,7 @@
         let html = ``;
         let answersList = document.querySelector(UISelectors.answersList);
         questionSet[0].answers.forEach((answer, index) => {
-          html += `<li id=${index} class="answer-item collection-item col s12 m5">${answer}</li>`
+          html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
         })
         answersList.innerHTML = html;
 
@@ -376,12 +375,13 @@
         // Last answer or not?
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);
+          console.log(questionSet);
           questionContainer.innerHTML = `<img src='${questionSet[UIAnswersCounter].question}' alt='dino-image'>`; 
           // Answers content after fetching next question
           let html = ``;
           let answersList = document.querySelector(UISelectors.answersList);
           questionSet[UIAnswersCounter].answers.forEach((answer, index) => {
-            html += `<li id=${index} class="answer-item collection-item col s12 m5">${answer}</li>`
+            html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
           })
           answersList.innerHTML = html;
           // Counter of number of answered questions
@@ -416,14 +416,18 @@
 
         // End state html markup
         container.innerHTML=`
-          <div class="col s12 margin-top-2rem">
-          Správně jsi zodpověděl/a celkem
-          ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${finalTime}
-          <br><br>
-          Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a>
-          <br><br>
-          <a href="${localStorage.getItem("gameTypeId")}.html"> <em>Zopakovat </em> <i class="fas fa-redo-alt"></i></a>
-        </div>`;
+          <article>
+            <div class="col s12 margin-top-1em"">
+              Správně jsi zodpověděl/a celkem
+              ${correctAnswersCounter} ze ${correctAnswers.length} otázek, v čase ${finalTime}
+              <div class="margin-top-1em">
+              <p>Seznam všech Tvých výsledků: <a href="results.html"> najdeš zde </a></p>
+              </div>
+              <div class="margin-top-1em">
+                <p><a href="${localStorage.getItem("gameTypeId")}.html"> <em>Zopakovat </em> <i class="fas fa-redo-alt"></i></a></p>
+              </div>
+            </div>
+          </article>`;
 
         // Send the number of correct answers and user´s final time to localStorage
         DataCtrl.saveResultsToLocalStorage(new Date(), correctAnswersCounter, finalTime);

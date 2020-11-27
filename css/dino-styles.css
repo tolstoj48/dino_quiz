@@ -1,15 +1,31 @@
 /* ||| dinos.html page styles */
 
+
+/* quote in the dino detail */
+blockquote {
+  border-left: 4px solid;
+  font-style: italic;
+}
+
+/* caption of the dino detail img */
+figcaption {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 /* dino list */
 #nav-dinos {
   width: 80%;
   margin:auto;
+  display: flex;
+  flex-basis: content;
+  flex-wrap: wrap;
 }
 
 /* dino list li */
 #nav-dinos li {
   float: left;
-  padding-right: 2rem;
 }
 
 /* dino list a */
@@ -51,10 +67,6 @@
   text-decoration: underline;
 }
 
-blockquote {
-  border-left: 4px solid;
-  font-style: italic;
-}
 
 /* link in the dino detail on the card */
 div.card-content p a:hover {
@@ -67,12 +79,14 @@ div.card-content p a:hover {
 .badge {
   border-radius: 0.5em;
   font-size: 0.8rem;
+  font-weight: 700;
 }
 
 /* all badge */
 .badge.my-orange {
   background-color: var(--my-orange);
   color: var(--my-dark-blue)
+
 }
 
 /* herbivore badge */
@@ -87,9 +101,27 @@ div.card-content p a:hover {
   background-color: var(--my-red);
 }
 
+/* list links to dinos*/
 .dino-link {
-  font-weight: 500;
+  font-weight: 550;
   cursor: pointer;
+}
+
+/* list links to dinos in the list*/
+#nav-dinos .dino-link {
+  border: 0 solid var(--my-dark-blue);
+  flex-grow: 1;
+  padding: 0.3em;
+  margin-right: 0.3rem;
+  font-weight: 700;
+  background-color: var(--my-green);
+  color: var(--my);
+}
+
+/* list links to dinos in the list*/
+#nav-dinos .dino-link:hover, #nav-dinos .dino-link:focus {
+  border: 1 solid var(--my-dark-blue);
+  background-color: var(--my-light-green);
 }
 
 /* centered dino card */
@@ -112,7 +144,19 @@ div.card-content p a:hover {
   /* Adding margin due to the missing carousel */
   #nav-dinos {
     margin-top: 4rem;
+    flex-direction: column;
   }
+  
+  #nav-dinos .dino-link {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  #nav-dinos .dino-link {
+    width: 35%;
+  }
+  
 }
 
 /* || Quotes colors */

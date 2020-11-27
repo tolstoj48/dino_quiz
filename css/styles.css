@@ -3,7 +3,7 @@
 /* || Colors for all pages */
 :root {
   --my-dark-blue: #05386B;
-  --my-grey-green: #379683;
+  --my-grey-green: #197462;
   --my-green: #5CDB95;
   --my-light-green: #8EE4AF;
   --my-orange: #f3bd77;
@@ -15,19 +15,23 @@
 .my-green{
     background-color: var(--my-green);
     box-shadow: none;
+    font-weight: 800;
 }
 
 .my-grey-green{
-    background-color: var(--my-grey-green);
+    background-color: var(--my-light-green);
     box-shadow: none;
-}
-
-.my-dark-blue{
+    color: var(--my-dark-blue);
+    font-weight: 800;
+  }
+  
+  .my-dark-blue{
     color: var(--my-dark-blue) !important;
-}
-
-.my-red {
-  background-color: var(--my-red);
+  }
+  
+  .my-red {
+    background-color: var(--my-red);
+    font-weight: 800;
 }
 
 .my-violet {
@@ -96,10 +100,12 @@ textarea.materialize-textarea{
 
 .btn {
   background-color: var(--my-grey-green);
+  border-radius: 0.5em;
 }
 
-.btn:hover {
-  background-color: var(--my-green);
+.btn:hover, .btn:focus {
+  background-color: var(--my-light-green);
+  color: var(--my-dark-blue);
 }
 
 .card {
@@ -129,6 +135,11 @@ textarea.materialize-textarea{
 .moved-to-right {
   font-size: 14px;
   padding-left: 1.5rem;
+}
+
+/* general top margin class 0.7 rem */
+.margin-top-1em {
+  margin-top: 1em;
 }
 
 /* general top margin class 0.7 rem */

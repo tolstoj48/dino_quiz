@@ -21,37 +21,39 @@
                   `<div class="card ${dinoDetailData.cardCls}">\n
                     <div class="card-content">\n
                       <span class="badge ${dinoDetailData.foodCls}">${dinoDetailData.food}</span>
-                      <div class="card-image">
-                        <picture>
-                          <source srcset="${dinoDetailData.imgSrcSm}" media="(max-width: 600px">
-                          <source srcset="${dinoDetailData.imgSrc}" media="(min-width: 601px">
-                          <img src="${dinoDetailData.imgSrc}" class="tooltipped" data-tooltip="Autor: ${dinoDetailData.toolTip}" alt="${dinoDetailData.name}">
-                        </picture>
-                      </div>
-                      <span class="card-title"><h5>${dinoDetailData.name}</h5></span>
+                        <figure class="card-image">
+                          <picture>
+                            <source srcset="${dinoDetailData.imgSrcSm}" media="(max-width: 600px">
+                            <source srcset="${dinoDetailData.imgSrc}" media="(min-width: 601px">
+                            <img src="${dinoDetailData.imgSrc}" class="tooltipped" data-tooltip="Autor: ${dinoDetailData.toolTip}" alt="${dinoDetailData.name}">
+                          </picture>
+                          <figcaption>
+                            ${dinoDetailData.name}
+                          </figcaption>
+                        </figure>
                       <p>
-                        <b> Doba:</b> ${dinoDetailData.era}
+                        <strong>Doba:</strong> ${dinoDetailData.era}
                       </p>
                       <p>
-                        <b> Délka:</b> ${dinoDetailData.length}
+                        <strong>Délka:</strong> ${dinoDetailData.length}
                       </p>
                       <p> 
-                        <b> Výška:</b> ${dinoDetailData.height}
+                        <strong>Výška:</strong> ${dinoDetailData.height}
                       </p>
                       <p> 
-                        <b> Váha:</b> ${dinoDetailData.weigth}
+                        <strong>Váha:</strong> ${dinoDetailData.weigth}
                       </p>
                       <p> 
-                        <b> Potrava:</b> ${dinoDetailData.food}
+                        <strong>Potrava:</strong> ${dinoDetailData.food}
                       </p>
                       <p> 
-                        <b> Zajímavost:</b>
+                        <strong>Zajímavost:</strong>
                         <blockquote cite="${dinoDetailData.source}">
                         ${dinoDetailData.interestingPoint}
                       </blockquote>
                       </p>
                       <p>
-                        <b>Zdroj:</b>
+                        <strong>Zdroj:</strong>
                         <a href="${dinoDetailData.source}"> wikipedia.org </a>
                       </p>
                       <div>
@@ -91,7 +93,7 @@
         showDinoDetail: function(e) {
           // if not img on carousel, then get data and show detail
           if (e.target.tagName !== "img") {
-            const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(e.target.text);
+            const dinoDetailData = ItemCtrlDinoList.getDinoDetailData(e.target.textContent);
             showHTMLDinoDetail(dinoDetailData); 
             moveToDinoDetail();
           }
@@ -137,7 +139,7 @@
         keys.sort();
         for(let i = 0; i < keys.length; ++i){
           htmlCarousel += `<a class="carousel-item dino-link"><img src="${dinosObj[keys[i]]["imgSrcSm"]}" alt="${keys[i]}" >${keys[i]}</a>`
-          htmlNavDinos += `<li><a class="dino-link">${keys[i]}</a></li>`
+          htmlNavDinos += `<button class="dino-link" type="button">${keys[i]}</button>`
         }
   
         document.querySelector(UISelectors.carousel).innerHTML = htmlCarousel;

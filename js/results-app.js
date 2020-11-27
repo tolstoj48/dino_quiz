@@ -163,13 +163,13 @@
             let mainSection = document.createElement("section");
             let mainDivToAppend = document.createElement("div");
             mainDivToAppend.className = "col s12 card";
-            mainDivToAppend.innerHTML = `<h4 id="${UIMapNames[property]}" class="bold">${UIMapNames[property]}`
+            mainDivToAppend.innerHTML = `<h1 id="${UIMapNames[property]}" class="bold">${UIMapNames[property]}</h1>`
             for (const gameId in data[property]) {
               let classOfTitle = UIMapClasses[gameId];
               let article = document.createElement("article");
               let divToAppend = document.createElement("div");
               divToAppend.className = "col s12 card-content";
-              html += `<h5 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h5>
+              html += `<h2 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h2>
               <table class="striped centered">
                 <thead>
                   <tr>

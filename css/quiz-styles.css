@@ -56,25 +56,13 @@
 }
 
 #answers-list li {
-  text-align: center;
-  border: 0px solid  var(--my-grey-green);
-  border-radius: 0.5em;
   padding: 20px;
-  margin: 1%;
   overflow: hidden;
-  background-color: var(--my-light-green);
-  font-weight: 500;
-  cursor: pointer;
-  min-width: 150px;
-}
-
-#answers-list li:hover {
-  background: var(--my-dark-blue);
-  color: var(--my-yellow-white);
 }
 
 #game-type, #time {
   font-weight: 700;
+  font-size: 1.5em;
 }
 
 /* || Questions answers UI - questions, images, indicators */
@@ -133,7 +121,14 @@
 }
 
 #open-overview-btn {
-  border-radius: 0.5em;
+  background-color: var(--my-yellow-white);
+  color: var(--my-dark-blue);
+  font-weight: 700;
+}
+
+#open-overview-btn:focus, #open-overview-btn:hover  {
+  background-color: var(--my-light-green);
+  border: 1px solid var(--my-dark-blue);
 }
 
 #overview {
