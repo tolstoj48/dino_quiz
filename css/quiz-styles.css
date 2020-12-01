@@ -8,9 +8,9 @@
 .indicator {
   text-align: center;
   border: 0px solid var(--my-grey-green);
-  padding: 2px;
+  padding: 0.2em;
   width: 35px;
-  border-radius:0.5em;
+  border-radius: 0.5em;
   margin: 1%;
 }
 
@@ -30,7 +30,7 @@
 #question-container {
   border: 1px solid var(--my-grey-green);
   border-radius: 0.5em;
-  padding: 20px;
+  padding: 1em;
   font-weight: 600;
   color: var(--my-yellow-white);
 }
@@ -56,11 +56,11 @@
 }
 
 #answers-list li {
-  padding: 20px;
+  padding: 1.2em;
   overflow: hidden;
 }
 
-#game-type, #time {
+#time {
   font-weight: 700;
   font-size: 1.5em;
 }
@@ -87,31 +87,24 @@
   font-size: 0.9rem;
 }
 
-.correct-answers {
+.correct-answers, .incorrect-answers {
   border: 1px solid var(--my-dark-blue);
-  padding: 10px;
-  margin: 5px;
+  padding: 1em;
+  margin: 1em;
   border-radius: 0.5em;
 }
 
-.correct-answers i {
+.correct-answers i, .incorrect-answers i  {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   color: var(--my-grey-green);
 }
 
 /* Images and incorrect answers texts */
 
-.incorrect-answers {
-  border: 1px solid var(--my-dark-blue);
-  padding: 5px;
-  margin: 5px;
-  border-radius: 0.5em;
-}
-
 .incorrect-answers i {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 1em;
+  font-size: 1.5em;
   color: var(--my-red);
 }
 

@@ -1,28 +1,45 @@
 /* ||| results.html page styles */
 
+/* Active class for the sorter text */
+.active-sorter {
+  background: rgba(239, 84, 159, 0.4);
+  border-radius: 0.5em;
+}
+
+/* Heading level 1 only for the results */
+#main-frame-results h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+/* Heading level 2 only for the results */
+#main-frame-results h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* Small for warning on the data in the browser */
+#main-frame-results small {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
 /* Results gameId stripes */
 .my-red, .my-green, .my-blue-results {
   border-radius: 0.5em;
-  padding: 5px;
-  overflow: auto;
+  padding: 0.3em;
 }
 
 /* Background of all dinos games */
 .my-blue-results {
   background-color: rgba(109, 201, 250, 0.6);
-  padding: 5px;
 }
 
 /* Sorting keys in the results tables */
 .result:hover,.time:hover {
   cursor: pointer;
   -webkit-text-decoration: underline;
-          text-decoration: underline;
-}
-
-/* Active class for the sorter text */
-.active-sorter {
-  background: rgba(239, 84, 159, 0.4);
-  border-radius: 0.5em;
+  text-decoration: underline;
 }
 

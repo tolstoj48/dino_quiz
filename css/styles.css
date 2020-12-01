@@ -64,8 +64,10 @@ body {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2rem;
+  font-weight: 800;
 }
+
 
 img {
   max-width: 100%;
@@ -329,7 +331,7 @@ li.first-li a {
 }
 
 .page-footer li {
-  padding: 5px;
+  padding: 0.3em;
   text-align: center;
 }
 

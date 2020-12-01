@@ -1,5 +1,5 @@
 // Man block scope
-;{
+;window.onload = function () {
     "use strict";
 
     //Data Controler
@@ -229,6 +229,7 @@
         indicator: ".indicator",
         openOverviewBtn: "#open-overview-btn",
         overview: "#overview",
+        button: "buttons",
       };
 
       const eventListenersInit = function eventListenersInit() {
@@ -284,6 +285,17 @@
         );
       };
 
+      // Set up keyboard navigation on the answers buttons
+      const setUpKeyboardKeysOnAnswersButtons = function setUpKeyboardKeysOnAnswersButtons(e, buttonsOfAnswers) {
+        if(e.key === "ArrowRight" && Number(e.srcElement.id) < (buttonsOfAnswers.length - 1)) {
+          console.log(Number(e.srcElement.id));
+          console.log(buttonsOfAnswers.length - 1);
+          buttonsOfAnswers[Number(e.srcElement.id) + 1].focus();
+        } else if (e.key === "ArrowLeft" && Number(e.srcElement.id) >= 1) {
+          buttonsOfAnswers[Number(e.srcElement.id) - 1].focus();
+        }
+      }
+
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
@@ -319,6 +331,14 @@
           html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
         })
         answersList.innerHTML = html;
+        // Focus first answer after answers generation
+        const buttonsOfAnswers = document.querySelectorAll("button.answer-item");
+        buttonsOfAnswers[0].focus();       
+        buttonsOfAnswers.forEach((button) => {
+          button.addEventListener("keydown", function (e) {
+            setUpKeyboardKeysOnAnswersButtons(e, buttonsOfAnswers);
+          })
+        })
 
         // Click event on questions
         const clicker = DataCtrl.getNextQuestion();
@@ -375,7 +395,6 @@
         // Last answer or not?
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);
-          console.log(questionSet);
           questionContainer.innerHTML = `<img src='${questionSet[UIAnswersCounter].question}' alt='dino-image'>`; 
           // Answers content after fetching next question
           let html = ``;
@@ -384,6 +403,9 @@
             html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
           })
           answersList.innerHTML = html;
+          // Focus first answer after answers generation
+          const buttonsOfAnswers = document.querySelectorAll("button");
+          buttonsOfAnswers[0].focus();
           // Counter of number of answered questions
           UIAnswersCounter += 1;
         // The end of a game
@@ -477,4 +499,4 @@
     })(UICtrl, DataCtrl);
 
     App.init();
-}
+};

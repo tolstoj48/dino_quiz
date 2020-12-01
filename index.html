@@ -4,13 +4,13 @@
 / registrace sitemapy na google.com
 / minifikace
 / dodělat ještě  ještě tak cca 5 teropodů a 5 sauropodů
-/ popisy se zajímavostmi dále upravit/pojmout jinak?, obrázky z wikicommons a odkazy upravit všude, u citací barvy dodělat
 / generování HTML kódu v JS - korektní indentace prověřit inspekci výsledků
 / plnit daty kvíz
-/ contact - validace dat?
-/marginy a paddingy na em
-/ udělat z listů buttony v kvízech vč. otevření detailů správných a špatných -> dodělat 1. barvy po kliku a 2. zařídit jiný klávesy: https://css-tricks.com/use-button-element/ 
-
+/ popisy u dinosaurů stejné jako popisy v kvízu, šipka vlevo a šipka vpravo
+/ skip odkazy
+/ onload
+/ seznam přehledu správně špatně, aby to četlo alt, název a celý popisek
+/ dodělat navigaci ve hře - skákání zpět také z přehledu dobře/špatně
 
 -->
 <!DOCTYPE html>
@@ -23,6 +23,15 @@
     <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
     <meta name="author" content="Petr Musil">
     <title>Hry s dinosaury a fakta o dinosaurech</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- CSS links-->
     <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="./css/styles.css">
     <link type="text/css" rel="stylesheet" href="./css/typewriter-effect.css">
@@ -38,7 +47,7 @@
   <!-- Body -->
   <body>
     <header>
-      <nav class="my-green">
+      <nav class="my-green" role="navigation">
         <div class="nav-wrapper">
           <div class="logo">
             <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon/icon.png" alt="Egg dino"> kvíz</a>
@@ -47,9 +56,9 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
             <!-- Search component-->
             <li> 
-              <form>
+              <form role="search">
                 <div class="input-field">
-                  <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" required>
+                  <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" aria-label="hledej detailní informaci o dinosaurech">
                   <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
                 </div>
               </form>
@@ -151,5 +160,6 @@
             })
           }
       </script>
+      <noscript><strong>Your browser does not support JavaScript! The site will not work as expected!</strong></noscript>
   </body>
 </html>

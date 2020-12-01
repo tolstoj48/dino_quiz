@@ -8,7 +8,7 @@
 @media only screen and (max-width: 350px) {
 	#text-twe, .middle {
 	font-size: 1.2rem;
-	padding: 2rem;
+	padding: 2em;
 	}
 
 	.big {
@@ -16,6 +16,6 @@
 	}
 
 	#container-twe {
-		margin-top: 0.5rem;
+		margin-top: 0.5em;
 	}
 }

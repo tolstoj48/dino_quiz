@@ -79,6 +79,17 @@ self.addEventListener('install', function(e) {
         "/images/images_sm/triceratops.png",
         "/images/images_sm/tyrannosaurus.jpg",
         "/images/images_sm/velociraptor.png",
+
+        "/favicon/android-chrome-192x192.png",
+        "/favicon/android-chrome-256x256.png",
+        "/favicon/apple-touch-icon.png",
+        "/favicon/browserconfig.xml",
+        "/favicon/favicon-16x16.png",
+        "/favicon/favicon-32x32.png",
+        "/favicon/favicon.ico",
+        "/favicon/mstile-150x150.png",
+        "/favicon/safari-pinned-tab.svg",
+        "/favicon/site.webmanifest",
       ]);
     })
   );

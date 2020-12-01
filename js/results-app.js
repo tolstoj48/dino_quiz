@@ -163,13 +163,13 @@
             let mainSection = document.createElement("section");
             let mainDivToAppend = document.createElement("div");
             mainDivToAppend.className = "col s12 card";
-            mainDivToAppend.innerHTML = `<h1 id="${UIMapNames[property]}" class="bold">${UIMapNames[property]}</h1>`
+            mainDivToAppend.innerHTML = `<h1 id="${UIMapNames[property]}">${UIMapNames[property]}</h1>`
             for (const gameId in data[property]) {
               let classOfTitle = UIMapClasses[gameId];
               let article = document.createElement("article");
               let divToAppend = document.createElement("div");
               divToAppend.className = "col s12 card-content";
-              html += `<h2 class=" ${classOfTitle} bold">${UIMapNames[gameId]}</h2>
+              html += `<h2 class=" ${classOfTitle}">${UIMapNames[gameId]}</h2>
               <table class="striped centered">
                 <thead>
                   <tr>
@@ -195,7 +195,8 @@
             mainDivToAppend.appendChild(article);
             html = "";
           }
-          let remark = document.createElement("div");
+          let remark = document.createElement("aside");
+          remark.classList.add("notice");
           remark.innerHTML = "<small>* Výsledky jsou ukládány a zobrazovány v/z localStorage resp. místního úložiště Vašeho prohlížeče. Smazaním paměti prohlížeče smažete také výsledky kvízů a poznávaček.</small>";
           mainDivToAppend.appendChild(remark);
           mainSection.appendChild(mainDivToAppend);

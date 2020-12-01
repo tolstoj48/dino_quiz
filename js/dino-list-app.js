@@ -10,13 +10,13 @@
         pasted: "#pasted",
         navDinos: "#nav-dinos",
         carousel: ".carousel",
+        containerCard: ".container-card",
       };
     
       // Shows and switches detail of dino
       const showHTMLDinoDetail = function (dinoDetailData) {
         let htmlResult = `<div class="row">
-              <article>
-                <div id="centered" class="col s12 m8 margin-top-2rem centered">`;
+              <div id="centered" class="col s12 m8 margin-top-2rem centered">`;
         htmlResult += 
                   `<div class="card ${dinoDetailData.cardCls}">\n
                     <div class="card-content">\n
@@ -64,17 +64,15 @@
             </div>`;
         if (document.querySelector(UISelectors.pasted) == null ) {
           let div = document.createElement("div");
-          div.className = "container";
           div.id = "pasted";
           div.innerHTML = htmlResult;
-          document.querySelector(UISelectors.main).appendChild(div);
+          document.querySelector(UISelectors.containerCard).appendChild(div);
         } else {
           document.querySelector(UISelectors.pasted).remove();
           let div = document.createElement("div");
-          div.className = "container";
           div.id = "pasted";
           div.innerHTML = htmlResult;
-          document.querySelector(UISelectors.main).appendChild(div);
+          document.querySelector(UISelectors.containerCard).appendChild(div);
         }
         document.addEventListener('mouseover', function() {
           const elems = document.querySelector('.tooltipped');
