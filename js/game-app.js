@@ -292,8 +292,6 @@ import 'regenerator-runtime/runtime';
       // Set up keyboard navigation on the answers buttons
       const setUpKeyboardKeysOnAnswersButtons = function setUpKeyboardKeysOnAnswersButtons(e, buttonsOfAnswers) {
         if(e.key === "ArrowRight" && Number(e.srcElement.id) < (buttonsOfAnswers.length - 1)) {
-          console.log(Number(e.srcElement.id));
-          console.log(buttonsOfAnswers.length - 1);
           buttonsOfAnswers[Number(e.srcElement.id) + 1].focus();
         } else if (e.key === "ArrowLeft" && Number(e.srcElement.id) >= 1) {
           buttonsOfAnswers[Number(e.srcElement.id) - 1].focus();
