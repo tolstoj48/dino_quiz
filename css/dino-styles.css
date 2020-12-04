@@ -18,9 +18,13 @@ figcaption {
 #nav-dinos {
   width: 80%;
   margin:auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-basis: content;
-  flex-wrap: wrap;
+  -ms-flex-preferred-size: content;
+      flex-basis: content;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 /* dino list li */
@@ -75,6 +79,7 @@ div.card-content p a:hover {
           text-decoration: underline;
 }
 
+
 /* base badge */
 .badge {
   border-radius: 0.5em;
@@ -110,7 +115,9 @@ div.card-content p a:hover {
 /* list links to dinos in the list*/
 #nav-dinos .dino-link {
   border: 0 solid var(--my-dark-blue);
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   padding: 0.3em;
   margin-right: 0.3rem;
   font-weight: 700;
@@ -144,7 +151,10 @@ div.card-content p a:hover {
   /* Adding margin due to the missing carousel */
   #nav-dinos {
     margin-top: 4em;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   
   #nav-dinos .dino-link {

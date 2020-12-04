@@ -1,6 +1,10 @@
+import { GameDataCtrl } from './game-data.js';
+import { Helpers } from './helper-functions.js';
+import 'regenerator-runtime/runtime';
+
 // Man block scope
-;window.onload = function () {
-    "use strict";
+;
+   "use strict";
 
     //Data Controler
     const DataCtrl = (function () {
@@ -331,7 +335,7 @@
           html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
         })
         answersList.innerHTML = html;
-        // Focus first answer after answers generation
+        // Focus first answer after answers generation and setup keys to move focus
         const buttonsOfAnswers = document.querySelectorAll("button.answer-item");
         buttonsOfAnswers[0].focus();       
         buttonsOfAnswers.forEach((button) => {
@@ -403,9 +407,14 @@
             html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
           })
           answersList.innerHTML = html;
-          // Focus first answer after answers generation
-          const buttonsOfAnswers = document.querySelectorAll("button");
-          buttonsOfAnswers[0].focus();
+          // Focus first answer after answers generation and setup keys to move focus
+          const buttonsOfAnswers = document.querySelectorAll("button.answer-item");
+          buttonsOfAnswers[0].focus();       
+          buttonsOfAnswers.forEach((button) => {
+          button.addEventListener("keydown", function (e) {
+            setUpKeyboardKeysOnAnswersButtons(e, buttonsOfAnswers);
+          })
+        })
           // Counter of number of answered questions
           UIAnswersCounter += 1;
         // The end of a game
@@ -499,4 +508,3 @@
     })(UICtrl, DataCtrl);
 
     App.init();
-};

@@ -1,7 +1,8 @@
+import { DinosListObjCtrl } from './dinos-data.js';
+
 // Man block scope
 ;{
   "use strict";
-  var start = window.performance.now();
     // UI Controler
     const UICtrlDinoList = (function () {
       const UISelectors = {
@@ -209,6 +210,4 @@
     })(UICtrlDinoList);
     
     AppDinoList.init();
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
 }

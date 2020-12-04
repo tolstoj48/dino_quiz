@@ -1,3 +1,5 @@
+import { DinosListObjCtrl } from './dinos-data.js';
+
 // Main block scope
 ;{
     "use strict";

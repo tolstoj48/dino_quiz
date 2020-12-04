@@ -1,6 +1,6 @@
-// IIFE
-;const DinosListObjCtrl = (function dinosArrayCtrl () {
-  "use strict";
+"use strict";
+ 
+export const DinosListObjCtrl = (function dinosArrayCtrl () {
 
   const pathSm = "./images/images_sm/";
   const pathLg = "./images/images_lg/";

@@ -2,31 +2,55 @@
 <html lang="cs">
   <!-- Head -->
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech.">
-    <meta name="keywords" content="dinosaurus, dinosauři, hra, kvíz, fakta, brontosaurus, tyranosaurus">
-    <meta name="author" content="Petr Musil">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Web plný kvízů, her, poznávaček a encyklopedických faktů o dinosaurech."
+    />
+    <meta name="author" content="Petr Musil" />
     <title>Hry s dinosaury a fakta o dinosaurech</title>
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site.webmanifest">
-    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <!-- CSS links-->    
-    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/styles.css">
-    <link type="text/css" rel="stylesheet" href="./css/dino-styles.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- CSS links-->
+    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css" />
+    <link type="text/css" rel="stylesheet" href="./css/styles.css" />
+    <link type="text/css" rel="stylesheet" href="./css/dino-styles.css" />
     <!-- Scripts links -->
     <script src="./js/materialize.min.js" defer></script>
     <script src="./js/app.js" defer></script>
     <script src="./js/dinos-data.js" defer></script>
     <script src="./js/dino-list-app.js" defer></script>
     <script src="./js/search-bar-autocomplete.js" defer></script>
-    <script src="https://kit.fontawesome.com/1171378cc7.js" crossorigin="anonymous" async></script>
+    <script
+      src="https://kit.fontawesome.com/1171378cc7.js"
+      crossorigin="anonymous"
+      async
+    ></script>
   </head>
   <!-- Body -->
   <body>
@@ -34,16 +58,35 @@
       <nav class="my-green" role="navigation">
         <div class="nav-wrapper">
           <div class="logo">
-            <a href="index.html" class="brand-logo my-dark-blue margin-top-07rem"><img id="ikona" src="./images/icon/icon.png" alt="Egg dino"> kvíz</a>
-            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            <a
+              href="index.html"
+              class="brand-logo my-dark-blue margin-top-07rem"
+              ><img id="ikona" src="./images/icon/icon.png" alt="Egg dino" />
+              kvíz</a
+            >
+            <a href="#" data-target="mobile" class="sidenav-trigger"
+              ><i class="fas fa-bars"></i
+            ></a>
           </div>
-          <ul id="nav-mobile" class="right hide-on-med-and-down margin-top-07rem">
+          <ul
+            id="nav-mobile"
+            class="right hide-on-med-and-down margin-top-07rem"
+          >
             <!-- Search component-->
-            <li> 
+            <li>
               <form role="search">
                 <div class="input-field">
-                  <input id="search" class="autocomplete" type="search" placeholder="hledej dina..." autocomplete="off" aria-label="hledej detailní informaci o dinosaurech">
-                  <label class="label-icon" for="search"><i id="this" class="fas fa-search"></i></label>
+                  <input
+                    id="search"
+                    class="autocomplete"
+                    type="search"
+                    placeholder="hledej dina..."
+                    autocomplete="off"
+                    aria-label="hledej detailní informaci o dinosaurech"
+                  />
+                  <label class="label-icon" for="search"
+                    ><i id="this" class="fas fa-search"></i
+                  ></label>
                 </div>
               </form>
             </li>
@@ -51,8 +94,14 @@
             <li class="right"><a href="results.html">Výsledky</a></li>
             <li class="right"><a href="dinos.html">Dinosauři</a></li>
             <!-- dropdown links -->
-            <li class="right"><a class="dropdown-trigger" href="#!" data-target="recognize">Poznávačka</a></li>
-            <li class="right"><a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a></li>
+            <li class="right">
+              <a class="dropdown-trigger" href="#!" data-target="recognize"
+                >Poznávačka</a
+              >
+            </li>
+            <li class="right">
+              <a class="dropdown-trigger" href="#!" data-target="quiz">Kvíz</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -63,24 +112,36 @@
         <li><a class="quiz" href="quiz.html">Masožravci</a></li>
       </ul>
       <ul id="recognize" class="dropdown-content">
-        <li><a class="recognition" href="recognition.html">Všichni dinosauři</a></li>
+        <li>
+          <a class="recognition" href="recognition.html">Všichni dinosauři</a>
+        </li>
         <li><a class="recognition" href="recognition.html">Býložravci</a></li>
         <li><a class="recognition" href="recognition.html">Masožravci</a></li>
       </ul>
       <ul id="mobile" class="sidenav right my-green">
         <li class="first-li"><a href="dinos.html">Dinosauři</a></li>
-        <li class="moved-to-right">Kvíz
-        <ul>
-          <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
-          <li><a class="quiz" href="quiz.html">Býložravci</a></li>
-          <li><a class="quiz" href="quiz.html">Masožravci</a></li>
-        </ul>
-      </li>
-        <li class="moved-to-right"> Poznávačka
+        <li class="moved-to-right">
+          Kvíz
           <ul>
-            <li><a class="recognition" href="recognition.html">Všichni dinosauři</a></li>
-            <li><a class="recognition" href="recognition.html">Býložravci</a></li>
-            <li><a class="recognition" href="recognition.html">Masožravci</a></li>
+            <li><a class="quiz" href="quiz.html">Všichni dinosauři</a></li>
+            <li><a class="quiz" href="quiz.html">Býložravci</a></li>
+            <li><a class="quiz" href="quiz.html">Masožravci</a></li>
+          </ul>
+        </li>
+        <li class="moved-to-right">
+          Poznávačka
+          <ul>
+            <li>
+              <a class="recognition" href="recognition.html"
+                >Všichni dinosauři</a
+              >
+            </li>
+            <li>
+              <a class="recognition" href="recognition.html">Býložravci</a>
+            </li>
+            <li>
+              <a class="recognition" href="recognition.html">Masožravci</a>
+            </li>
           </ul>
         </li>
         <li class="last-lis"><a href="results.html">Výsledky</a></li>
@@ -94,24 +155,25 @@
         <section>
           <div class="row">
             <section>
-              <div class="carousel">
-              </div>
+              <div class="carousel"></div>
             </section>
           </div>
           <div class="row">
             <section>
-            <div id="nav-dinos">
-            </div>
+              <div id="nav-dinos"></div>
             </section>
           </div>
         </section>
-        <article class="container-card" aria-live="assertive" aria-atomic="true">
-        </article>
+        <article
+          class="container-card"
+          aria-live="assertive"
+          aria-atomic="true"
+        ></article>
       </div>
     </main>
     <!-- Footer content of the page -->
     <footer class="page-footer footer-green">
-      <div class="container ">
+      <div class="container">
         <div class="row">
           <div class="col s12">
             <div class="col s12 m4">
@@ -123,29 +185,42 @@
               <ul>
                 <li>
                   <a href="#"><i class="fas fa-blog fa-2x"></i></a>
-                  <a href="https://github.com/tolstoj48"><i class="fab fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/tolstoj48"
+                    ><i class="fab fa-github-square fa-2x"></i
+                  ></a>
                 </li>
               </ul>
             </div>
             <div class="col s12 m4">
               <ul>
-                <li><a href="contact.html"><span id="arrows-alert"> >> </span>Napište mi</a></li>
+                <li>
+                  <a href="contact.html"
+                    ><span id="arrows-alert"> >> </span>Napište mi</a
+                  >
+                </li>
               </ul>
-              </div>
             </div>
           </div>
         </div>
+      </div>
     </footer>
     <script>
-      if('serviceWorker' in navigator) {
+      if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-         .register('/sw.js')
-         .then(function() { console.log('Service Worker Registered'); })
-         .catch(function(err) {
-         console.log("Service Worker Failed to Register", err);
-        })
+          .register('/sw.js')
+          .then(function () {
+            console.log('Service Worker Registered');
+          })
+          .catch(function (err) {
+            console.log('Service Worker Failed to Register', err);
+          });
       }
     </script>
-    <noscript><strong>Your browser does not support JavaScript! The site will not work as expected!</strong></noscript>
+    <noscript
+      ><strong
+        >Your browser does not support JavaScript! The site will not work as
+        expected!</strong
+      ></noscript
+    >
   </body>
 </html>
