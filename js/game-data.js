@@ -1,13 +1,14 @@
 
-import { DinosListObjCtrl } from './dinos-data.js';
+import { DinosListObjCtrl } from "./dinos-data.js";
 
 "use strict";
+
 
 /* 
 Game data controler - fetches all the data 
 - random questions - maximum 12 (can be set up), random numbers 0 - length of the data object
 */
-;export const GameDataCtrl = (function () {
+export const GameDataCtrl = (function () {
   // Gametyp const for different functions in the controler
   const gameType = localStorage.getItem("gameTypeId");
 

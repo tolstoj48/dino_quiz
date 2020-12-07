@@ -4,10 +4,17 @@
 / registrace sitemapy na google.com
 / minifikace
 / dodělat ještě  ještě tak cca 5 teropodů a 5 sauropodů
-/ popisy se zajímavostmi dále upravit/pojmout jinak?, obrázky z wikicommons a odkazy upravit všude, u citací barvy dodělat
 / generování HTML kódu v JS - korektní indentace prověřit inspekci výsledků
 / plnit daty kvíz
+/ popisy u dinosaurů stejné jako popisy v kvízu, šipka vlevo a šipka vpravo
+/ skip odkazy
+/ onload
+/ seznam přehledu správně špatně, aby to četlo alt, název a celý popisek
+/ dodělat navigaci ve hře - skákání zpět také z přehledu dobře/špatně
+/ je nutná identifikace feature pro web workery nebo to defualtně poběží normálně?
 -->
+
+
 <!DOCTYPE html>
 <html lang="cs">
   <!-- Head -->
@@ -77,7 +84,7 @@
               ><img id="ikona" src="./images/icon/icon.png" alt="Egg dino" />
               kvíz</a
             >
-            <a href="#" data-target="mobile" class="sidenav-trigger"
+            <a href="" data-target="mobile" class="sidenav-trigger"
               ><i class="fas fa-bars"></i
             ></a>
           </div>
@@ -196,7 +203,7 @@
             <div class="col s12 l4">
               <ul>
                 <li>
-                  <a href="#"><i class="fas fa-blog fa-2x"></i></a>
+                  <a href=""><i class="fas fa-blog fa-2x"></i></a>
                   <a href="https://github.com/tolstoj48"
                     ><i class="fab fa-github-square fa-2x"></i
                   ></a>

@@ -1,9 +1,9 @@
-import { GameDataCtrl } from './game-data.js';
-import { Helpers } from './helper-functions.js';
-import 'regenerator-runtime/runtime';
+import { GameDataCtrl } from "./game-data.js";
+import { Helpers } from "./helper-functions.js";
+import "regenerator-runtime/runtime";
 
 // Man block scope
-;
+
    "use strict";
 
     //Data Controler
@@ -239,7 +239,7 @@ import 'regenerator-runtime/runtime';
       const eventListenersInit = function eventListenersInit() {
         // Materialize setup for dropdowns in menu
         const dropdown = document.querySelectorAll(".dropdown-trigger");
-        dropdown.forEach(function (element) {
+        dropdown.forEach(function () {
           M.Dropdown.init(dropdown,{
             hover: true,
             inDuration: 500,
@@ -250,18 +250,18 @@ import 'regenerator-runtime/runtime';
         });
 
         // Materialize setup for carousel
-        document.addEventListener('DOMContentLoaded', function() {
-          const elems = document.querySelectorAll('.carousel');
-          const instances = M.Carousel.init(elems, {
+        document.addEventListener("DOMContentLoaded", function() {
+          const elems = document.querySelectorAll(".carousel");
+          M.Carousel.init(elems, {
             numVisible: 10,
             dist: -60,
           });
         });
 
         // Materialize setup for sidenav menu
-        document.addEventListener('DOMContentLoaded', function() {
-          const elems = document.querySelectorAll('.sidenav');
-          const instances = M.Sidenav.init(elems);
+        document.addEventListener("DOMContentLoaded", function() {
+          const elems = document.querySelectorAll(".sidenav");
+          M.Sidenav.init(elems);
         });
 
         /* 
@@ -301,7 +301,7 @@ import 'regenerator-runtime/runtime';
       // Insert img with correct name of dino in the correct div list
       const insertCorrectImgAndName = function insertCorrectImgAndName(correctAnswerDataObj, correct) {
         let correctDivCard = document.createElement("div");
-        correctDivCard.innerHTML = DataCtrl.getCurrentGame().type == "recognition" ? `<img src='${correctAnswerDataObj.questionSmallImg}' alt='dino-image'>${correctAnswerDataObj.correctAnswer}` : `<div class="bordered"><span class="question">${correctAnswerDataObj.question} :</span> ${correctAnswerDataObj.correctAnswer}</div>`;
+        correctDivCard.innerHTML = DataCtrl.getCurrentGame().type == "recognition" ? `<img src="${correctAnswerDataObj.questionSmallImg}" alt="dino-image">${correctAnswerDataObj.correctAnswer}` : `<div class="bordered"><span class="question">${correctAnswerDataObj.question} :</span> ${correctAnswerDataObj.correctAnswer}</div>`;
         correctDivCard.className = "col s12 m6";
         // To which wrapper wrap the created div
         let answersWrapper = correct ? document.querySelector(UISelectors.correctAnswers) : document.querySelector(UISelectors.incorrectAnswers);
@@ -325,9 +325,9 @@ import 'regenerator-runtime/runtime';
         let questionContainer = document.querySelector(UISelectors.questionContainer);
         DataCtrl.initGetQuestions();
         let questionSet = DataCtrl.getQuestions();
-        questionContainer.innerHTML = gameTypeId == "recognition" ? `<img src='${questionSet[0].question}' alt='dino-image'>` : `<div class="question">${questionSet[0].question}</div>`;
+        questionContainer.innerHTML = gameTypeId == "recognition" ? `<img src="${questionSet[0].question}" alt="dino-image">` : `<div class="question">${questionSet[0].question}</div>`;
         // Answers content after initialization
-        let html = ``;
+        let html = "";
         let answersList = document.querySelector(UISelectors.answersList);
         questionSet[0].answers.forEach((answer, index) => {
           html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`
@@ -397,9 +397,9 @@ import 'regenerator-runtime/runtime';
         // Last answer or not?
         if (UIAnswersCounter <= Object.keys(questionSet).length - 1) {
           let questionContainer = document.querySelector(UISelectors.questionContainer);
-          questionContainer.innerHTML = `<img src='${questionSet[UIAnswersCounter].question}' alt='dino-image'>`; 
+          questionContainer.innerHTML = `<img src="${questionSet[UIAnswersCounter].question}" alt="dino-image">`; 
           // Answers content after fetching next question
-          let html = ``;
+          let html = "";
           let answersList = document.querySelector(UISelectors.answersList);
           questionSet[UIAnswersCounter].answers.forEach((answer, index) => {
             html += `<li><button id=${index} class="btn answer-item collection-item" type="button">${answer}</button></li>`

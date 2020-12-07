@@ -1,7 +1,7 @@
-import { DinosListObjCtrl } from './dinos-data.js';
+import { DinosListObjCtrl } from "./dinos-data.js";
 
-// Man block scope
-;{
+// Main block scope
+{
   "use strict";
     // UI Controler
     const UICtrlDinoList = (function () {
@@ -33,28 +33,28 @@ import { DinosListObjCtrl } from './dinos-data.js';
                           </figcaption>
                         </figure>
                       <p>
-                        <strong>Doba:</strong> ${dinoDetailData.era}
+                        <em>Doba:</em> ${dinoDetailData.era}
                       </p>
                       <p>
-                        <strong>Délka:</strong> ${dinoDetailData.length}
+                        <em>Délka:</em> ${dinoDetailData.length}
                       </p>
                       <p> 
-                        <strong>Výška:</strong> ${dinoDetailData.height}
+                        <em>Výška:</em> ${dinoDetailData.height}
                       </p>
                       <p> 
-                        <strong>Váha:</strong> ${dinoDetailData.weigth}
+                        <em>Váha:</em> ${dinoDetailData.weigth}
                       </p>
                       <p> 
-                        <strong>Potrava:</strong> ${dinoDetailData.food}
+                        <em>Potrava:</em> ${dinoDetailData.food}
                       </p>
                       <p> 
-                        <strong>Zajímavost:</strong>
+                        <em>Zajímavost:</em>
                         <blockquote cite="${dinoDetailData.source}">
                         ${dinoDetailData.interestingPoint}
                       </blockquote>
                       </p>
                       <p>
-                        <strong>Zdroj:</strong>
+                        <em>Zdroj:</em>
                         <a href="${dinoDetailData.source}"> wikipedia.org </a>
                       </p>
                       <div>
@@ -75,9 +75,9 @@ import { DinosListObjCtrl } from './dinos-data.js';
           div.innerHTML = htmlResult;
           document.querySelector(UISelectors.containerCard).appendChild(div);
         }
-        document.addEventListener('mouseover', function() {
-          const elems = document.querySelector('.tooltipped');
-          const instances = M.Tooltip.init(elems);
+        document.addEventListener("mouseover", function() {
+          const elems = document.querySelector(".tooltipped");
+          M.Tooltip.init(elems);
         });
       };
     
@@ -152,9 +152,9 @@ import { DinosListObjCtrl } from './dinos-data.js';
           element.addEventListener("click", UICtrlDinoList.showDinoDetail);   
         })
           // Materialize setup for carousel
-         document.addEventListener('DOMContentLoaded', function() {
-            const elem = document.querySelector('.carousel');
-            const instances = M.Carousel.init(elem, {
+         document.addEventListener("DOMContentLoaded", function() {
+            const elem = document.querySelector(".carousel");
+            M.Carousel.init(elem, {
               numVisible: 12,
               dist: -80,
             })
@@ -162,7 +162,7 @@ import { DinosListObjCtrl } from './dinos-data.js';
           
           // Left, right arrow keypresses for the carousel list of dinos
           document.addEventListener("keydown", function (event) {
-            const elem = document.querySelector('.carousel');
+            const elem = document.querySelector(".carousel");
             if (event.key == "ArrowLeft") {
               M.Carousel.getInstance(elem).prev();
             } else if (event.key == "ArrowRight") {
@@ -202,8 +202,9 @@ import { DinosListObjCtrl } from './dinos-data.js';
           redirectedFromSearchBar();
         
         },
+        // Lists all dinos from dinosData object
         listDinos: function(){
-          listDinos()
+          listDinos();
         }
       };
     

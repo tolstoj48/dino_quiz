@@ -7,6 +7,12 @@ blockquote {
   font-style: italic;
 }
 
+/* em */
+em {
+  text-decoration: underline;
+  font-size: 1.1em;
+}
+
 /* caption of the dino detail img */
 figcaption {
   font-size: 1.5rem;

@@ -1,12 +1,12 @@
 // Main block scope
 {
-   ('use strict');
+   ("use strict");
   //ItemCtrl
   const ItemCtrl = (function () {
     // Setter of the gameId and gameTypeId variables
     const setCurrentGameId = function (e) {
-      localStorage.setItem('gameId', e.target.text);
-      localStorage.setItem('gameTypeId', e.target.className);
+      localStorage.setItem("gameId", e.target.text);
+      localStorage.setItem("gameTypeId", e.target.className);
     };
 
     return {
@@ -17,8 +17,8 @@
       // To get current game type and id based on the last link click
       getCurrentGame: function () {
         return {
-          id: localStorage.getItem('gameId'),
-          type: localStorage.getItem('gameTypeId'),
+          id: localStorage.getItem("gameId"),
+          type: localStorage.getItem("gameTypeId"),
         };
       },
     };
@@ -27,14 +27,14 @@
   // UI controler
   const UICtrl = (function () {
     const UISelectors = {
-      quiz: '.quiz',
-      recognition: '.recognition',
+      quiz: ".quiz",
+      recognition: ".recognition",
     };
 
     const eventListenersInit = function eventListenersInit() {
       // Materialize setup for dropdowns in menu
-      const dropdown = document.querySelectorAll('.dropdown-trigger');
-      dropdown.forEach(function (element) {
+      const dropdown = document.querySelectorAll(".dropdown-trigger");
+      dropdown.forEach(function () {
         M.Dropdown.init(dropdown, {
           hover: true,
           inDuration: 500,
@@ -44,9 +44,9 @@
       });
 
       // Materialize setup for sidenav menu
-      document.addEventListener('DOMContentLoaded', function () {
-        const elems = document.querySelectorAll('.sidenav');
-        const instances = M.Sidenav.init(elems);
+      document.addEventListener("DOMContentLoaded", function () {
+        const elems = document.querySelectorAll(".sidenav");
+        M.Sidenav.init(elems);
       });
 
       /* 
@@ -58,10 +58,10 @@
         UISelectors.recognition
       );
       Array.from(arrAllQuizLinks).forEach((element) => {
-        element.addEventListener('click', ItemCtrl.setCurrentGameId);
+        element.addEventListener("click", ItemCtrl.setCurrentGameId);
       });
       Array.from(arrAllRecognLinks).forEach((element) => {
-        element.addEventListener('click', ItemCtrl.setCurrentGameId);
+        element.addEventListener("click", ItemCtrl.setCurrentGameId);
       });
     };
 

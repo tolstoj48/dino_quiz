@@ -1,9 +1,11 @@
-// Man block scope
-;{
+import { Helpers } from "./helper-functions.js";
+
+// Main block scope
+{
     "use strict";
 
     //Data Controler
-    ;const DataCtrl = (function () {
+    const DataCtrl = (function () {
 
       // Setter of the gameId and gameTypeId variables
       const setCurrentGameId = function (e) {
@@ -103,7 +105,7 @@
       const eventListenersInit = function eventListenersInit() {
         // Materialize setup for dropdowns in menu
         const dropdown = document.querySelectorAll(".dropdown-trigger");
-        dropdown.forEach(function (element) {
+        dropdown.forEach(function () {
           M.Dropdown.init(dropdown,{
             hover: true,
             inDuration: 500,
@@ -113,18 +115,18 @@
         });
 
         // Materialize setup for carousel
-        document.addEventListener('DOMContentLoaded', function() {
-          const elems = document.querySelectorAll('.carousel');
-          const instances = M.Carousel.init(elems, {
+        document.addEventListener("DOMContentLoaded", function() {
+          const elems = document.querySelectorAll(".carousel");
+          M.Carousel.init(elems, {
             numVisible: 10,
             dist: -60,
           });
         });
 
         // Materialize setup for sidenav menu
-        document.addEventListener('DOMContentLoaded', function() {
-          const elems = document.querySelectorAll('.sidenav');
-          const instances = M.Sidenav.init(elems);
+        document.addEventListener("DOMContentLoaded", function() {
+          const elems = document.querySelectorAll(".sidenav");
+          M.Sidenav.init(elems);
         });
 
         /* 

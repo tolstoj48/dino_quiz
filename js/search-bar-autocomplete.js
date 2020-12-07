@@ -1,7 +1,7 @@
-import { DinosListObjCtrl } from './dinos-data.js';
+import { DinosListObjCtrl } from "./dinos-data.js";
 
 // Main block scope
-;{
+{
     "use strict";
 
     // Autocomplete solution for the search bar
@@ -20,7 +20,7 @@ import { DinosListObjCtrl } from './dinos-data.js';
         // Search bar initialization
         document.addEventListener("DOMContentLoaded", function () {
           const elems = document.querySelectorAll(".autocomplete");
-          const instances = M.Autocomplete.init(elems, {
+          M.Autocomplete.init(elems, {
             data: dinosObjFinal,
             limit: 5,
             onAutocomplete: setGlobalVariable,
