@@ -1,5 +1,3 @@
-import { Helpers } from "./helper-functions.js";
-
 // Main block scope
 {
     "use strict";

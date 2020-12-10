@@ -1,10 +1,10 @@
 "use strict";  
 
-;export const Helpers = (function helpersIIFE() {
+const Helpers = (function helpersIIFE() {
   
   // Adds zeros in front of numbers
   const checkTime = function checkTime(i) {
-    if (i < 10 && i > 0) {i = "0" + i};
+    if (i < 10 && i > 0) {i = "0" + i}
     return i;
   };
   

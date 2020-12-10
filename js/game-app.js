@@ -1,8 +1,4 @@
-import { GameDataCtrl } from "./game-data.js";
-import { Helpers } from "./helper-functions.js";
-import "regenerator-runtime/runtime";
-
-// Man block scope
+// Main block scope
 
    "use strict";
 

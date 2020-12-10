@@ -1,6 +1,6 @@
 "use strict";
  
-export const DinosListObjCtrl = (function dinosArrayCtrl () {
+const DinosListObjCtrl = (function dinosArrayCtrl () {
 
   const pathSm = "./images/images_sm/";
   const pathLg = "./images/images_lg/";
